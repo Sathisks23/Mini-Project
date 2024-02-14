@@ -6,18 +6,18 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="HomePage.css">
+    <link rel="stylesheet" href="/Css/HomePage.css">
 </head>
 <body>
 
     <header>
-        <img id="logo" src="logo.png" alt="">
+        <img id="logo" src="/Assests/logo.png" alt="">
 
- <div class="search"> <input type="date" id="dateinput">  </i> <input id="searchinput" type="search"  placeholder="Search here.." > <i class="fa-solid fa-magnifying-glass"></i></div>
+ <div class="search" class="s_input "> <input type="date" id="dateinput">  </i> <input id="searchinput"  type="search"  placeholder="Search here.." > <i class="fa-solid fa-magnifying-glass"></i></div>
   
-<div class="navs"> <a href="HomePage.html">Home</a>  <a id="theme" href="#"><image src="themechange.png"></image></a>    </div>
+<div class="navs"> <a href="HomePage.html">Home</a>  <a id="theme" onclick="changetheme()" href="#"><image src="/Assests/themechange.png"></image></a>    </div>
 
-<div class="mains"> <button id="create_btn"> <a href="">Create</a></button>  <img src="user.png" alt=""> </div>
+<div class="mains"> <button id="create_btn"> <a href="">Create</a></button>  <img src="/Assests/user.png" alt=""> </div>
 </div>
 </header>
 
@@ -25,8 +25,9 @@
 
 
 <div class="categories_nav">
-    <button id="categories">Categories</button>
+    
       <ul class="ca_popup">
+        <li><a  href="">My favourtie</a></li>
          <li><a href="">Sports</a></li>
          <li><a href="">Entertainment</a></li>
          <li><a href="">Business</a></li>
@@ -49,17 +50,17 @@
 
 <div class="main_view">
     <div class="post_view">
-        <div class="post_head"> <img id="user_dp" src="user.png" alt=""> <h4>Shivaranjani _10</h4></div>
+        <div class="post_head"> <img id="user_dp" src="/Assests/user.png" alt=""> <h4>Shivaranjani _10</h4></div>
         <div class="description"><p id="post_desc">Trees and shrubs improve soil and water conservation, store carbon, moderate
             local See More..Trees and shrubs improve soil and water conservation, store carbon, moderate
             local <span id="see_more" >See More..</span></p>
         </div>
-        <div class="post_div"><img id="post" src="post.png" alt=""></div>
+        <div class="post_div"><img id="post" src="/Assests/post.png" alt=""></div>
         <div class="social_section"><div class="like_div"> <i class="fa-regular fa-thumbs-up"></i>  <b id="likes">11k</b> </div> <div class="comment_icon"> <i onclick="showcomment(this)" class="fa-regular fa-comment"></i>  <b id="comment_counnt">100</b></div> </div>
         <div class="comment_section">
-            <div class="add_comment_section"> <img id="comment_dp" src="user.png" alt=""><input onkeyup="sendshow(this)" id="comment_input" placeholder="add a comment.." type="text"> <i id="sending" class="fa-regular fa-paper-plane"></i> <i   class="fa-regular fa-face-smile"></i></div>
+            <div class="add_comment_section"> <img id="comment_dp" src="/Assests/user.png" alt=""><input onkeyup="sendshow(this)" id="comment_input" placeholder="add a comment.." type="text"> <i id="sending" class="fa-regular fa-paper-plane"></i> <i   class="fa-regular fa-face-smile"></i></div>
              <div class="comments_list">
-                <div class="comment_div"> <img  id="cmnt_user_dp" src="./cmnt_user_d.png" alt=""> <div class="cmnt_header"><p id="comment">Yeah actually that is true,there many trees that have been cutting down we have to grow some trees in free space.</p><div class="replay"><i class="fa-solid fa-reply"></i><span class="replay_s">replay</span></div></div> </div>
+                <div class="comment_div"> <img  id="cmnt_user_dp" src="/Assests/cmnt_user_d.png" alt=""> <div class="cmnt_header"><p id="comment">Yeah actually that is true,there many trees that have been cutting down we have to grow some trees in free space.</p><div class="replay"><i class="fa-solid fa-reply"></i><span class="replay_s">replay</span></div></div> </div>
              </div>
         </div>
     </div>
@@ -68,13 +69,13 @@
 
 
     <div class="post_view">
-        <div class="post_head"> <img id="user_dp" src="user.png" alt=""> <h4>Shivaranjani _10</h4></div>
+        <div class="post_head"> <img id="user_dp" src="/Assests/user.png" alt=""> <h4>Shivaranjani _10</h4></div>
         <div class="description"><p id="post_desc">Trees and shrubs improve soil and water conservation, store carbon, moderate
             local Trees and shrubs improve soil and water conservation, store carbon, moderate
             local <span id="more"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id dolores, omnis hic repellat repellendus earum voluptates. Cumque neque illo ad unde harum? Hic est cor </span>
             <span id="see_more">See More..</span></p>
         </div>
-        <div class="post_div"><img id="post" src="post.png" alt=""></div>
+        <div class="post_div"><img id="post" src="/Assests/post.png" alt=""></div>
         <div class="social_section"><div class="like_div"> <i class="fa-regular fa-thumbs-up"></i>  <b id="likes">11k</b> </div> <div class="comment_icon"> <i onclick="showcomment(this)" class="fa-regular fa-comment"></i>  <b id="comment_counnt">100</b></div> </div>
     </div>
 </div>
@@ -82,22 +83,22 @@
 
 
 <div class="trending_views">
-    <div class="logo_div"><img src="trending_log.png" alt=""></div>
+    <div class="logo_div"><img id="trending_log" src="/Assests/trending_log.png" alt=""></div>
     
     <div class="trend_post_view">
-         <img id="trend_post" src="t_post1.png" alt=""> 
+         <img id="trend_post" src="/Assests/t_post1.png" alt=""> 
          <p id="trend_description">As February is observed as the National Hot Breakfast Month <span id="see_more">See More..</span></p> 
          
     </div>
 
     <div class="trend_post_view">
-        <img id="trend_post" src="t_post2.png" alt=""> 
+        <img id="trend_post" src="/Assests/t_post2.png" alt=""> 
         <p id="trend_description">As February is observed as the National Hot Breakfast Month <span id="see_more">See More..</span></p>     
    </div>
 
 
    <div class="trend_post_view">
-    <img id="trend_post" src="t_post2.png" alt=""> 
+    <img id="trend_post" src="/Assests/t_post1.png" alt=""> 
     <p id="trend_description">As February is observed as the National Hot Breakfast Month <span id="see_more">See More...</span></p> 
 </div>   
       
@@ -106,8 +107,8 @@
 
 
 
-<script type="module" src="/js/backend.js"></script>
-<script src="js/HomePage.js"></script>
+<!-- <script type="module" src="/js/backend.js"></script> -->
+<script src="/Js/HomePage.js"></script>
 
 </header>
 </body>

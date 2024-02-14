@@ -19,6 +19,31 @@ function showmore(mm){
 
 
 
+    
+//Theme  Change
+
+function changetheme(){
+    let img =document.getElementById('logo')
+    let b=img.src.slice(22)
+    console.log(b);
+      document.body.classList.toggle('blacktheme')
+      document.querySelector('header').classList.toggle('blacktheme')
+      document.querySelector('.search').classList.toggle('darkinput')
+    
+      
+ let a = document.querySelector('.ca_popup').querySelectorAll('li')
+      a.forEach((e)=>{
+    e.querySelector('a').classList.toggle('blacktheme')
+     })
+        if(b=='Assests/logo.png'){
+            img.src='/Assests/darklogo.png'
+            document.getElementById('trending_log').src='/Assests/darktrendlogo.png'
+
+         }else{
+            img.src='/Assests/logo.png'
+            document.getElementById('trending_log').src='/Assests/trending_log.png'
+         }
+}
 
 //for scrolling .......
 let main_view = document.querySelector('.main_view')

@@ -1,13 +1,33 @@
 *{
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding:0;
+
 }
+
+
+
+.darkinput{
+    background-color: white;
+    color: black;
+}
+
+.blacktheme{
+    background-color: black;
+    color: white;
+    transition:all 0.5s;
+}
+
 body{
     padding:0;
     margin: 0;
+    transition:all 0.5s;
+
 }
 header{
     height: 100px;
 }
+
 input[type=date]::-webkit-datetime-edit-month-field{
     -webkit-appearance: none;
     display: none;
@@ -41,7 +61,6 @@ input:focus{
 }
 #searchinput{
     border: none;
-    
 }
 
 header{
@@ -93,6 +112,29 @@ text-align: center;
 width:  60px;
 padding: 10px;
 }
+.ca_popup{
+padding-top:12px;
+}
+
+.ca_popup>li{
+   padding:6px;
+   /* text-align: center; */
+   text-indent:30px;
+   /* border-bottom: 1px solid rgba(170, 140, 224, 0.205); */
+  
+   cursor: pointer;
+}
+.ca_popup>li:hover{
+    background-color:rgba(72, 69, 94, 0.041);
+}
+
+
+.ca_popup>li>a{
+    font-size:12px;
+   
+}
+
+
 
 #categories{
     color: blue;
@@ -103,15 +145,18 @@ padding: 10px;
     border-radius: 20px;
     cursor: pointer;
 }
-.post_desc,.trend_description{
-    font-size:16px;
+#post_desc,#trend_description{
+    font-size:14px;
+     
+ 
 }
 .categories_nav {
-    width:20%;
+    width:15%;
     border-right: 1px solid rgba(128, 128, 128, 0.176);
     height: 100vh;
     margin-top: 100px;
     position: fixed;
+    
 }
 
 #see_more{
@@ -120,27 +165,32 @@ padding: 10px;
 }
 .categories_nav li{
    list-style: none;
-   padding:2px;
+ 
    
 }
 
+
+
+
 .main_view{
-    width: 50%;
+    width:57%;
     position: relative;
     top: 100px;
-    padding-top: 20px;
-    left: 21%;
+    padding: 10px;
+    left: 15%;
     height: 100%;
-    
+
 
     
 }
 
 .post_view{
     /* border: 1px solid rgba(128, 128, 128, 0.201); */
-    box-shadow:1px 1px 12px  rgba(55, 54, 54, 0.208);
+    box-shadow:1px 1px 4px  rgba(55, 54, 54, 0.164);
     border-radius: 15px;
-    padding-bottom: 10px;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin-top: 10px;
 }
 
 
@@ -180,6 +230,10 @@ padding: 10px;
 
 #comment_input{
 width: 80%;
+height:30px;
+padding-left: 10px;
+text-align: justify;
+overflow: scroll;
 border-radius: 20px;
 border: none;
 background-color: rgba(233, 233, 233, 0.337);
@@ -193,9 +247,12 @@ background-color: rgba(233, 233, 233, 0.337);
     width: 20%;
     position: absolute;
     top:100px;
-    left:75%;
-   
-    
+    left:74%;  
+}
+
+
+.trend_post_view{
+    padding: 10px;
 }
 
 #more{
