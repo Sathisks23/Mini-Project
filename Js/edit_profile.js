@@ -1,7 +1,5 @@
 "use strict"
-var error1=document.getElementById("err1")
-var error2=document.getElementById("err2")
-var user=document.getElementById("text")
+var error=document.getElementById("err2")
 var inputname=document.getElementById("text2")
 var button=document.getElementById("btn")
 var button2=document.getElementById("btn2")
@@ -23,45 +21,32 @@ imageUpload.addEventListener('change', function() {
 
 var count=0
 
-error1.classList.add("none")
-error2.classList.add("none")
+error.classList.add("none")
 
 
 
 function click() {
-    var usernameRegex = /^[a-zA-Z0-9_]{3,}/g;
     var nameRegex =/[a-z]{3,}/gi;
 
-    if (!usernameRegex.test(user.value)) {
-        error1.classList.remove("none")
-        error1.classList.add("block")
+    if (nameRegex.test(inputname.value)) {
+        error.classList.remove("block")
+        error.classList.add("none")
+        count=1
       }
       else{
-        error1.classList.remove("block")
-        error1.classList.add("none")
-        count++
-      }
-    if (!nameRegex.test(inputname.value)) {
-        error2.classList.remove("none")
-        error2.classList.add("block")
-      }
-      else{
-        error2.classList.remove("block")
-        error2.classList.add("none")
-        count++
+        error.classList.remove("none")
+        error.classList.add("block")
       }
     setTimeout(() => {
-        error1.classList.remove("block")
-        error1.classList.add("none")
-        error2.classList.remove("block")
-        error2.classList.add("none")
+        error.classList.remove("block")
+        error.classList.add("none")
     },1500)
 }
 
 
 button.addEventListener("click",(event)=>{
 click()
-if (count<2) {
+if (count<1) {
     event.preventDefault()
 }
 else{
