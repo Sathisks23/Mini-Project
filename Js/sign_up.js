@@ -1,4 +1,5 @@
 document.getElementById("submit").addEventListener("click", function (event) {
+  
   event.preventDefault();
 
   checkData();
@@ -14,37 +15,69 @@ function checkData() {
   var emailValue = email.value.trim();
   var pass1Value = pass1.value.trim();
   var pass2Value = pass2.value.trim();
+  var count=0 
 
   if (usernameValue == "") {
      setError(username, "Username can't be blank");
+    setTimeout(() => {
+      setError(username, "");
+      },1500)
+   
   } else {
      setSuccess(username);
   }
 
   if (emailValue == "") {
-     setError(email, "Email can't be blank");
+    setError(email, "Email can't be blank")
+    setTimeout(() => {
+      setError(email, "");
+      },1500)
+   
   } else if (!isEmail(emailValue)) {
-     setError(email, "Email is not Valid");
+    setTimeout(() => {
+      setError(email, "Email is not Valid");
+      setError(email, "");
+      },1500)
+
   } else {
      setSuccess(email);
+     count++
   }
 
 
   if (pass1Value == "") {
-     setError(pass1, "Password can't be blank");
+    setError(pass1, "Password can't be blank");
+    setTimeout(() => {
+      setError(pass1, "");
+      },1500)
+    
   } else {
      setSuccess(pass1);
+     count++
   }
 
 
   if (pass2Value == "") {
-     setError(pass2, "Password can't be blank");
+    setError(pass2, "Password can't be blank");
+    setTimeout(() => {
+      setError(pass2, "");
+      },1500)
+   
   } else if (pass1Value !== pass2Value) {
-     setError(pass2, "Password does not match");
+    setError(pass2, "Password does not match");
+    setTimeout(() => {
+      setError(pass2, "");
+      },1500)
+    
   } else {
      setSuccess(pass2);
+     count++
   }
-
+  if (count==3) {
+    var container1=document.querySelector(".container1");
+  container1.style.display="flex";
+  maincontainer.style.display="none"; 
+  }
 }
 
 
@@ -98,7 +131,7 @@ pass1.onfocus = function() {
   
   function validatefunc(){
 
-    
+   
 var length=document.getElementById("length")
 
       var lowerCaseLetters = /[a-z]/g;
@@ -114,6 +147,7 @@ var length=document.getElementById("length")
       if( pass1.value.match(upperCaseLetters)) {  
         capital.classList.remove("invalid");
         capital.classList.add("valid");
+   
       } else {
         capital.classList.remove("valid");
         capital.classList.add("invalid");
@@ -123,6 +157,7 @@ var length=document.getElementById("length")
       if( pass1.value.match(numbers)) {  
         number.classList.remove("invalid");
         number.classList.add("valid");
+     
       } else {
         number.classList.remove("valid");
         number.classList.add("invalid");
@@ -131,28 +166,30 @@ var length=document.getElementById("length")
       if( pass1.value.length >= 8) {
         length.classList.remove("invalid");
         length.classList.add("valid");
+     
       } else {
         length.classList.remove("valid");
         length.classList.add("invalid");
       }
+
     } 
   
 
     //Selected catgeory pages///
 
 
-var Select_catg=document.getElementById("Select_catg");
- var container1=document.querySelector(".container1");
+// var Select_catg=document.getElementById("Select_catg");
+ 
 
- Select_catg.addEventListener("click",()=>{
+//  Select_catg.addEventListener("click",()=>{
   
-       container1.style.display="flex";
-       maincontainer.style.display="none";
+      //  container1.style.display="flex";
+      //  maincontainer.style.display="none";``
 
 
- })
-
-    let category=document.querySelectorAll(".category1")
+//  })
+let button=document.querySelector("#next_page")
+let category=document.querySelectorAll(".category1")
 let button2=document.querySelector(".btn")
 let span=document.getElementById("span");
 
@@ -183,6 +220,9 @@ category.forEach((x,category)=>{
             if (count<3) {
                 button2.classList.remove("col2")
                 button2.classList.add("col1")
+                button2.addEventListener("mouseover",()=>{
+                  button2.classList.remove("col3")
+              })
             }
         }
        else if(!(arr.includes(x))) {
@@ -216,10 +256,13 @@ button2.addEventListener("click",(event)=>{
     else{
         button2.classList.remove("col2")
         button2.classList.add("col4")
-        container1.style.display="none";
-        maincontainer.style.display="flex";
-        Select_catg.style.backgroundColor="#77536F";
-        Select_catg.style.color="white";
+        button.setAttribute("href","Login.html")
+        // container1.style.display="none";
+        // maincontainer.style.display="flex";
+        // Select_catg.style.backgroundColor="#77536F";
+        // Select_catg.style.color="white";
+        
+
       
     }
 })

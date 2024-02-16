@@ -109,6 +109,10 @@ body {
   display: none;
 }
 
+.fa-check-circle{
+  color: #0b0;
+}
+
 .input-field.error span {
   color: #f00;
   display: block
@@ -142,6 +146,18 @@ a{
   width: 609px;
 }
 
+h1{
+  color: #0b0;
+  text-align: center;
+}
+.sucessdiv{
+  display: flex;
+  align-items: center;
+justify-content: center;
+
+display: none;
+
+}
 /*passwords css*/
 #message{
     display:none;
