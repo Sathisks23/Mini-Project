@@ -1,14 +1,44 @@
-document.getElementById("submit").addEventListener("click", function (event) {
-  
-  event.preventDefault();
 
-  checkData();
-});
- var maincontainer=document.querySelector(".maincontainer")
+var maincontainer=document.querySelector(".maincontainer")
 var username = document.getElementById("username");
 var email = document.getElementById("email");
 var pass1 = document.getElementById("pass1");
 var pass2 = document.getElementById("pass2");
+let otp_random
+
+document.getElementById("submit").addEventListener("click", function (event) {
+  
+  event.preventDefault();
+ 
+ checkData();
+
+  otp_random=Math.floor(Math.random()*100000);
+  let mail_msg =`Hi ${username.value} welcome to our website please verifiy email id and  enter your otp
+               OTP:<br> ${otp_random} <br>`;
+
+  //  console.log("clicked new");
+
+  Email.send({
+    SecureToken : "273dd9f4-61d3-456a-b3f9-3b4561e69c48",
+    To : email.value,
+    From : "dckapnews@gmail.com",
+    Subject : "Enter the OTP",
+    Body : mail_msg
+  }).then(
+  message => alert(message)
+  
+  )  .catch(error => alert(error));
+ 
+
+
+
+});
+
+
+
+
+
+// validation part
 
 function checkData() {
   var usernameValue = username.value.trim();
@@ -74,10 +104,68 @@ function checkData() {
      count++
   }
   if (count==3) {
-    var container1=document.querySelector(".container1");
+  otpdiv()
+  }
+}
+
+
+ let otpmaincontainer=document.getElementById("otpmaincontainer");
+
+function otpdiv(){
+
+  otpmaincontainer.style.display="block";
+
+ let otpdiv=document.createElement('div');
+ otpdiv.className='otpdiv';
+ let label=document.createElement('label');
+ label.className='otplabel';
+ label.textContent="OTP:";
+   let otpinput=document.createElement("input");
+     otpinput.type="text";
+     otpinput.id="otpinputvalue";
+let otpbutton=document.createElement("button");
+// otpbutton.addEventListener('click',otpbutton)
+ otpbutton.textContent="ok";
+ otpbutton.className="otpbtn";
+
+   otpmaincontainer.append(otpdiv);
+   otpdiv.append(label);
+   otpdiv.append(otpinput);
+   otpdiv.append(otpbutton);
+
+
+
+   otpbutton.addEventListener("click",()=>{
+    console.log("otp")
+   let otp_value=document.getElementById("otpinputvalue").value;
+   if(otp_value==otp_random){
+    confirm("valid OTP")
+    otpmaincontainer.remove()
+    container1.style.display="flex";
+    maincontainer.style.display="none";
+    
+   }
+   else{
+    alert("invalid OTP")
+   }
+   
+  
+    
+  })
+
+}
+
+
+
+
+// function otpbutton(){
+//   console.log('iii');
+// }
+var container1=document.querySelector(".container1");
+function selectcat(){
+
   container1.style.display="flex";
   maincontainer.style.display="none"; 
-  }
 }
 
 
@@ -102,6 +190,13 @@ function isEmail(e) {
   return reg.test(e);
 }   
    
+
+
+
+
+
+
+
    
    
    
@@ -126,7 +221,7 @@ pass1.onfocus = function() {
     document.getElementById("message").style.display = "none";
   }
   
-  
+  document.getElementById('pass1').addEventListener('keyup',validatefunc)
   
   
   function validatefunc(){
@@ -175,28 +270,12 @@ var length=document.getElementById("length")
     } 
   
 
-    //Selected catgeory pages///
-
-
-// var Select_catg=document.getElementById("Select_catg");
- 
-
-//  Select_catg.addEventListener("click",()=>{
-  
-      //  container1.style.display="flex";
-      //  maincontainer.style.display="none";``
-
-
-//  })
 let button=document.querySelector("#next_page")
 let category=document.querySelectorAll(".category1")
 let button2=document.querySelector(".btn")
 let span=document.getElementById("span");
 
-// button2.addEventListener("click",()=>{
- 
 
-// })
 
 
 let count=0
@@ -255,15 +334,53 @@ button2.addEventListener("click",(event)=>{
     }
     else{
         button2.classList.remove("col2")
-        button2.classList.add("col4")
-        button.setAttribute("href","Login.html")
-        // container1.style.display="none";
-        // maincontainer.style.display="flex";
-        // Select_catg.style.backgroundColor="#77536F";
-        // Select_catg.style.color="white";
-        
+        button2.classList.add("col4");
+        button.setAttribute("href","HomePage.html")
 
-      
     }
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+//   // Import the functions you need from the SDKs you need
+//   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+//   // TODO: Add SDKs for Firebase products that you want to use
+//   // https://firebase.google.com/docs/web/setup#available-libraries
+
+//   // Your web app's Firebase configuration
+//   const firebaseConfig = {
+//     apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+//     authDomain: "dckap-news-904dc.firebaseapp.com",
+//     projectId: "dckap-news-904dc",
+//     storageBucket: "dckap-news-904dc.appspot.com",
+//     messagingSenderId: "845776141467",
+//     appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+//   };
+
+//   // Initialize Firebase
+//   const app = initializeApp(firebaseConfig);
+//   import{
+//     getDatabase,ref,set,child,update,remove}
+//     from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+//     const db =getDatabase();
+//     ///////////////////////references/////////////////////
+
+
+
+// ///////////////////insert database///////
+  
+// function insertData(){
+//   set(ref(db,"dckapNews/"+email.value ),{
+    
+//   })
+// }
