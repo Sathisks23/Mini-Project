@@ -2,15 +2,23 @@
 
 // -----------------------------------------------------------------Select The Category--------------------------------------------------------------------------------
 
-document.addEventListener("DOMContentLoaded", function() 
-{
+document.addEventListener("DOMContentLoaded", function() {
     let selectButton = document.querySelector('.select');
     let dropCategory = document.querySelector('.drop-category');
-    selectButton.addEventListener('click', function()
-    {
+    let categoryItems = dropCategory.querySelectorAll('li');
+
+    selectButton.addEventListener('click', function() {
         dropCategory.style.display = (dropCategory.style.display === 'block') ? 'none' : 'block';
     });
+
+    categoryItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            selectButton.textContent = this.textContent;
+            dropCategory.style.display = 'none';
+        });
+    });
 });
+
 
 
 // --------------------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
@@ -61,20 +69,27 @@ function formatText(style) {
     textarea.value = textBefore + newText + textAfter;
 }
 
+// ----------------------------------------------------------------------Cancel Button-----------------------------------------------------------------------------------
 
+let cancelButton = document.querySelector('.can');
+cancelButton.addEventListener('click', function()
+ {
+    window.location.href = "HomePage.html";
+});
 
+let div=document.querySelector(".create")
+let imageUpload=document.getElementById("img") 
 
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
+imageUpload.addEventListener('change', function() {
+    let img =document.createElement("img")
+    let input = this.files[0];
+    let text;
+    if (input) {
+        text = URL.createObjectURL(input);
+        // console.log(text);
+    }
+    img.accept=".jpg,.png,.jpeg,.webp"
+    img.src = text; 
+    div.prepend(img)
+    
+});
