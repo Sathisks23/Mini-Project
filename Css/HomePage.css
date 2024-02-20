@@ -5,11 +5,17 @@
 
 }
 
+.homeclr{
+   color:white;
+   transition:all 0.5s;
 
+}
 
 .darkinput{
     background-color: white;
     color: black;
+    transition:all 0.5s;
+
 }
 
 .blacktheme{
@@ -73,6 +79,7 @@ header{
     right: 0;
     left: 0;
     z-index: 1;
+    border-bottom: 1px solid rgba(163, 155, 155, 0.342);
 }
 
 .navs{
@@ -186,7 +193,8 @@ padding-top:12px;
 
 .post_view{
     /* border: 1px solid rgba(128, 128, 128, 0.201); */
-    box-shadow:1px 1px 4px  rgba(55, 54, 54, 0.164);
+    /* box-shadow:1px 1px 4px  rgba(56, 55, 55, 0.959);*/
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 15px;
     padding: 10px;
     padding-bottom: 20px;
