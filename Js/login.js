@@ -36,10 +36,12 @@ function error(element,msg){
     element.style.border='3px red solid';
     const parent=element.parentElement;
     var p=document.querySelectorAll(".Erro_msg");
-    p.style. visibility="visible";
-    p.textContent=msg;
-//   p.classList.remove("none");  
-//   p.classList.add(".block");
+    console.log(p);
+    p.forEach(elem => {
+        elem.style. display="block";
+        elem.textContent=msg;
+    });
+
 
 
  }
@@ -48,7 +50,7 @@ function error(element,msg){
     element.style.border='3px green solid';
     const parent=element.parentElement;
     p.textContent= msg;
-    p.style.visibility = "hidden";
+    p.style.display = "none";
 
     // p.classList.remove("block");
     // p.classList.add("none");
