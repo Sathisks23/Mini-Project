@@ -24,18 +24,13 @@ console.log("hello");
 
 });
 
-  
-// const  erroe_msg=document.getElementById("Erro_msg1");
-// console.log(p); 
-// const  erroe_msg=document.getElementById("Erro_msg1");
-// console.log(p);
+var p=document.querySelectorAll(".Erro_msg");
 
 function error(element,msg){
-    // console.log(element);
-    // console.log(msg);
+  
     element.style.border='3px red solid';
     const parent=element.parentElement;
-    var p=document.querySelectorAll(".Erro_msg");
+   
     console.log(p);
     p.forEach(elem => {
         elem.style. display="block";
@@ -49,8 +44,11 @@ function error(element,msg){
  function success(element,msg){
     element.style.border='3px green solid';
     const parent=element.parentElement;
-    p.textContent= msg;
-    p.style.display = "none";
+    p.forEach(elem => {
+        elem.textContent= msg;
+    elem.style.display = "none";
+    });
+   
 
     // p.classList.remove("block");
     // p.classList.add("none");
