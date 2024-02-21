@@ -1,6 +1,6 @@
 "use strict"
 
-// -----------------------------------------------------------------Select The Category--------------------------------------------------------------------------------
+// ----------------------------------------------------------Select The Category--------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function() {
     let selectButton = document.querySelector('.select');
@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-// --------------------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
+// ----------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
 
 let btns = document.querySelectorAll('button ')
      btns.forEach(element => {
@@ -69,7 +67,7 @@ function formatText(style) {
     textarea.value = textBefore + newText + textAfter;
 }
 
-// ----------------------------------------------------------------------Cancel Button-----------------------------------------------------------------------------------
+// --------------------------------------------------------------Cancel Button-----------------------------------------------------------------------------------
 
 let cancelButton = document.querySelector('.can');
 cancelButton.addEventListener('click', function()
@@ -77,19 +75,22 @@ cancelButton.addEventListener('click', function()
     window.location.href = "HomePage.html";
 });
 
-let div=document.querySelector(".create")
-let imageUpload=document.getElementById("img") 
+// --------------------------------------------------------------Adding Image---------------------------------------------------------------------
+
+let div = document.querySelector(".create")
+let imageUpload = document.getElementById("img") 
 
 imageUpload.addEventListener('change', function() {
-    let img =document.createElement("img")
+    let img = document.createElement("img")
     let input = this.files[0];
     let text;
     if (input) {
         text = URL.createObjectURL(input);
         // console.log(text);
     }
-    img.accept=".jpg,.png,.jpeg,.webp"
+    img.accept =".jpg,.png,.jpeg,.webp"
     img.src = text; 
     div.prepend(img)
     
 });
+

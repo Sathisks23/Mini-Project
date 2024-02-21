@@ -1,57 +1,64 @@
- var inputemail_id=document.querySelector("#inputemail_id");
- var inputPass=document.querySelector("#inputPass");
- var input_box=document.querySelector(".input-butn");
 
- var loin_errormessage=document.querySelectorAll("#login_error")
-
- var form=document.querySelector("form");
- console.log(form);
-
- form.addEventListener("submit",(e)=>{
-
- e.preventDefault();
- checkvalid();
-
- 
-
- })
-
- function checkvalid(){
-    console.log("hhh")
-     let inputemailvalue=inputemail_id.value.trim();
-     let inputPassvalue=inputPass.value.trim();
-
-    let login_email_regex=  /^[a-z0-9]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
-    let login_password_regex=/[a-z] [A-Z] [0-9]/g ;
+const email_id=document.querySelector("#email_id")
+const password=document.querySelector("#passowrd");
+const submit=document.querySelector("#submit");
 
 
-if(inputemailvalue == ""){
-    // alert("invalid username")
-    loginsetError(0,"invalid email_id" );
-}
-else if(!inputemail_id.value.match(login_email_regex)){
-    alert("Check the user name ")
-    
-}
-if(inputPassvalue == ""){
-    loginsetError(1,"invalid email_id" );
-    // alert("invalid passwords")
-}
-else if(!inputPass.value.match(login_password_regex)){
+submit.addEventListener("click",(event)=>{
+    event.preventDefault();
 
-}
+console.log("hello");
+    if(email_id.value.trim()==""){
+        error(email_id,"email id can not empty")
+    }
+    else{
+        success(email_id);
+    }
 
+    if(password.value.trim()==""){
+        error(password,"password can not empty");
+    }
+    else{
+        success(password);
+    }
 
+});
+
+  
+// const  erroe_msg=document.getElementById("Erro_msg1");
+// console.log(p); 
+// const  erroe_msg=document.getElementById("Erro_msg1");
+// console.log(p);
+
+function error(element,msg){
+    // console.log(element);
+    // console.log(msg);
+    element.style.border='3px red solid';
+    const parent=element.parentElement;
+    var p=document.querySelectorAll(".Erro_msg");
+    p.style. visibility="visible";
+    p.textContent=msg;
+//   p.classList.remove("none");  
+//   p.classList.add(".block");
 
 
  }
  
-  function loginsetError(input,message){
+ function success(element,msg){
+    element.style.border='3px green solid';
+    const parent=element.parentElement;
+    p.textContent= msg;
+    p.style.visibility = "hidden";
 
-            loin_errormessage[input].className="error_visible";
-            loin_errormessage.innerHTML=message;
+    // p.classList.remove("block");
+    // p.classList.add("none");
+   
+ }
 
-             console.log(input);
-             console.log(message);
-    
-  }
+
+ 
+
+
+
+  
+
