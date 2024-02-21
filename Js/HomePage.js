@@ -36,15 +36,17 @@ function changetheme(){
       a.forEach((e)=>{
     e.querySelector('a').classList.toggle('blacktheme')
      })
+    document.querySelector('.logo_div').classList.toggle('black')
+
         if(b=='Assests/logo.png'){
-            img.src='/Assests/darklogo.png'
-            document.getElementById('trending_log').src='/Assests/darktrendlogo.png'
-            document.querySelector('.theme').src ='/Assests/darkthemelogo.png'
+            img.src='Assests/darklogo.png'
+            document.getElementById('trending_log').src='Assests/darktrendlogo.png'
+            document.getElementById('themebtn').src ='Assests/darkthemelogo.png'
+
          }else{
-            img.src='/Assests/logo.png'
-            document.getElementById('trending_log').src='/Assests/trending_log.png'
-            document.querySelector('.theme').src ='/Assests/themechange.png'
-            
+            img.src='Assests/logo.png'
+            document.getElementById('trending_log').src='Assests/trending_log.png'
+            document.querySelector('#themebtn').src ='Assests/themechange.png'
         }
 }
 
