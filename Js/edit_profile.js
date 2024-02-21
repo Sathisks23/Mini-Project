@@ -6,18 +6,24 @@ var button2=document.getElementById("btn2")
 var a=document.getElementById("btn_link")
 var a2=document.getElementById("cancel_link")
 var edit=document.querySelector(".color")
-let imageUpload = document.getElementById("drop_zone");
-let img = document.getElementById("change");
+// let imageUpload = document.getElementById("drop_zone");
+// let img = document.getElementById("change");
 
-imageUpload.addEventListener('change', function() {
-    let input = this.files[0];
-    let text;
-    if (input) {
-        text = URL.createObjectURL(input);
-        // console.log(text);
-    }
-    img.src = text; 
-});
+// imageUpload.addEventListener('change', function() {
+//     let input = this.files[0];
+//     let text;
+//     if (input) {
+//         text = URL.createObjectURL(input);
+//         // console.log(text);
+//     }
+//     img.src = text; 
+// });
+let ProfileImg = document.querySelector("#change");
+    let inputfile= document.querySelector("#drop_zone");
+
+inputfile.onchange = function(){
+    ProfileImg.src = URL.createObjectURL(inputfile.files[0]) 
+}
 
 var count=0
 
