@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Css/create.css">
+    <link rel="stylesheet" href="Css/create.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <div id="main_div">
         <div class="container">
            <div class="category">
-                <button class="select">Select the Category <i class="fa-solid fa-caret-down"><i class="fa-solid fa-caret-up"></i></i></button>
+                <button class="select">Select the Category <i class="fa-solid fa-caret-down"></i></button>
                <div class="">
                 <button class="can">Cancel</button>
             </div> 
@@ -34,32 +34,34 @@
                 <li class="Mobile">Mobile and Gadgets</li>
                 <li class="Politics">Politics</li>
                 <li class="Agriculture">Agriculture</li>
-                <li class="Whether">Whether</li>
+                <li class="Whether">Weather</li>
                 <li class="Finance">Finance</li> 
             </div>
             <div class="main">
                 <p>Description :</p>
                 <input type="text" placeholder="Description goes here.." id="lines" class="lines">
             </div>
-            <div class="font">
-                <button><i class="fa-solid fa-bold"></i></button>
-                <button><i class="fa-solid fa-underline"></i></button>
-                <button><i class="fa-solid fa-italic"></i></button>
-                <button><i class="fa-solid fa-strikethrough"></i></button>
-                <button><i class="fa-solid fa-quote-left"></i></button>
-                <button><i class="fa-solid fa-file"></i></button>
-                <button><i class="fa-solid fa-paperclip"></i></button>
-                <button><i class="fa-solid fa-image"></i></button>
+            <div id="font">
+                <button id="bold"><i class="fa-solid fa-bold"></i></button>
+                <button id="underline"><i class="fa-solid fa-underline"></i></button>
+                <button id="italic"><i class="fa-solid fa-italic"></i></button>
+                <button id="strike"><i class="fa-solid fa-strikethrough"></i></button>
+                <button id="quote"><i class="fa-solid fa-quote-left"></i></button>
+                
+                <input type="file" id="img" accept="image/*"></input>
+            
             </div>
             <div class="create">
                 <textarea class="text" id="create">
                 </textarea>
-                <button class="publish">Publish</button>
             </div>
+            <div class="btn">
+            <button class="publish">Publish</button>
+        </div>
         </div>
     </div>
-    
-    <script src="/JS/create.js"></script>
+ 
+    <script src="Js/create.js"></script>
     
 </body>
 </html>
