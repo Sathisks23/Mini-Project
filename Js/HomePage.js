@@ -36,15 +36,17 @@ function changetheme(){
       a.forEach((e)=>{
     e.querySelector('a').classList.toggle('blacktheme')
      })
+    document.querySelector('.logo_div').classList.toggle('black')
+
         if(b=='Assests/logo.png'){
-            img.src='/Assests/darklogo.png'
-            document.getElementById('trending_log').src='/Assests/darktrendlogo.png'
-            document.querySelector('.theme').src ='/Assests/darkthemelogo.png'
+            img.src='Assests/darklogo.png'
+            document.getElementById('trending_log').src='Assests/darktrendlogo.png'
+            document.getElementById('themebtn').src ='Assests/darkthemelogo.png'
+
          }else{
-            img.src='/Assests/logo.png'
-            document.getElementById('trending_log').src='/Assests/trending_log.png'
-            document.querySelector('.theme').src ='/Assests/themechange.png'
-            
+            img.src='Assests/logo.png'
+            document.getElementById('trending_log').src='Assests/trending_log.png'
+            document.querySelector('#themebtn').src ='Assests/themechange.png'
         }
 }
 
@@ -83,9 +85,13 @@ function sendshow(e){
 //Likes  ..................................
 let like_count = 0
 let like=document.getElementById('likes')
-  function uplike(){
-    like_count+=1
-    like.innerHTML = like_count
+let check  = document.querySelector('#check_like')
+  function uplike(btn){
+    
+   
+ if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
+ else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
+    
   }
 
 
