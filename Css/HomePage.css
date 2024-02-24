@@ -111,10 +111,15 @@ a{
 #create_btn{
     background-color: #7B65FF;
     border: none;
-text-align: center;
-padding: 10px;
-border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
 }
+#create_btn:hover{
+    background-color: #7B65FF;
+    
+}
+
 #create_btn>a{
     color: white;
 text-align: center;
@@ -315,9 +320,45 @@ background-color: rgba(233, 233, 233, 0.337);
     position: sticky;
     top: 100px;
     width: 120%;
-    z-index: 1;
+    z-index: 0;
     background-color:white;
 }
 .black{
     background-color: black;
+}
+
+.img_nav{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    background-color: white;
+    padding:5px;
+   border-radius:20px;
+   border: 2px solid rgba(128, 128, 128, 0.064);
+ visibility: hidden;
+}
+
+.liked{
+    filter: grayscale(50%);
+}
+
+
+.imagediv{
+    cursor: pointer;
+}
+.imagediv a{
+    padding:5px;
+    font-size: 13px;
+}
+ a:hover{
+   color: grey;
+}
+
+.like_div,.comment_icon{
+    cursor: pointer;
+}
+
+.imagediv:hover .img_nav{
+    visibility: visible;
 }

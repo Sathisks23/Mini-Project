@@ -85,9 +85,13 @@ function sendshow(e){
 //Likes  ..................................
 let like_count = 0
 let like=document.getElementById('likes')
-  function uplike(){
-    like_count+=1
-    like.innerHTML = like_count
+let check  = document.querySelector('#check_like')
+  function uplike(btn){
+    
+   
+ if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
+ else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
+    
   }
 
 
