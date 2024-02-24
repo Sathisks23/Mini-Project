@@ -1,3 +1,42 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+  authDomain: "dckap-news-904dc.firebaseapp.com",
+  projectId: "dckap-news-904dc",
+  storageBucket: "dckap-news-904dc.appspot.com",
+  messagingSenderId: "845776141467",
+  appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+
+let usersData=JSON.parse(localStorage.getItem("usersData"))
+console.log(usersData);
+
+
+
+//Checking signup users
+if(usersData){
+  location.replace("HomePage.html");
+}
+
+
+
+
+
+
+
+
 
 var maincontainer=document.querySelector(".maincontainer")
 var username = document.getElementById("username");
@@ -12,11 +51,15 @@ document.getElementById("submit").addEventListener("click", function (event) {
  
  checkData();
 
+
   otp_random=Math.floor(Math.random()*100000);
+  console.log(otp_random);
+
+  
   let mail_msg =`Hi ${username.value} welcome to our website please verifiy email id and  enter your otp
                OTP:<br> ${otp_random} <br>`;
 
-  //  console.log("clicked new");
+
 
   Email.send({
     SecureToken : "273dd9f4-61d3-456a-b3f9-3b4561e69c48",
@@ -32,7 +75,26 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
 
 
+
+
+
+
 });
+
+///----------------------------------------------------------------
+//Retrive data
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -104,12 +166,22 @@ function checkData() {
      count++
   }
   if (count==3) {
-  otpdiv()
-  }
+  otpdiv();
+    
+   }
 }
+// 'u_id'+
 
 
  let otpmaincontainer=document.getElementById("otpmaincontainer");
+
+//firebase 
+let ref = collection(db,'user')
+let getData = await getDocs(ref)
+let id = getData.size
+console.log(id);
+
+
 
 function otpdiv(){
 
@@ -133,7 +205,7 @@ let otpbutton=document.createElement("button");
    otpdiv.append(otpinput);
    otpdiv.append(otpbutton);
 
-
+let u_id 
 
    otpbutton.addEventListener("click",()=>{
     console.log("otp")
@@ -143,10 +215,20 @@ let otpbutton=document.createElement("button");
     otpmaincontainer.remove()
     container1.style.display="flex";
     maincontainer.style.display="none";
-    
+
+    setDoc(doc(db,"user",`u_id-${++id}`), {
+      u_name: username.value,
+      u_email:email.value,
+      u_password:pass1.value,   
+      // u_favcategory:arr2
+    })
+    localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
+    // alert('UserAdded')
+    //  button.setAttribute("href","HomePage.html")
+   
    }
    else{
-    alert("invalid OTP")
+ alert("invalid OTP")
    }
    
   
@@ -156,11 +238,9 @@ let otpbutton=document.createElement("button");
 }
 
 
+ 
 
 
-// function otpbutton(){
-//   console.log('iii');
-// }
 var container1=document.querySelector(".container1");
 function selectcat(){
 
@@ -270,22 +350,29 @@ var length=document.getElementById("length")
     } 
   
 
-let button=document.querySelector("#next_page")
+//------------------------------------------select catgeorypages js -----------------------------------------------------------
 let category=document.querySelectorAll(".category1")
+let button=document.getElementById("next_page")
 let button2=document.querySelector(".btn")
-let span=document.getElementById("span");
-
-
-
-
+let span=document.getElementById("span")
 let count=0
 let arr=[]
-// console.log(category);
-span.classList.add("none")
+let arr2=[]
 // console.log(category);
 span.classList.add("none")
 button2.classList.add("col1")
 
+function removeItemAll(arr, value) {
+    var i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value) {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+  }
 category.forEach((x,category)=>{
     x.classList.add("cat")
     x.addEventListener("click",()=>{
@@ -293,15 +380,16 @@ category.forEach((x,category)=>{
             x.classList.remove("box")
             x.classList.add("cat")
             count=count-1
-            arr.pop(x)
-            console.log(arr);
-            console.log(count);  
+            removeItemAll(arr,x)
+            removeItemAll(arr2,x.innerText)
+            // console.log(arr);  
+            console.log(arr2);
             if (count<3) {
                 button2.classList.remove("col2")
                 button2.classList.add("col1")
                 button2.addEventListener("mouseover",()=>{
-                  button2.classList.remove("col3")
-              })
+                    button2.classList.remove("col3")
+                })
             }
         }
        else if(!(arr.includes(x))) {
@@ -309,8 +397,10 @@ category.forEach((x,category)=>{
         x.classList.add("box")
         count=count+1
         arr.push(x)
-        console.log(arr);
-        console.log(count); 
+        arr2.push(x.innerText)
+        // console.log(arr);
+        console.log(arr2);
+        // console.log(count); 
         if (count>=3) {
             button2.classList.remove("col1")
             button2.classList.add("col2")
@@ -322,7 +412,7 @@ category.forEach((x,category)=>{
 
     })
 })
-button2.addEventListener("click",(event)=>{
+button.addEventListener("click",(event)=>{
     if (count<3) {
         event.preventDefault()  
         span.classList.remove("none")
@@ -334,53 +424,25 @@ button2.addEventListener("click",(event)=>{
     }
     else{
         button2.classList.remove("col2")
-        button2.classList.add("col4");
-        button.setAttribute("href","HomePage.html")
+        button2.classList.add("col4")
 
-    }
+//SET Fav Ctegory...
+
+setDoc(doc(db,"user",`u_id-${id}`), {
+  u_name: username.value,
+  u_email:email.value,
+  u_password:pass1.value,   
+  u_favcategory:arr2
 })
+localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
+alert('UserAdded')
 
 
 
+ button.setAttribute("href","HomePage.html")
 
+    }})
 
-
-
-
-
-
-
-
-
-//   // Import the functions you need from the SDKs you need
-//   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-//   // TODO: Add SDKs for Firebase products that you want to use
-//   // https://firebase.google.com/docs/web/setup#available-libraries
-
-//   // Your web app's Firebase configuration
-//   const firebaseConfig = {
-//     apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
-//     authDomain: "dckap-news-904dc.firebaseapp.com",
-//     projectId: "dckap-news-904dc",
-//     storageBucket: "dckap-news-904dc.appspot.com",
-//     messagingSenderId: "845776141467",
-//     appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
-//   };
-
-//   // Initialize Firebase
-//   const app = initializeApp(firebaseConfig);
-//   import{
-//     getDatabase,ref,set,child,update,remove}
-//     from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-//     const db =getDatabase();
-//     ///////////////////////references/////////////////////
-
-
-
-// ///////////////////insert database///////
-  
-// function insertData(){
-//   set(ref(db,"dckapNews/"+email.value ),{
     
-//   })
-// }
+      
+    
