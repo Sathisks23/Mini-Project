@@ -2,6 +2,9 @@
 
 // ----------------------------------------------------------Select The Category--------------------------------------------------------------------------------
 
+let category_name
+let category_id
+
 document.addEventListener("DOMContentLoaded", function() {
     let selectButton = document.querySelector('.select');
     let dropCategory = document.querySelector('.drop-category');
@@ -12,60 +15,40 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     categoryItems.forEach(function(item) {
+        
         item.addEventListener('click', function() {
             selectButton.textContent = this.textContent;
             dropCategory.style.display = 'none';
+            category_name= this.innerText
+            category_id = this.id
+            // console.log(category);
         });
     });
 });
 
 // ----------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
 
-let btns = document.querySelectorAll('button ')
-     btns.forEach(element => {
-        element.addEventListener('click', (event) => { 
-            console.log(event.target.parentElement.id);
-        } )
-     });
-
-document.getElementById('bold').addEventListener('click', function() {
-    formatText('bold');
+let area = document.getElementById('create');
+area.addEventListener('click' ,function(){
+    area.focus();
 });
 
-document.getElementById('underline').addEventListener('click', function() {
-    formatText('underline');
+let bold = document.getElementById('bold');
+let underline = document.getElementById('underline');
+let italic = document.getElementById('italic');
+let strike = document.getElementById('strike');
+
+bold.addEventListener('click', function() {
+  document.execCommand('bold');
 });
 
-document.getElementById('italic').addEventListener('click', function() {
-    formatText('italic');
+underline.addEventListener('click', function() {
+  document.execCommand('underline');
 });
 
-function formatText(style) {
-    let textarea = document.getElementById('create');
-    let start = textarea.selectionStart;
-    let end = textarea.selectionEnd;
-    let selectedText = textarea.value.substring(start, end);
-    let newText = textarea.value
-    console.log(newText);
-
-    switch (style) {
-        case 'bold':
-            newText = '<b>' + selectedText + '</b>';
-            break;
-        case 'underline':
-            newText = '<u>' + selectedText + '</u>';
-            break;
-        case 'italic':
-            newText = '<i>' + selectedText + '</i>';
-            break;
-        default:
-            newText = selectedText;
-    }
-
-    let textBefore = textarea.value.substring(0, start);
-    let textAfter = textarea.value.substring(end, textarea.value.length);
-    textarea.value = textBefore + newText + textAfter;
-}
+italic.addEventListener('click', function() {
+  document.execCommand('italic');
+});
 
 // --------------------------------------------------------------Cancel Button-----------------------------------------------------------------------------------
 
@@ -86,11 +69,98 @@ imageUpload.addEventListener('change', function() {
     let text;
     if (input) {
         text = URL.createObjectURL(input);
+        // text  = img.src
+        console.log(text);
         // console.log(text);
     }
-    img.accept =".jpg,.png,.jpeg,.webp"
+    // img.accept =".jpg,.png,.jpeg,.webp"
     img.src = text; 
+    // img.id = 'p_image'
     div.prepend(img)
     
 });
 
+//-------------------------------------------------------------------Adding data in firebase----------------------------------------------------------
+
+
+let publish =document.getElementById('submit')
+    publish.addEventListener('click',create_post)
+let title = document.getElementById('create')
+let desc = document.getElementById('lines')
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import{getStorage,ref as sref,uploadBytesResumable,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js"
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+    authDomain: "dckap-news-904dc.firebaseapp.com",
+    projectId: "dckap-news-904dc",
+    storageBucket: "dckap-news-904dc.appspot.com",
+    messagingSenderId: "845776141467",
+    appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+  };
+
+  import{getFirestore,getDocs,getDoc,setDoc,doc,updateDoc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+let db = getFirestore(app)
+let post_ref =collection(db,'post')
+
+let getData = await getDocs(post_ref)
+let id = getData.size
+console.log(id);
+
+let getRef = doc(db, "category", `ca_id-${1}`);
+let getData1 =  await  getDoc(getRef);
+let p_array = getData1.data().post_id
+
+p_array.push(`p_id-${p_array.length+1}`)
+console.log(p_array);
+
+function create_post(){
+    
+let pimage = document.getElementById('img').files[0]
+
+let meta_data = {contentype:img.type}
+let task = sref(getStorage(),'images'+pimage.name)
+let usersData=JSON.parse(localStorage.getItem("usersData"))
+let store = uploadBytesResumable(task,pimage,meta_data)
+store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
+ 
+  let post_data = 
+  {
+    c_name:category_name,
+    p_desc:desc.value,
+    p_title:title.innerText,
+    p_link:downloadURL,
+    u_id:usersData
+    
+  }
+
+let ca_data =
+ {
+    ca_id:`ca_id-${category_id}`,
+    ca_name:category_name,
+    post_id:p_array,
+  }
+
+setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
+setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
+        
+ }))
+  
+}
+
+
+
+ 
