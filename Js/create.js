@@ -144,6 +144,7 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     p_title:title.innerText,
     p_link:downloadURL,
     u_id:usersData
+    
   }
 
 let ca_data =
