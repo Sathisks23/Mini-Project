@@ -20,23 +20,25 @@ body{
     top: 0;
     z-index: 1;
 }
+#second_container{
+    margin-top: 10%;
+}
 #id_name{
     font-weight: lighter;
+    text-align: center;
 
 }
-.texts {
-    position: relative;
-    right: 210x;
-}
+
 #profile{
     margin:0 auto;
     display: flex;
-    align-items:flex-start;
+    align-items:center;
     justify-content: center; 
     text-align: center;
     flex-direction:column; 
     position: relative;
-    right: 130px;
+    /* right: 150px; */
+    
 }
 #pen{
     margin-left:140px;
@@ -90,16 +92,13 @@ body{
     align-items: center;
     position: absolute;
     left: 25%;
+    margin-top: 3%;
  /* background-color: aquamarine; */
     /* justify-content: space-around; */
     
     gap: 30px;
 }
-#side_navebar{
-    width: 20%;
-    height: 500px;
-    background-color: rgb(255, 252, 252);
-}
+
 #profile_sidebar{
     display: flex;
     
@@ -110,3 +109,102 @@ body{
 #icon_discription{
     padding: 10px;
 }
+#news_expand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 251, 251);
+    width:45%;
+    padding: 20px;
+    margin-top: 110px;
+    margin-left: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+.box_icon1{
+    display: flex;
+    margin-right:50%;
+}
+#news11{
+    width: 20%;
+    border-radius: 50%;
+    
+}
+.sub_username1{
+   margin-top: 30px;
+   margin-left: 20px;
+
+}
+#full_pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+#full_discription{
+    margin-top: 10px;
+}
+
+/* --------------------------------------------------------------- */
+/* 
+.post_view{
+    border: 1px solid rgba(128, 128, 128, 0.201); /
+    box-shadow:1px 1px 4px  rgba(55, 54, 54, 0.164);
+    border-radius: 15px;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+
+.post_head
+{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 5px;
+}
+
+#user_dp{
+    / width: 20px;
+    height: 20px; */
+/* }
+
+#post{
+    width: 100%;
+}
+.social_section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description{
+    padding: 5px;
+}
+
+.add_comment_section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#comment_input{
+width: 80%;
+height:30px;
+padding-left: 10px;
+text-align: justify;
+overflow: scroll;
+border-radius: 20px;
+border: none;
+background-color: rgba(233, 233, 233, 0.337);
+}
+.logo_div{
+    text-align: center;
+    padding: 10px;
+} */ 
