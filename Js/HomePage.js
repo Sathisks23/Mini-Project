@@ -83,6 +83,7 @@ function sendshow(e){
 
 
 //Likes  ..................................
+
 let like_count = 0
 let like=document.getElementById('likes')
 let check  = document.querySelector('#check_like')
@@ -94,4 +95,7 @@ let check  = document.querySelector('#check_like')
     
   }
 
+
+
+//firebase retrive post 
 
