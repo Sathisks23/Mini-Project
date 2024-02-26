@@ -1,4 +1,4 @@
-
+  
 var maincontainer=document.querySelector(".maincontainer")
 var username = document.getElementById("username");
 var email = document.getElementById("email");
