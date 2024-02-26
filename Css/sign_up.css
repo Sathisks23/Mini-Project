@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  padding: 0
+  padding: 0;
+ 
 }
 
 * {
@@ -214,7 +215,7 @@ display: none;
 
   #otpmaincontainer{
     /* margin:20% auto; */
-    margin-left: 600px;
+    margin-left: 500px;
     margin-top: -702px;
   display: flex;
   align-items: center;
