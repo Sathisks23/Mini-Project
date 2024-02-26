@@ -1,57 +1,149 @@
- var inputemail_id=document.querySelector("#inputemail_id");
- var inputPass=document.querySelector("#inputPass");
- var input_box=document.querySelector(".input-butn");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
- var loin_errormessage=document.querySelectorAll("#login_error")
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+  authDomain: "dckap-news-904dc.firebaseapp.com",
+  projectId: "dckap-news-904dc",
+  storageBucket: "dckap-news-904dc.appspot.com",
+  messagingSenderId: "845776141467",
+  appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+};
 
- var form=document.querySelector("form");
- console.log(form);
-
- form.addEventListener("submit",(e)=>{
-
- e.preventDefault();
- checkvalid();
-
- 
-
- })
-
- function checkvalid(){
-    console.log("hhh")
-     let inputemailvalue=inputemail_id.value.trim();
-     let inputPassvalue=inputPass.value.trim();
-
-    let login_email_regex=  /^[a-z0-9]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
-    let login_password_regex=/[a-z] [A-Z] [0-9]/g ;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
 
-if(inputemailvalue == ""){
-    // alert("invalid username")
-    loginsetError(0,"invalid email_id" );
+let usersData=JSON.parse(localStorage.getItem("usersData"))
+
+ if(usersData){
+      location.replace("HomePage.html");
+    }
+
+const email_id=document.querySelector("#email_id")
+const password=document.querySelector("#passowrd");
+
+const submit=document.querySelector("#submit");
+let two = false
+
+submit.addEventListener("click",(event)=>{
+    event.preventDefault();
+
+console.log("hello");
+    if(email_id.value.trim()==""){
+        error(email_id,"email id can not empty")
+        two = false
+
+    }
+    else{
+        success(email_id);
+        email_validate()
+        two = true
+    }
+
+    if(password.value.trim()==""){
+        error(password,"password can not empty");
+        two = false
+
+    }
+    else{
+        success(password);
+        two = true
+console.log(password.value);
+       
+    }
+
+
+  if(two){
+  }
+  email_validate()
+
+
+});
+
+///firebase Email Validation 
+let i= 0
+function   email_validate(){
+     for(i in no){
+        if((no[i][0])==email_id.value && no[i][1]==password.value){
+
+            localStorage.setItem("usersData",JSON.stringify(no[i][2]));
+
+             location.replace('HomePage.html') 
+
+        } 
+     } 
 }
-else if(!inputemail_id.value.match(login_email_regex)){
-    alert("Check the user name ")
-    
-}
-if(inputPassvalue == ""){
-    loginsetError(1,"invalid email_id" );
-    // alert("invalid passwords")
-}
-else if(!inputPass.value.match(login_password_regex)){
 
-}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+var p=document.querySelectorAll(".Erro_msg");
+
+function error(element,msg){
+  
+    element.style.border='3px red solid';
+    const parent=element.parentElement;
+   
+    console.log(p);
+    p.forEach(elem => {
+        elem.style. display="block";
+        elem.textContent=msg;
+    });
 
 
 
  }
  
-  function loginsetError(input,message){
+ function success(element,msg){
+    element.style.border='3px green solid';
+    const parent=element.parentElement;
+    p.forEach(elem => {
+        elem.textContent= msg;
+    elem.style.display = "none";
+    });
+   
 
-            loin_errormessage[input].className="error_visible";
-            loin_errormessage.innerHTML=message;
+    // p.classList.remove("block");
+    // p.classList.add("none");
+   
+ }
 
-             console.log(input);
-             console.log(message);
-    
-  }
+
+ 
+
+
+
+ let getRef = collection(db, "user");
+ let no = []
+ 
+         let getData1 = await getDocs(getRef);
+ 
+         console.log(getData1.size);
+        
+         getData1.forEach((record)=>{
+            
+       let row = [record.data().u_email,record.data().u_password ,record.id]
+            no.push(row)
+ 
+             
+         });
+ 
+ console.log(no);
+// console.log(no[9][1]==password.value,typeof(password.value),typeof(no[9][1]));

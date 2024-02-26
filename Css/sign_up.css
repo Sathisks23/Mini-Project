@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  padding: 0
+  padding: 0;
+ 
 }
 
 * {
@@ -109,6 +110,10 @@ body {
   display: none;
 }
 
+.fa-check-circle{
+  color: #0b0;
+}
+
 .input-field.error span {
   color: #f00;
   display: block
@@ -120,7 +125,7 @@ body {
 .maincontainer{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 5%;
 }
 P{
@@ -142,6 +147,18 @@ a{
   width: 609px;
 }
 
+h1{
+  color: #0b0;
+  text-align: center;
+}
+.sucessdiv{
+  display: flex;
+  align-items: center;
+justify-content: center;
+
+display: none;
+
+}
 /*passwords css*/
 #message{
     display:none;
@@ -176,7 +193,7 @@ a{
   }
   
   .valid:before {
-    position: relative;
+       position: relative;
     /* left: -35px; */
     content: "✔";
   }
@@ -192,6 +209,39 @@ a{
     content: "✖";
   }
 
+
+  /*OTP div CSS*/
+
+
+  #otpmaincontainer{
+    /* margin:20% auto; */
+    margin-left: 500px;
+    margin-top: -702px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  width: 20%;
+  height: 99px;
+
+ 
+  
+
+  }
+  button.otpbtn {
+    color: white;
+    background: green;
+    width: 30%;
+    height: 32px;
+    margin: 10px;
+   
+}
+input#otpinputvalue {
+  width: 45%;
+  height: 31px;
+  /* gap: 52px; */
+}
 
 
   /*catgeory page css*/

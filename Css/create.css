@@ -11,7 +11,7 @@ body{
     position: relative;
 }
 .container{
-    width: 65%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     border: none;
@@ -35,10 +35,15 @@ body{
     font-family: 'Roboto'; 
     font-weight: bolder;
     font-size: 16px;
+    height: 49px;
     margin: 4px 2px;
     cursor: pointer;
     transition-duration: 0.4s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);
+}
+
+.main{
+    width: 101%;
 }
 
 .can{
@@ -46,6 +51,7 @@ body{
     border: none;
     border-radius: 25px;
     color: red;
+    height: 49px;
     padding: 15px 30px;
     text-decoration: none;
     font-family: 'Roboto';
@@ -62,26 +68,37 @@ P{
     font-weight: bolder;
 }
 
-input{
+.lines{
     width: 95%;
     height: 35px;
 }
 
 .create{
-    width: 300px;
-    height: 494px;
+    width: 97%;
+    height: 100%;
 
 }
-
-textarea{
+input#img {
+    width: 9%;
+}
+img {
+    margin-top: 6px;
+    width: 100%;
+    height: 71%;
     border: 2px solid gray;
-    width: 267%;
+}
+.text{
+    border: 2px solid gray;
+    width: 100%;
     height: 407px;
     margin-top: 10px;
     resize: none;
 } 
 
 .publish{
+    height: 46px;
+    width: 16%;
+    margin-top: 10px;
     background-color: white;
     border: none;
     border-radius: 25px;
@@ -93,15 +110,22 @@ textarea{
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);
-    margin-right: -530px;
     float: right;
 }
 
-.font{
+#font {
+    position: sticky;
+    top: 0;
+    width: 97%;
+    height: 30px;
     margin-top: 5px;
     background-color: rgb(219, 216, 216);
     display: flex;
     gap: 13px;
+    align-items: center;
+}
+button{
+    height: 23px;
 }
 .drop-category{
     width: 190px;
@@ -109,11 +133,38 @@ textarea{
     box-shadow:0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10); 
     padding: 15px 25px 25px 25px;
     display: none;
+    font-family: 'Roboto';
+    position: absolute;
+    top: 65px;
+    z-index: 1;
 }
 
 .drop-category li{
-    list-style-type: none;
+    list-style-type:disc;
 }
+
+li:hover{
+    background-color: lightgray;
+}
+
+.active{
+    background-color: black;
+    color: white;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+
 
 
 

@@ -95,13 +95,15 @@ button{
 .cancel_btn:hover{
     background-color: #ce0000;
 }
-.save_btn {
+#btn_link {
+    position: relative;
+    left: 100px;
+}
+.save_btn{
     width: 100px;
     height: 30px;
     border-radius: 5px;
     border: none;
-    position: relative;
-    left: 100px;
     color: white;
     background-color: #7B65FF;
 }
@@ -113,6 +115,13 @@ label.error {
     font-size: 14px;
     position: relative;
     top: -13px;
+}
+textarea {
+    outline: none;
+    width: 98%;
+    height: 48px;
+    border: none;
+    border-bottom: 1px solid;
 }
 .error1{
     height: 14px;

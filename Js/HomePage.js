@@ -29,20 +29,25 @@ function changetheme(){
       document.body.classList.toggle('blacktheme')
       document.querySelector('header').classList.toggle('blacktheme')
       document.querySelector('.search').classList.toggle('darkinput')
-    
+     document.getElementById('theme').classList.toggle('blacktheme')
+     document.getElementById('homebtn').classList.toggle('homeclr')
       
  let a = document.querySelector('.ca_popup').querySelectorAll('li')
       a.forEach((e)=>{
     e.querySelector('a').classList.toggle('blacktheme')
      })
+    document.querySelector('.logo_div').classList.toggle('black')
+
         if(b=='Assests/logo.png'){
-            img.src='/Assests/darklogo.png'
-            document.getElementById('trending_log').src='/Assests/darktrendlogo.png'
+            img.src='Assests/darklogo.png'
+            document.getElementById('trending_log').src='Assests/darktrendlogo.png'
+            document.getElementById('themebtn').src ='Assests/darkthemelogo.png'
 
          }else{
-            img.src='/Assests/logo.png'
-            document.getElementById('trending_log').src='/Assests/trending_log.png'
-         }
+            img.src='Assests/logo.png'
+            document.getElementById('trending_log').src='Assests/trending_log.png'
+            document.querySelector('#themebtn').src ='Assests/themechange.png'
+        }
 }
 
 //for scrolling .......
@@ -70,15 +75,23 @@ let trending_views = document.querySelector('.trending_views')
 function showcomment(e){
     e.parentElement.parentElement.parentElement.lastElementChild.classList.toggle('d_block')
 }
-
 function sendshow(e){
-
     if(e.value.trim().length>0){e.parentElement.querySelector('#sending').classList.add('d_block')}
     else{e.parentElement.querySelector('#sending').classList.remove('d_block')}
-    
     
 }
 
 
+//Likes  ..................................
+let like_count = 0
+let like=document.getElementById('likes')
+let check  = document.querySelector('#check_like')
+  function uplike(btn){
+    
+   
+ if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
+ else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
+    
+  }
 
 

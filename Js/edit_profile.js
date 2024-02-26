@@ -1,67 +1,58 @@
 "use strict"
-var error1=document.getElementById("err1")
-var error2=document.getElementById("err2")
-var user=document.getElementById("text")
+var error=document.getElementById("err2")
 var inputname=document.getElementById("text2")
 var button=document.getElementById("btn")
 var button2=document.getElementById("btn2")
 var a=document.getElementById("btn_link")
 var a2=document.getElementById("cancel_link")
 var edit=document.querySelector(".color")
-let imageUpload = document.getElementById("drop_zone");
-let img = document.getElementById("change");
+// let imageUpload = document.getElementById("drop_zone");
+// let img = document.getElementById("change");
 
-imageUpload.addEventListener('change', function() {
-    let input = this.files[0];
-    let text;
-    if (input) {
-        text = URL.createObjectURL(input);
-        // console.log(text);
-    }
-    img.src = text; 
-});
+// imageUpload.addEventListener('change', function() {
+//     let input = this.files[0];
+//     let text;
+//     if (input) {
+//         text = URL.createObjectURL(input);
+//         // console.log(text);
+//     }
+//     img.src = text; 
+// });
+let ProfileImg = document.querySelector("#change");
+    let inputfile= document.querySelector("#drop_zone");
+
+inputfile.onchange = function(){
+    ProfileImg.src = URL.createObjectURL(inputfile.files[0]) 
+}
 
 var count=0
 
-error1.classList.add("none")
-error2.classList.add("none")
+error.classList.add("none")
 
 
 
 function click() {
-    var usernameRegex = /^[a-zA-Z0-9_]{3,}/g;
     var nameRegex =/[a-z]{3,}/gi;
 
-    if (!usernameRegex.test(user.value)) {
-        error1.classList.remove("none")
-        error1.classList.add("block")
+    if (nameRegex.test(inputname.value)) {
+        error.classList.remove("block")
+        error.classList.add("none")
+        count=1
       }
       else{
-        error1.classList.remove("block")
-        error1.classList.add("none")
-        count++
-      }
-    if (!nameRegex.test(inputname.value)) {
-        error2.classList.remove("none")
-        error2.classList.add("block")
-      }
-      else{
-        error2.classList.remove("block")
-        error2.classList.add("none")
-        count++
+        error.classList.remove("none")
+        error.classList.add("block")
       }
     setTimeout(() => {
-        error1.classList.remove("block")
-        error1.classList.add("none")
-        error2.classList.remove("block")
-        error2.classList.add("none")
+        error.classList.remove("block")
+        error.classList.add("none")
     },1500)
 }
 
 
 button.addEventListener("click",(event)=>{
 click()
-if (count<2) {
+if (count<1) {
     event.preventDefault()
 }
 else{
