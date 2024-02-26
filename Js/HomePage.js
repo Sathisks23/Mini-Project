@@ -1,5 +1,51 @@
 
 
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+    authDomain: "dckap-news-904dc.firebaseapp.com",
+    projectId: "dckap-news-904dc",
+    storageBucket: "dckap-news-904dc.appspot.com",
+    messagingSenderId: "845776141467",
+    appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+  };
+
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+let db = getFirestore(app)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //for see more ...
 let see_more = document.querySelectorAll('#see_more')
     see_more.forEach(item=>{
@@ -83,6 +129,7 @@ function sendshow(e){
 
 
 //Likes  ..................................
+
 let like_count = 0
 let like=document.getElementById('likes')
 let check  = document.querySelector('#check_like')
@@ -95,3 +142,16 @@ let check  = document.querySelector('#check_like')
   }
 
 
+
+//firebase retrive post 
+usersData=JSON.parse(localStorage.getItem("usersData"))
+
+
+let getref = doc(db,'user',usersData)
+let getData = await getDoc(getref)
+    console.log(getref.data().u_favcategory );
+
+// let getData = await getDocs(getref)
+//    getData.forEach((record)=>{
+//     console.log(record.data().u_name);
+//    })
