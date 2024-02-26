@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  padding: 0
+  padding: 0;
+  
+  
 }
 
 * {
@@ -21,7 +23,7 @@ nav, section {
 }
 
 body {
- 
+  
   font-family: 'Lato', sans-serif;
 }
 
@@ -211,23 +213,21 @@ display: none;
 
   /*OTP div CSS*/
 
-
-  #otpmaincontainer{
-    /* margin:20% auto; */
-    margin-left: 600px;
-    margin-top: -702px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  width: 20%;
-  height: 99px;
-
- 
-  
-
-  }
+  #otpmaincontainer {
+    /* margin: -34px auto; */
+    /* margin-left: 500px; */
+    /* margin-top: -702px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+     transform: translate(400px, -427px);
+     width: 35%;
+    height: 100px;
+    background-color: white;
+   
+}
   button.otpbtn {
     color: white;
     background: green;
@@ -235,6 +235,10 @@ display: none;
     height: 32px;
     margin: 10px;
    
+}
+
+.otpdiv {
+  transform: translate(6px, 20px);
 }
 input#otpinputvalue {
   width: 45%;
