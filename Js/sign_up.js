@@ -28,6 +28,7 @@ console.log(usersData);
 //Checking signup users
 if(usersData){
   location.replace("HomePage.html");
+  
 }
 
 
@@ -37,6 +38,11 @@ if(usersData){
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9b8b78163ad3799537c7a31395afd3b010778514
 var maincontainer=document.querySelector(".maincontainer")
 var username = document.getElementById("username");
 var email = document.getElementById("email");
@@ -165,10 +171,10 @@ function checkData() {
      count++
   }
   if (count==3) {
-  otpdiv();
+    email_validate();
+  // otpdiv();
 
-    
-   }
+    }
 }
 // 'u_id'+
 
@@ -181,16 +187,8 @@ let getData = await getDocs(ref)
 let id = getData.size
 console.log(id);
 
-
-
-function otpdiv(){
- 
-  maincontainer.style.opacity= 0.1;
-  otpmaincontainer.style.display="block";
-
-
- let otpdiv=document.createElement('div');
- otpdiv.className='otpdiv';
+let otpdiv1=document.createElement('div');
+ otpdiv1.className='otpdiv';
  let label=document.createElement('label');
  label.className='otplabel';
  label.textContent="OTP:";
@@ -198,14 +196,26 @@ function otpdiv(){
      otpinput.type="text";
      otpinput.id="otpinputvalue";
 let otpbutton=document.createElement("button");
-// otpbutton.addEventListener('click',otpbutton)
- otpbutton.textContent="ok";
+let p=document.createElement("p")
+
+ otpbutton.textContent="Ok";
  otpbutton.className="otpbtn";
 
-   otpmaincontainer.append(otpdiv);
-   otpdiv.append(label);
-   otpdiv.append(otpinput);
-   otpdiv.append(otpbutton);
+function otpdiv(){
+ 
+  maincontainer.style.opacity= 0.1;
+  otpmaincontainer.style.display="block";
+
+
+ 
+
+ 
+   otpmaincontainer.append(otpdiv1);
+   otpdiv1.append(label);
+   otpdiv1.append(otpinput);
+   otpdiv1.append(otpbutton);
+   
+ 
 
 let u_id 
 
@@ -213,7 +223,8 @@ let u_id
     console.log("otp")
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
-    confirm("valid OTP")
+   
+   alert("OTP sucessfull")
     otpmaincontainer.remove()
     container1.style.display="flex";
     maincontainer.style.display="none";
@@ -225,8 +236,7 @@ let u_id
       // u_favcategory:arr2
     })
     localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
-    // alert('UserAdded')
-    //  button.setAttribute("href","HomePage.html")
+    
    
    }
    else{
@@ -448,3 +458,41 @@ alert('UserAdded')
     
       
     
+let i= 0
+async function   email_validate(){
+
+    let getRef = collection(db, "user");
+    let no = []
+    
+            let getData1 = await getDocs(getRef);
+    
+            console.log(getData1.size);
+           
+            getData1.forEach((record)=>{
+               
+          let row = [record.data().u_email,record.data().u_password ,record.id]
+               no.push(row)
+    
+                
+            });
+    
+
+
+     for(i in no){
+        if((no[i][0])==email.value ){
+          alert("sorry this email already  login")
+     break
+            // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
+
+            //  location.replace('HomePage.html') 
+
+        } 
+        else{
+          otpdiv();
+        }
+     } 
+}
+
+
+
+
