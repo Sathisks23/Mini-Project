@@ -28,7 +28,9 @@ console.log(usersData);
 //Checking signup users
 if(usersData){
   location.replace("HomePage.html");
+  
 }
+
 
 
 
@@ -166,10 +168,10 @@ function checkData() {
      count++
   }
   if (count==3) {
-  otpdiv();
+    email_validate();
+  // otpdiv();
 
-    
-   }
+    }
 }
 // 'u_id'+
 
@@ -182,16 +184,8 @@ let getData = await getDocs(ref)
 let id = getData.size
 console.log(id);
 
-
-
-function otpdiv(){
- 
-  maincontainer.style.opacity= 0.1;
-  otpmaincontainer.style.display="block";
-
-
- let otpdiv=document.createElement('div');
- otpdiv.className='otpdiv';
+let otpdiv1=document.createElement('div');
+ otpdiv1.className='otpdiv';
  let label=document.createElement('label');
  label.className='otplabel';
  label.textContent="OTP:";
@@ -204,11 +198,19 @@ let p=document.createElement("p")
  otpbutton.textContent="Ok";
  otpbutton.className="otpbtn";
 
+function otpdiv(){
  
-   otpmaincontainer.append(otpdiv);
-   otpdiv.append(label);
-   otpdiv.append(otpinput);
-   otpdiv.append(otpbutton);
+  maincontainer.style.opacity= 0.1;
+  otpmaincontainer.style.display="block";
+
+
+ 
+
+ 
+   otpmaincontainer.append(otpdiv1);
+   otpdiv1.append(label);
+   otpdiv1.append(otpinput);
+   otpdiv1.append(otpbutton);
    
  
 
@@ -453,3 +455,41 @@ alert('UserAdded')
     
       
     
+let i= 0
+async function   email_validate(){
+
+    let getRef = collection(db, "user");
+    let no = []
+    
+            let getData1 = await getDocs(getRef);
+    
+            console.log(getData1.size);
+           
+            getData1.forEach((record)=>{
+               
+          let row = [record.data().u_email,record.data().u_password ,record.id]
+               no.push(row)
+    
+                
+            });
+    
+
+
+     for(i in no){
+        if((no[i][0])==email.value ){
+          alert("sorry this email already  login")
+     break
+            // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
+
+            //  location.replace('HomePage.html') 
+
+        } 
+        else{
+          otpdiv();
+        }
+     } 
+}
+
+
+
+
