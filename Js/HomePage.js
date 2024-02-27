@@ -1,9 +1,54 @@
 
 
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCoI2BPLeE8V14oDZkCWkCy-IARluJ5KGs",
+    authDomain: "dckap-news-904dc.firebaseapp.com",
+    projectId: "dckap-news-904dc",
+    storageBucket: "dckap-news-904dc.appspot.com",
+    messagingSenderId: "845776141467",
+    appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
+  };
+
+  import { getFirestore,query,where, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+let db = getFirestore(app)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //for see more ...
 let see_more = document.querySelectorAll('#see_more')
     see_more.forEach(item=>{
-        item.addEventListener('click',function(){showmore(this)})
+        item.addEventListener('click', function(){showmore(this)})
     })
 
 function showmore(mm){
@@ -17,12 +62,12 @@ function showmore(mm){
 
 }
 
+
 let a = document.querySelector('.ca_popup').querySelectorAll('li')
 a.forEach((e)=>{
 
 e.addEventListener('click',function(){category_selected(this)})
 })
-
     
 //Theme  Change
 let theme =document.getElementById('theme')
@@ -41,6 +86,7 @@ function changetheme(){
  let a = document.querySelector('.ca_popup').querySelectorAll('li')
       a.forEach((e)=>{
     e.querySelector('a').classList.toggle('blacktheme')
+    e.addEventListener('click',function(){category_selected(this)})
      })
     document.querySelector('.logo_div').classList.toggle('black')
 
@@ -105,13 +151,7 @@ let check  = document.querySelector('#check_like')
 
 
 
-
-
-
- 
-
 //firebase retrive post 
-
 let usersData=JSON.parse(localStorage.getItem("usersData"))
 
 
@@ -306,7 +346,6 @@ main_view.append(card)
 
 
        )}
-
 
 
 
