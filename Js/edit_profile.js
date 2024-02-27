@@ -130,10 +130,10 @@ else{
       u_bio:bio1.value,
       
     }).then(()=>alert("user added"));
-    a.setAttribute("href","profile.html")
+    a.setAttribute("href","spr.html")
 }
 })
 button2.addEventListener("click",()=>{
-  a2.setAttribute("href","profile.html")
+  a2.setAttribute("href","spr.html")
 })
 
