@@ -199,14 +199,18 @@ function otpdiv(){
      otpinput.type="text";
      otpinput.id="otpinputvalue";
 let otpbutton=document.createElement("button");
-// otpbutton.addEventListener('click',otpbutton)
- otpbutton.textContent="ok";
+let p=document.createElement("p")
+
+ otpbutton.textContent="Ok";
  otpbutton.className="otpbtn";
 
+ 
    otpmaincontainer.append(otpdiv);
    otpdiv.append(label);
    otpdiv.append(otpinput);
    otpdiv.append(otpbutton);
+   
+ 
 
 let u_id 
 
@@ -214,7 +218,8 @@ let u_id
     console.log("otp")
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
-    confirm("valid OTP")
+   
+   alert("OTP sucessfull")
     otpmaincontainer.remove()
     container1.style.display="flex";
     maincontainer.style.display="none";
@@ -226,8 +231,7 @@ let u_id
       // u_favcategory:arr2
     })
     localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
-    // alert('UserAdded')
-    //  button.setAttribute("href","HomePage.html")
+    
    
    }
    else{
