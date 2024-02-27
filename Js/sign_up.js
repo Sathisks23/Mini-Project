@@ -167,6 +167,7 @@ function checkData() {
   }
   if (count==3) {
   otpdiv();
+
     
    }
 }
@@ -184,8 +185,10 @@ console.log(id);
 
 
 function otpdiv(){
-
+ 
+  maincontainer.style.opacity= 0.1;
   otpmaincontainer.style.display="block";
+
 
  let otpdiv=document.createElement('div');
  otpdiv.className='otpdiv';
