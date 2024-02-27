@@ -36,7 +36,6 @@ area.addEventListener('click' ,function(){
 let bold = document.getElementById('bold');
 let underline = document.getElementById('underline');
 let italic = document.getElementById('italic');
-let strike = document.getElementById('strike');
 
 bold.addEventListener('click', function() {
   document.execCommand('bold');
@@ -127,13 +126,20 @@ let p_array = getData1.data().post_id
 p_array.push(`p_id-${p_array.length+1}`)
 console.log(p_array);
 
+
+let usersData=JSON.parse(localStorage.getItem("usersData"))
+let user_getRef = doc(db, "category", usersData);
+let user_getData1 =  await  getDoc(getRef);
+
+
+
+
 function create_post(){
     
 let pimage = document.getElementById('img').files[0]
 
 let meta_data = {contentype:img.type}
 let task = sref(getStorage(),'images'+pimage.name)
-let usersData=JSON.parse(localStorage.getItem("usersData"))
 let store = uploadBytesResumable(task,pimage,meta_data)
 store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
  
@@ -160,6 +166,9 @@ setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Categ
  }))
   
 }
+
+
+
 
 
 
