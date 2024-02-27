@@ -71,6 +71,8 @@ e.addEventListener('click',function(){category_selected(this)})
 })
     
 //Theme  Change
+let theme =document.getElementById('theme')
+    theme.addEventListener('click',changetheme)
 
 function changetheme(){
     let img =document.getElementById('logo')
@@ -80,7 +82,7 @@ function changetheme(){
       document.querySelector('header').classList.toggle('blacktheme')
       document.querySelector('.search').classList.toggle('darkinput')
      document.getElementById('theme').classList.toggle('blacktheme')
-     document.getElementById('homebtn').classList.toggle('homeclr')
+     
       
  let a = document.querySelector('.ca_popup').querySelectorAll('li')
       a.forEach((e)=>{
@@ -93,11 +95,13 @@ function changetheme(){
             img.src='Assests/darklogo.png'
             document.getElementById('trending_log').src='Assests/darktrendlogo.png'
             document.getElementById('themebtn').src ='Assests/darkthemelogo.png'
-
+            // theme.innerText = "Dark Theme"
          }else{
             img.src='Assests/logo.png'
             document.getElementById('trending_log').src='Assests/trending_log.png'
             document.querySelector('#themebtn').src ='Assests/themechange.png'
+            // theme.innerText = "Ligth Theme"
+
         }
 }
 
@@ -156,6 +160,11 @@ let user_getref = doc(db,'user',usersData)
 let user_getData = await getDoc(user_getref)
 let fav_arry= user_getData.data().u_favcategory 
 
+
+
+
+
+
 let i=0
 
 
@@ -203,15 +212,32 @@ main_view.append(card)
     }
 
    async function category_selected(element){
-       
-          let post_getref =  collection(db,'post')
-       let q = query(post_getref,where('c_name','==',element.innerText))
-       
-        let querysap = await getDocs(q)
+    main_view.innerHTML =''
+
+let postid_arry = []
+
+    console.log('jjj');
+    
+    let category_getref = collection(db,'category')
+
+   let a = query(category_getref,where('ca_name','==',element.innerText))
+let category_getData = await getDocs(a)
+category_getData.forEach((e)=>{ postid_arry = e.data().post_id })
+console.log(postid_arry);
+    for(i in postid_arry){
+
+   console.log(postid_arry[i]);
+
+        let post_getref =  doc(db,'post',postid_arry[i])
+
+        let post_data =await getDoc(post_getref)
+    //    let q = query(post_getref,where('c_name','==',postid_arry[i]))
+
+        // let querysap = await getDocs(q)
         
-       querysap.forEach(async(rec)=>{
-          
-        let uid =rec.data().u_id
+    //    post_data.forEach(async(rec)=>{
+    //     console.log(rec.data().u_id);
+        let uid =post_data.data().u_id
 
         let    mul_user_getref = doc(db,'user',uid)
         let   mu_user_getData  =await  getDoc(mul_user_getref)
@@ -222,9 +248,9 @@ main_view.append(card)
 
         card.innerHTML = 
        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
+        `<div class='description'><p id='post_desc'>'${post_data.data().u_desc}'</p> </div>`+
         
-       ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
+       ` <div class='post_div'><img id='post' src='${post_data.data().p_link}'></div>`+
        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
         "<div class=;comment_section'>"
             "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
@@ -234,14 +260,18 @@ main_view.append(card)
         "</div>"
     
 
-// main_view.append(card)
+main_view.append(card)
+        
+        }
 
     }
 
+    
 
 
 
-       )}
+
+      
 
 
 
