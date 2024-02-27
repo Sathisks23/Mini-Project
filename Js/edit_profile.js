@@ -99,6 +99,7 @@ if (count<1) {
   event.preventDefault()
 }
 else{    
+
   event.preventDefault()
  
   let pimage = document.getElementById('drop_zone').files[0]
