@@ -353,3 +353,4 @@ main_view.append(card)
 //    getData.forEach((record)=>{
 //     console.log(record.data().u_name);
 //    })
+}
