@@ -111,8 +111,7 @@ let check  = document.querySelector('#check_like')
  
 
 //firebase retrive post 
-<<<<<<< HEAD
-=======
+
 let usersData=JSON.parse(localStorage.getItem("usersData"))
 
 
@@ -309,7 +308,7 @@ main_view.append(card)
        )}
 
 
->>>>>>> 9b8b78163ad3799537c7a31395afd3b010778514
+
 
 // let getData = await getDocs(getref)
 //    getData.forEach((record)=>{
