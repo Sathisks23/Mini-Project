@@ -9,13 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="main_div">
+  
+    <div id="main_div" class="main_div">
         <div class="container">
            <div class="category">
                 <button class="select">Select the Category <i class="fa-solid fa-caret-down"></i></button>
-               <div class="">
-                <button class="can">Cancel</button>
-            </div> 
+                <div class="cross">
+                    <button class="can">&times;</button>
+                </div>
             </div> 
             <div class="drop-category">
 
@@ -41,8 +42,8 @@
             
             </div>
             <div class="main">
-                <p>Description :</p>
-                <input type="text" placeholder= "Description goes here.." id="lines" class="lines">
+                <p>Headlines :</p>
+                <input type="text" placeholder= "Headlines goes here.." id="lines" class="lines" width="500px" height="300px">
             </div>
             <div id="font">
                 <button id="bold"><i class="fa-solid fa-bold"></i></button>
@@ -52,13 +53,13 @@
             
             </div>
             <div class="create">
-                <div class="text" id="create" contenteditable="true">
-                </div>
+                <div class="text" id="create" contenteditable="true"></div>
+                <!-- <img id="dummy" alt=""> -->
             </div>
-       <img id="dummy" alt="">
+            <!-- <img id="dummy" alt=""> -->
             <div class="btn">
-            <button id="submit" class="publish">Publish</button>
-        </div>
+                <button id="submit" class="publish">Publish</button>
+            </div>
         </div>
     </div>
  
