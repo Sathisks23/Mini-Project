@@ -84,7 +84,7 @@ body{
     justify-content:space-around;
     gap: 40px;
 }
-#news_container>*{width: 50%;}
+
 #news_container{
     width:65%;
     display: flex;
@@ -93,6 +93,8 @@ body{
     position: absolute;
     left: 25%;
     margin-top: 3%;
+    max-width: 800px;
+    flex-wrap: wrap;
  /* background-color: aquamarine; */
     /* justify-content: space-around; */
     
