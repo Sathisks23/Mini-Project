@@ -148,7 +148,7 @@ like.forEach((x,like)=>{
     var num=0
     x.addEventListener("click",()=>{
         if(x.style.color!= 'blue'){
-            x.style.color= 'blue';  num+=1;  x.parentElement.lastElementChild.innerText = num}
+              x.style.color= 'blue';  num+=1;  x.parentElement.lastElementChild.innerText = num}
         else{x.style.color= 'black' ;num-=1 ;x.parentElement.lastElementChild.innerText = num}
 
     })

@@ -100,7 +100,6 @@ if (count<1) {
 }
 else{    
 
-  event.preventDefault()
  
   let pimage = document.getElementById('drop_zone').files[0]
 
@@ -129,8 +128,8 @@ else{
       u_name: inputname.value,
       u_bio:bio1.value,
       
-    }).then(()=>alert("user added"));
-    a.setAttribute("href","spr.html")
+    }).then(()=>a.setAttribute("href","spr.html"));
+    
 }
 })
 button2.addEventListener("click",()=>{
