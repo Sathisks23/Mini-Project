@@ -38,11 +38,6 @@ if(usersData){
 
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9b8b78163ad3799537c7a31395afd3b010778514
 var maincontainer=document.querySelector(".maincontainer")
 var username = document.getElementById("username");
 var email = document.getElementById("email");

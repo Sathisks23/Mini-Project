@@ -138,19 +138,22 @@ function sendshow(e){
 
 //Likes  ..................................
 
-let like_count = 0
-let like=document.querySelectorAll(".like_div")
-let like_icon=like.firstElementChild
 
-console.log(like_icon);
-let check  = document.querySelector('#check_like')
-  function uplike(btn){
-    
-   
- if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
- else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
-    
-  }
+let like=document.querySelectorAll("#check_like")
+let like_num=document.querySelector("#likes")
+
+console.log(like);
+
+like.forEach((x,like)=>{
+    var num=0
+    x.addEventListener("click",()=>{
+        if(x.style.color!= 'blue'){
+            x.style.color= 'blue';  num+=1;  x.parentElement.lastElementChild.innerText = num}
+        else{x.style.color= 'black' ;num-=1 ;x.parentElement.lastElementChild.innerText = num}
+
+    })
+})
+ 
 
 
 
