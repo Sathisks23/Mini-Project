@@ -24,9 +24,7 @@ let db = getFirestore(app)
 
 
 
-addEventListener('load',()=>{
-    category_selected(0)
-})
+
 
 
 
@@ -71,8 +69,6 @@ a.forEach((e)=>{
 e.addEventListener('click',function(){category_selected(this)})
 })
     
-
-
 //Theme  Change
 let theme =document.getElementById('theme')
     theme.addEventListener('click',changetheme)
@@ -166,8 +162,7 @@ let user_getref = doc(db,'user',usersData)
 let user_getData = await getDoc(user_getref)
 let fav_arry= user_getData.data().u_favcategory 
 
-let up=  document.getElementById('profile')
-up.src=user_getData.data().u_dp
+
 
 
 
@@ -224,13 +219,10 @@ let i=0
    async function category_selected(element){
 
       
-console.log(window.location.href , element.value);
+
 
       
     if(element.innerText!='My favourtie' && element!=0){
-
-        main_view.innerHTML = ''
-
         let post_getref =  collection(db,'post')
         let q = query(post_getref,where('c_name','==',element.innerText))
         
@@ -250,11 +242,11 @@ console.log(window.location.href , element.value);
      let card = document.createElement('div')
          card.className = 'post_view'
 
-
+         main_view.innerHTML = ''
  
          card.innerHTML = 
-        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>${mu_user_getData.data().u_name}</h4></div>`+
-         `<div class='description'><b>${rec.data().p_title}</b><p id='post_desc'>${rec.data().p_desc}</p> </div>`+
+        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
+         `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
          
         ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
         ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
@@ -275,63 +267,15 @@ main_view.append(card)
        
          }else {
 
-       
-
-            main_view.innerHTML = ''
-
-            let user_getref = doc(db,'user',usersData)
-let user_getData = await getDoc(user_getref)
-let fav_arry= user_getData.data().u_favcategory 
-
             main_view.innerHTML = ''
 
             for(i in fav_arry){
 
    
 
-        let post_getref =  collection(db,'post')
-       let q = query(post_getref,where('c_name','==',fav_arry[i]))
+//         let post_getref =  collection(db,'post')
+//        let q = query(post_getref,where('c_name','==',fav_arry[i]))
 
-        let querysap = await getDocs(q)
-        
-       querysap.forEach(async(rec)=>{
-          
-        let uid =rec.data().u_id
-
-        let    mul_user_getref = doc(db,'user',uid)
-        let   mu_user_getData  =await  getDoc(mul_user_getref)
-            mu_user_getData.data().u_id
-
-         
-
-    let card = document.createElement('div')
-        card.className = 'post_view'
-
-        card.innerHTML = 
-       ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
-        
-       ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
-       ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
-        "<div class=;comment_section'>"
-            "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
-            " <div class='comments_list'>"
-                "<div class='comment_div'> <img  id='cmnt_user_dp' src='' > <div class='cmnt_header'><p id='comment'>Yeah actually that is true,there many trees that have been cutting down we have to grow some trees in free space.</p><div class='replay'><i class='fa-solid fa-reply'></i><span class='replay_s'>replay</span></div></div> </div>"
-             "</div>"
-        "</div>"
-    
-
-main_view.append(card)
-        
-        // })
-
-    // }
-
-//    async function category_selected(element){
-       
-//           let post_getref =  collection(db,'post')
-//        let q = query(post_getref,where('c_name','==',element.innerText))
-       
 //         let querysap = await getDocs(q)
         
 //        querysap.forEach(async(rec)=>{
@@ -340,14 +284,14 @@ main_view.append(card)
 
 //         let    mul_user_getref = doc(db,'user',uid)
 //         let   mu_user_getData  =await  getDoc(mul_user_getref)
-//             // mu_user_getData.data().u_id
+//             mu_user_getData.data().u_id
 
 //     let card = document.createElement('div')
 //         card.className = 'post_view'
 
 //         card.innerHTML = 
 //        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
-//         `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
+//         `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
         
 //        ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
 //        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
@@ -360,7 +304,44 @@ main_view.append(card)
     
 
 // main_view.append(card)
+        
+        // })
 
+    // }
+
+//    async function category_selected(element){
+       
+          let post_getref =  collection(db,'post')
+       let q = query(post_getref,where('c_name','==',element.innerText))
+       
+        let querysap = await getDocs(q)
+        
+       querysap.forEach(async(rec)=>{
+          
+        let uid =rec.data().u_id
+
+        let    mul_user_getref = doc(db,'user',uid)
+        let   mu_user_getData  =await  getDoc(mul_user_getref)
+            // mu_user_getData.data().u_id
+
+    let card = document.createElement('div')
+        card.className = 'post_view'
+
+        card.innerHTML = 
+       ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
+        `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
+        
+       ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
+       ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
+        "<div class=;comment_section'>"
+            "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
+            " <div class='comments_list'>"
+                "<div class='comment_div'> <img  id='cmnt_user_dp' src='' > <div class='cmnt_header'><p id='comment'>Yeah actually that is true,there many trees that have been cutting down we have to grow some trees in free space.</p><div class='replay'><i class='fa-solid fa-reply'></i><span class='replay_s'>replay</span></div></div> </div>"
+             "</div>"
+        "</div>"
+    
+
+main_view.append(card)
 
     }
 
@@ -376,7 +357,6 @@ main_view.append(card)
 //    getData.forEach((record)=>{
 //     console.log(record.data().u_name);
 //    })
-
 }}
 
-
+console.log(window.location);

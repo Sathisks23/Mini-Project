@@ -11,7 +11,11 @@
 
 }
 
-
+#profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 
 .darkinput{
     background-color: white;
@@ -333,7 +337,7 @@ background-color: rgba(233, 233, 233, 0.337);
 
 .logo_div{
     position: sticky;
-    top: 100px;
+    top: 70px;
     width: 120%;
     z-index: 0;
     background-color:white;
