@@ -138,19 +138,20 @@ function sendshow(e){
 
 //Likes  ..................................
 
-let like_count = 0
-let like=document.querySelectorAll(".like_div")
-let like_icon=like.firstElementChild
+let like=document.querySelectorAll("#check_like")
+let like_num=document.querySelector("#likes")
 
-console.log(like_icon);
-let check  = document.querySelector('#check_like')
-  function uplike(btn){
-    
-   
- if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
- else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
-    
-  }
+console.log(like);
+
+like.forEach((x,like)=>{
+    var num=0
+    x.addEventListener("click",()=>{
+        if(x.style.color!= 'blue'){
+            x.style.color= 'blue';  num+=1;  x.parentElement.lastElementChild.innerText = num}
+        else{x.style.color= 'black' ;num-=1 ;x.parentElement.lastElementChild.innerText = num}
+
+    })
+})
 
 
 
@@ -357,3 +358,177 @@ main_view.append(card)
 //     console.log(record.data().u_name);
 //    })
 }}
+
+/*6666666666666666666666666666666666666666666 Editi category page//////////////////////*/
+
+
+let category=document.querySelectorAll(".category1")
+let button=document.getElementById("next_page")
+let button2=document.querySelector(".btn")
+let span=document.getElementById("span")
+let count=0
+let arr=[]
+let arr2=[]
+// console.log(category);
+span.classList.add("none")
+button2.classList.add("col4")
+
+function removeItemAll(arr, value) {
+    var i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value) {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+  }
+category.forEach((x,category)=>{
+    x.classList.add("cat")
+    button2.classList.remove("col2")
+    button2.classList.add("col4")
+    x.addEventListener("click",()=>{
+        if(arr.includes(x)) {
+            x.classList.remove("box")
+            x.classList.add("cat")
+            removeItemAll(arr,x)
+            removeItemAll(arr2,x.innerText)
+            // console.log(arr);  
+            console.log(arr2);
+        }
+       else if(!(arr.includes(x))) {
+        x.classList.remove("cat")
+        x.classList.add("box")
+        count=count+1
+        arr.push(x)
+        arr2.push(x.innerText)
+        // console.log(arr);
+        console.log(arr2);
+        // console.log(count);           
+       }
+
+    })
+})
+button.addEventListener("click", async(event)=>{
+
+        button2.classList.remove("col2")
+        button2.classList.add("col4")
+
+//SET Fav Ctegory...
+
+setDoc(doc(db,"user",`u_id-${id}`), {
+  u_name: username.value,
+  u_email:email.value,
+  u_password:pass1.value,   
+  u_favcategory:arr2
+})
+localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
+alert('UserAdded')
+
+
+///////update Catgeory ////////////
+
+ console.log(arr2);
+let ref = doc(db,"user",`u_id-${id}`);
+
+updateDoc(
+  ref, {
+
+    u_favcategory:arr2
+    // username : username.value,
+    // password : password.value
+  }
+).then(()=>{
+  alert("Updated Successfully")
+})
+
+
+
+
+
+
+ button.setAttribute("href","HomePage.html")
+
+    })
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////// Editi  Catgeory page /////////////////////////////////*/
+
+let container1= document.querySelector(".container1")
+ 
+let navbar_div=document.getElementById("navbar_div");
+
+ let Category_div=document.querySelector(".Category_div");
+
+ let editi_catgeory=document.querySelector("#editi_catgeory");
+ editi_catgeory.addEventListener("click",()=>{
+    
+
+    trending_views.style.display="none";
+   navbar_div.classList.add("navbar_div");
+   container1.classList.add("block");
+
+
+
+
+   let editCategory = document.querySelectorAll("#text");
+   let j= 0
+   let k= 0
+   
+//  let parent=editCategory.parentElement;
+//  console.log(parent);
+
+      for(k in fav_arry){
+        for(j in  editCategory){
+            if( editCategory[j].innerText == fav_arry[k]){
+                // parent.classList.add("box");
+
+                editCategory[j].parentElement.style.border = '2px solid blue'
+            
+              }
+        }
+      }
+
+
+
+ 
+   
+
+
+
+ })
+
+
+/*Logout  pagess*/
+
+//  let logout=document.querySelector("#logout");
+
+  
+// logout.addEventListener("click",()=>{
+//     // e.preventDefault();
+//   console.log("hiiiii");
+
+//     localStorage.clear();
+//     location.replace("index.html");
+
+
+
+
+// })

@@ -68,10 +68,11 @@ document.getElementById("submit").addEventListener("click", function (event) {
     From : "dckapnews@gmail.com",
     Subject : "Enter the OTP",
     Body : mail_msg
-  }).then(
-  message => alert(message)
+  })
+  // .then(
+  // message => alert(message)
   
-  )  .catch(error => alert(error));
+  // )  .catch(error => alert(error));
  
 
 
