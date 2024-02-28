@@ -149,7 +149,8 @@ a{
 }
 
 h1{
-  color: #0b0;
+  margin-bottom: 0;
+  color: #7B65FF;
   text-align: center;
 }
 .sucessdiv{
@@ -214,19 +215,16 @@ display: none;
   /*OTP div CSS*/
 
   #otpmaincontainer {
-    /* margin: -34px auto; */
-    /* margin-left: 500px; */
-    /* margin-top: -702px; */
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
-     transform: translate(400px, -427px);
-     width: 35%;
-    height: 100px;
+    transform: translate(400px, -427px);
+    width: 40%;
+    height: 200px;
     background-color: white;
-   
+    padding: 1px;
 }
   button.otpbtn {
     color: white;
@@ -234,7 +232,8 @@ display: none;
     width: 30%;
     height: 32px;
     margin: 10px;
-   
+    border: none;
+    border-radius: 3px;
 }
 
 .otpdiv {
@@ -245,8 +244,15 @@ input#otpinputvalue {
   height: 31px;
   /* gap: 52px; */
 }
+.display_none{
+  display:none;
+}
 
 
+i.fa-solid.fa-thumbs-up {
+  color: green;
+  font-size: 163px;
+}
   /*catgeory page css*/
 
   .title{

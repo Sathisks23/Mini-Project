@@ -25,33 +25,42 @@ let usersData=JSON.parse(localStorage.getItem("usersData"))
       location.replace("HomePage.html");
     }
 
+
+
 const email_id=document.querySelector("#email_id")
 const password=document.querySelector("#passowrd");
 
-const submit=document.querySelector("#submit");
+const btn =document.querySelector("#submit");
 let two = false
 
-submit.addEventListener("click",(event)=>{
+btn.addEventListener("click",(event)=>{
     event.preventDefault();
-
+    
 console.log("hello");
     if(email_id.value.trim()==""){
+    
+       
         error(email_id,"email id can not empty")
         two = false
 
     }
     else{
+        
         success(email_id);
         email_validate()
         two = true
     }
 
     if(password.value.trim()==""){
+ 
+        
         error(password,"password can not empty");
         two = false
 
     }
     else{
+       
+
         success(password);
         two = true
 console.log(password.value);
@@ -59,16 +68,43 @@ console.log(password.value);
     }
 
 
-  if(two){
-  }
+  if(two==true){
   email_validate()
+
+  }
+
 
 
 });
 
 ///firebase Email Validation 
+
+
+// console.log(no);
+
+
+
+
 let i= 0
-function   email_validate(){
+async function   email_validate(){
+
+    let getRef = collection(db, "user");
+    let no = []
+    
+            let getData1 = await getDocs(getRef);
+    
+            console.log(getData1.size);
+           
+            getData1.forEach((record)=>{
+               
+          let row = [record.data().u_email,record.data().u_password ,record.id]
+               no.push(row)
+    
+                
+            });
+    
+
+
      for(i in no){
         if((no[i][0])==email_id.value && no[i][1]==password.value){
 
@@ -77,6 +113,7 @@ function   email_validate(){
              location.replace('HomePage.html') 
 
         } 
+        
      } 
 }
 
@@ -102,9 +139,10 @@ function error(element,msg){
     const parent=element.parentElement;
    
     console.log(p);
+  
     p.forEach(elem => {
         elem.style. display="block";
-        elem.textContent=msg;
+        elem.innerText=msg;
     });
 
 
@@ -114,8 +152,9 @@ function error(element,msg){
  function success(element,msg){
     element.style.border='3px green solid';
     const parent=element.parentElement;
+   
     p.forEach(elem => {
-        elem.textContent= msg;
+        elem.innerText= msg;
     elem.style.display = "none";
     });
    
@@ -130,20 +169,5 @@ function error(element,msg){
 
 
 
- let getRef = collection(db, "user");
- let no = []
- 
-         let getData1 = await getDocs(getRef);
- 
-         console.log(getData1.size);
-        
-         getData1.forEach((record)=>{
-            
-       let row = [record.data().u_email,record.data().u_password ,record.id]
-            no.push(row)
- 
-             
-         });
- 
- console.log(no);
+
 // console.log(no[9][1]==password.value,typeof(password.value),typeof(no[9][1]));

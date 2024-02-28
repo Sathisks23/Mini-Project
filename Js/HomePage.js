@@ -139,7 +139,10 @@ function sendshow(e){
 //Likes  ..................................
 
 let like_count = 0
-let like=document.getElementById('likes')
+let like=document.querySelectorAll(".like_div")
+let like_icon=like.firstElementChild
+
+console.log(like_icon);
 let check  = document.querySelector('#check_like')
   function uplike(btn){
     
