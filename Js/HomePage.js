@@ -359,3 +359,47 @@ main_view.append(card)
 //     console.log(record.data().u_name);
 //    })
 }}
+
+
+
+
+
+//Editi catgeory page in js code 
+
+
+
+ let navbar_div=document.getElementById("navbar_div");
+ let body=document.getElementsByTagName("body");
+
+//  let header=document.querySelector("header");
+//   let categories_nav=document.getElementsByClassName("categories_nav")
+
+ let editi_catgeory=document.getElementById("editi_catgeory");
+ editi_catgeory.addEventListener("click",()=>{
+    // console.log(navbar_div);
+    // // navbar_div.classList.add("none");
+    // navbar_div.style.display="none"
+  fetch('editCategory.html')
+   .then(response => response.text())
+   .then(data => {
+   let Category_div=document.querySelector('.Category_div').innerHTML += data;
+
+
+
+  });
+     trending_views.style.display="none";
+    body.style.opacity= 0.1;
+    //  Category_div.style.z-index= 1;
+  let editCategory = document.querySelectorAll('.cat_text2')
+  let i= 0
+   for(i in  editCategory){
+  if(  editCategory[i].innerText  == 'crime'){
+    editCategory[i].style.display = 'none'
+
+  }
+   }
+
+ })
+
+
+

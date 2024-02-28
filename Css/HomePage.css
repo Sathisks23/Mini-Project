@@ -83,6 +83,18 @@ header{
     z-index: 1;
     border-bottom: 1px solid rgba(163, 155, 155, 0.342);
 }
+.header1{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    background-color: #F9F9F9;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* z-index: 1; */
+    border-bottom: 1px solid rgba(163, 155, 155, 0.342);
+}
 
 .navs{
     display: flex;
@@ -193,6 +205,7 @@ padding-top:12px;
     padding: 10px;
     left: 15%;
     height: 100%;
+   
 
 
     
@@ -242,6 +255,7 @@ padding-top:12px;
     justify-content: space-around;
     align-items: center;
 }
+
 
 
 #comment_input{
@@ -364,4 +378,18 @@ background-color: rgba(233, 233, 233, 0.337);
     visibility: visible;
 }
 
+/*eaditi catgory page*/
 
+.container1{
+    display: none;
+   
+}
+
+/* .Category_div{
+    position: absolute;
+    margin: 0 auto;
+} */
+
+.none{
+    display: none;
+}
