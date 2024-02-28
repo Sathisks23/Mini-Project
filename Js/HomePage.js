@@ -139,7 +139,10 @@ function sendshow(e){
 //Likes  ..................................
 
 let like_count = 0
-let like=document.getElementById('likes')
+let like=document.querySelectorAll(".like_div")
+let like_icon=like.firstElementChild
+
+console.log(like_icon);
 let check  = document.querySelector('#check_like')
   function uplike(btn){
     
@@ -150,11 +153,6 @@ let check  = document.querySelector('#check_like')
   }
 
 
-
-
-
-
- 
 
 //firebase retrive post 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
@@ -293,7 +291,7 @@ main_view.append(card)
 
         card.innerHTML = 
        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
+        `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
         
        ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
@@ -359,47 +357,3 @@ main_view.append(card)
 //     console.log(record.data().u_name);
 //    })
 }}
-
-
-
-
-
-//Editi catgeory page in js code 
-
-
-
- let navbar_div=document.getElementById("navbar_div");
- let body=document.getElementsByTagName("body");
-
-//  let header=document.querySelector("header");
-//   let categories_nav=document.getElementsByClassName("categories_nav")
-
- let editi_catgeory=document.getElementById("editi_catgeory");
- editi_catgeory.addEventListener("click",()=>{
-    // console.log(navbar_div);
-    // // navbar_div.classList.add("none");
-    // navbar_div.style.display="none"
-  fetch('editCategory.html')
-   .then(response => response.text())
-   .then(data => {
-   let Category_div=document.querySelector('.Category_div').innerHTML += data;
-
-
-
-  });
-     trending_views.style.display="none";
-    body.style.opacity= 0.1;
-    //  Category_div.style.z-index= 1;
-  let editCategory = document.querySelectorAll('.cat_text2')
-  let i= 0
-   for(i in  editCategory){
-  if(  editCategory[i].innerText  == 'crime'){
-    editCategory[i].style.display = 'none'
-
-  }
-   }
-
- })
-
-
-
