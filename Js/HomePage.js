@@ -248,7 +248,7 @@ console.log(postid_arry);
 
         card.innerHTML = 
        ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${post_data.data().u_desc}'</p> </div>`+
+        `<div class='description'><p id='post_desc'>'${post_data.data().p_desc}'</p> </div>`+
         
        ` <div class='post_div'><img id='post' src='${post_data.data().p_link}'></div>`+
        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
