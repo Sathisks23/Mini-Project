@@ -98,6 +98,7 @@ button{
 #btn_link {
     position: relative;
     left: 100px;
+    top: 24px;
 }
 .save_btn{
     width: 100px;

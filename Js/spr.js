@@ -59,7 +59,7 @@ let card = document.createElement('div')
 
  card.innerHTML = 
 
- ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
+ ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4 id='mini_uname'>${mu_user_getData.data().u_name}</h4></div>`+
         `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
         
        ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
@@ -71,10 +71,104 @@ let card = document.createElement('div')
              "</div>"
         "</div>"
     
-let c = document.querySelector('.post_container')
+var c = document.querySelector('.post_container')
 c.append(card)
 
 
 
-
 })
+
+
+// var pro_img = document.getElementById('news11');
+// var sub_username = document.querySelector('.sub_username1');
+// var discription = document.getElementById('full_discription');
+// var full_pic = document.getElementById('full_pic');
+
+// var dp=document.getElementById('user_dp');
+
+
+
+
+// var expantion = document.querySelectorAll('.post_container');
+
+
+
+
+
+// expantion.forEach((x,index)=>{
+//   // alert("img clicked");
+ 
+
+//   x.addEventListener('click',()=>{
+//     // alert(dp);
+
+//     var pro_pic =dp.src; 
+//     var ful_img = post.src;
+//     var subname = mini_uname.innerText;
+//     var discrib_post = post_desc.innerText;
+
+
+//     pro_img.src=x.pro_pic;
+//     sub_username.innerText =x.subname;
+//     discription.innerText=x.discrib_post;
+//     full_pic.src= x.ful_img;
+
+//     console.log("value ="+x.subname);
+//   })ar pro_img = document.getElementById('news11');
+// var sub_username = document.querySelector('.sub_username1');
+// var discription = document.getElementById('full_discription');
+// var full_pic = document.getElementById('full_pic');
+
+// var dp=document.getElementById('user_dp');
+
+
+
+
+// var expantion = document.querySelectorAll('.post_container');
+
+
+
+
+
+// expantion.forEach((x,index)=>{
+//   // alert("img clicked");
+ 
+
+//   x.addEventListener('click',()=>{
+//     // alert(dp);
+
+//     var pro_pic =dp.src; 
+//     var ful_img = post.src;
+//     var subname = mini_uname.innerText;
+//     var discrib_post = post_desc.innerText;
+
+
+//     pro_img.src=x.pro_pic;
+//     sub_username.innerText =x.subname;
+//     discription.innerText=x.discrib_post;
+//     full_pic.src= x.ful_img;
+
+//     console.log("value ="+x.subname);
+//   })
+// });
+
+
+// });
+
+
+
+
+
+
+
+
+
+
+// var news_expand = document.getElementById("news_expand");
+
+// news_expand.style.display="none";
+// news.addEventListener("click",()=>{
+//     container.style.display = "none";
+//     news_expand.style.display="block";
+// })
+
