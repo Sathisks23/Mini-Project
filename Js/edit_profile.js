@@ -129,8 +129,8 @@ else{
       u_name: inputname.value,
       u_bio:bio1.value,
       
-    }).then(()=>alert("user added"));
-    a.setAttribute("href","spr.html")
+    }).then(()=>location.replace("spr.html"));
+
 }
 })
 button2.addEventListener("click",()=>{

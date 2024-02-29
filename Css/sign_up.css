@@ -20,6 +20,7 @@ nav, section {
 .form-box {
   display: block;
   width: 50%;
+  transform: translate(0px, 18px);
 }
 
 body {
@@ -128,6 +129,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 5%;
+  height: 519px;
 }
 P{
   text-align: center;
@@ -167,7 +169,7 @@ display: none;
     background: #f1f1f1;
     color: #000;
     position: absolute;
-    margin-top: -350px;
+    margin-top: -190px;
     margin-left: 43%;
     width:200px;
     height: 210px;
@@ -220,11 +222,15 @@ display: none;
     justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
-    transform: translate(400px, -427px);
     width: 40%;
     height: 200px;
     background-color: white;
     padding: 1px;
+    margin: 0 auto;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+
 }
   button.otpbtn {
     color: white;

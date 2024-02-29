@@ -389,66 +389,59 @@ category.forEach((x,category)=>{
     button2.classList.remove("col2")
     button2.classList.add("col4")
     x.addEventListener("click",()=>{
-        if(arr.includes(x)) {
-            x.classList.remove("box")
-            x.classList.add("cat")
-            removeItemAll(arr,x)
-            removeItemAll(arr2,x.innerText)
+        if(fav_arry.includes(x.innerText)) {
+            // x.classList.remove("box")
+            // x.classList.add("cat")
+            x.style.boxShadow = "none";
+            // removeItemAll(arr,x)
+            // removeItemAll(arr2,x.innerText)
+            removeItemAll(fav_arry,x.innerText)
             // console.log(arr);  
-            console.log(arr2);
+            // console.log(arr2);
         }
-       else if(!(arr.includes(x))) {
-        x.classList.remove("cat")
-        x.classList.add("box")
+       else if(!(fav_arry.includes(x.innerText))) {
+        // x.classList.remove("cat")
+        // x.classList.add("box")
+        x.style.boxShadow = "0px 0px 2px 2px #6452D0";
         count=count+1
-        arr.push(x)
-        arr2.push(x.innerText)
+        // arr.push(x)
+        // arr2.push(x.innerText)
         // console.log(arr);
-        console.log(arr2);
-        // console.log(count);           
+        fav_arry.push(x.innerText);
+
+        console.log(fav_arry);
+
+
+
+
+
+
+
+                 
        }
 
     })
 })
-button.addEventListener("click", async(event)=>{
+button.addEventListener("click",(event)=>{
 
-        button2.classList.remove("col2")
-        button2.classList.add("col4")
+        // button2.classList.remove("col2")
+        // button2.classList.add("col4")
 
-//SET Fav Ctegory...
-
-setDoc(doc(db,"user",`u_id-${id}`), {
-  u_name: username.value,
-  u_email:email.value,
-  u_password:pass1.value,   
-  u_favcategory:arr2
-})
-localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
-alert('UserAdded')
-
-
-///////update Catgeory ////////////
-
- console.log(arr2);
-let ref = doc(db,"user",`u_id-${id}`);
+//------------------------Update--------------------        
+let ref = doc(db,"user",usersData);
 
 updateDoc(
   ref, {
 
-    u_favcategory:arr2
-    // username : username.value,
-    // password : password.value
+    u_favcategory:fav_arry
+
   }
 ).then(()=>{
   alert("Updated Successfully")
-})
+}).catch((e)=>{console.log(e);})
 
 
-
-
-
-
- button.setAttribute("href","HomePage.html")
+button.setAttribute("href","HomePage.html")
 
     })
 
@@ -500,7 +493,8 @@ let navbar_div=document.getElementById("navbar_div");
             if( editCategory[j].innerText == fav_arry[k]){
                 // parent.classList.add("box");
 
-                editCategory[j].parentElement.style.border = '2px solid blue'
+                editCategory[j].parentElement.style.boxShadow = "0px 0px 2px 2px #6452D0";
+
             
               }
         }
@@ -518,17 +512,15 @@ let navbar_div=document.getElementById("navbar_div");
 
 /*Logout  pagess*/
 
-//  let logout=document.querySelector("#logout");
+ let logout=document.querySelector("#logout");
 
   
-// logout.addEventListener("click",()=>{
-//     // e.preventDefault();
-//   console.log("hiiiii");
+logout.addEventListener("click",()=>{
 
-//     localStorage.clear();
-//     location.replace("index.html");
+  localStorage.removeItem("usersData");
+  location.replace("index.html");
 
 
 
 
-// })
+})
