@@ -284,7 +284,7 @@ let user_getData = await getDoc(user_getref)
 let fav_arry= user_getData.data().u_favcategory 
 
             main_view.innerHTML = ''
-
+let i=0
             for(i in fav_arry){
 
    
