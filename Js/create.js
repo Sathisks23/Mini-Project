@@ -157,7 +157,10 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     p_desc:desc.innerText,
     p_title:title.value,
     p_link:downloadURL,
-    u_id:usersData
+    u_id:usersData,
+    p_like:0,
+    p_comment:[],
+    liked_person:[]
     
   }
 

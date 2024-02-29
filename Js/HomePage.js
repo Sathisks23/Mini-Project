@@ -15,7 +15,7 @@
     appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
   };
 
-  import { getFirestore,query,where, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+  import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -142,19 +142,24 @@ function sendshow(e){
 
 //Likes  ..................................
 
-let like_count = 0
-let like=document.querySelectorAll(".like_div")
-let like_icon=like.firstElementChild
+// let like_count = 0
+// let like=document.querySelectorAll(".like_div")
+//     like.forEach((e)=>{e.addEventListener('click' ,uplike)})
+// let like_icon=like.firstElementChild
 
-console.log(like_icon);
-let check  = document.querySelector('#check_like')
-  function uplike(btn){
+// console.log(like_icon);
+// let check  = document.querySelector('#check_like')
+//   function uplike(btn){
     
-   
- if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
- else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
+//    console.log('d');
+//  if(btn.style.color!= 'blue'){btn.style.color= 'blue';  like_count+=1;  btn.parentElement.lastElementChild.innerText = like_count}
+//  else{btn.style.color= 'black' ;like_count-=1 ;btn.parentElement.lastElementChild.innerText = like_count}
     
-  }
+//   }
+
+
+
+
 
 
 
@@ -251,15 +256,32 @@ console.log(window.location.href , element.value);
          card.className = 'post_view'
 
 
+         let ref = doc(db,"post",rec.id);
+            let postData= await  getDoc(ref)
+            let numlike=postData.data().p_like
+             let checklike = postData.data().liked_person
+        console.log(checklike);
+         let checked = checklike.includes(usersData)
+        console.log(checked);
+         let findlike 
+
+
+         if(checked==true){
+            findlike=  " <i id='check_like' style='color:blue;'  class='fa-regular fa-thumbs-up'></i> "
+
+        }else{
+            findlike=  " <i id='check_like'   class='fa-regular fa-thumbs-up'></i> "
+       
+        }
  
          card.innerHTML = 
         ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>${mu_user_getData.data().u_name}</h4></div>`+
          `<div class='description'><b>${rec.data().p_title}</b><p id='post_desc'>${rec.data().p_desc}</p> </div>`+
          
         ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
-        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
+        ` <div class='social_section'><div class='like_div'> ${findlike} <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
          "<div class=;comment_section'>"
-             "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
+             "<div class='add_comment_section'> <img id='comment_dp' src='' ><input id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
              " <div class='comments_list'>"
                  "<div class='comment_div'> <img  id='cmnt_user_dp' src='' > <div class='cmnt_header'><p id='comment'>Yeah actually that is true,there many trees that have been cutting down we have to grow some trees in free space.</p><div class='replay'><i class='fa-solid fa-reply'></i><span class='replay_s'>replay</span></div></div> </div>"
               "</div>"
@@ -269,7 +291,10 @@ console.log(window.location.href , element.value);
 main_view.append(card)
 
      
-    }    )
+    }    
+    
+    )
+
 
 // My favourite 
        
@@ -278,6 +303,8 @@ main_view.append(card)
        
 
             main_view.innerHTML = ''
+
+
 
             let user_getref = doc(db,'user',usersData)
 let user_getData = await getDoc(user_getref)
@@ -300,19 +327,40 @@ let fav_arry= user_getData.data().u_favcategory
 
         let    mul_user_getref = doc(db,'user',uid)
         let   mu_user_getData  =await  getDoc(mul_user_getref)
-            mu_user_getData.data().u_id
+            // mu_user_getData.data().u_id
 
-         
+
+            let ref = doc(db,"post",rec.id);
+            let postData= await  getDoc(ref)
+            let numlike=postData.data().p_like
+             let checklike = postData.data().liked_person
+        console.log(checklike);
+         let checked = checklike.includes(usersData)
+        console.log(checked);
+         let findlike 
+
+        if(checked==true){
+            findlike=  " <i id='check_like' style='color:blue;'  class='fa-regular fa-thumbs-up'></i> "
+
+        }else{
+            findlike=  " <i id='check_like'   class='fa-regular fa-thumbs-up'></i> "
+       
+        }
+
+    
+
+
+
 
     let card = document.createElement('div')
         card.className = 'post_view'
-
+        card.id=rec.id
         card.innerHTML = 
-       ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>'${mu_user_getData.data().u_name}'</h4></div>`+
+       ` <div class='post_head' > <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>${mu_user_getData.data().u_name}</h4></div>`+
         `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
         
-       ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
-       ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
+      ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
+       ` <div class='social_section'><div class='like_div'>${findlike} <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i  class='fa-regular fa-comment'></i>  <b id='comment_counnt'>${rec.data().p_comment.length-1}</b></div> </div>`
         "<div class=;comment_section'>"
             "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
             " <div class='comments_list'>"
@@ -372,10 +420,112 @@ main_view.append(card)
 
 
 
-// let getData = await getDocs(getref)
-//    getData.forEach((record)=>{
-//     console.log(record.data().u_name);
-//    })
-}}
+
+
+}
+setInterval(3000,letsget())
+
+}
 
 ;
+
+//Likes  ............................................................................
+
+let like
+let like_num
+
+ function letsget(){
+
+ like=document.querySelectorAll("#check_like")
+
+ like_num=document.querySelector("#likes")
+
+ like.forEach((x)=>{
+    console.log(x);
+   
+    x.addEventListener("click", function(){updatelike(this)})})
+}
+
+
+
+
+
+
+async function updatelike(x){
+
+ 
+
+
+
+    let p_id =x.parentElement.parentElement.parentElement.id
+    
+    console.log(p_id);
+    let ref = doc(db,"post",p_id);
+
+   let postData= await  getDoc(ref)
+      let numlike=postData.data().p_like
+       let checklike = postData.data().liked_person
+console.log(typeof(checklike));
+   let checked = checklike.includes(usersData)
+
+   
+    
+
+    
+    if(x.style.color!= 'blue' && !checked){
+        x.style.color= 'blue';   
+        let checklike = postData.data().liked_person
+        let pushing = checklike.push(usersData)
+        
+        let new_liked_person = checklike
+        updateDoc(
+            ref, {
+             p_like:++numlike,
+             liked_person:new_liked_person
+
+            }
+          ).then(async ()=>{
+            let newlike = await  getDoc(ref)
+            x.parentElement.lastElementChild.innerText = newlike.data().p_like
+        })
+    
+        
+        }
+
+        
+    else{x.style.color= 'black'  
+
+    let checklike = postData.data().liked_person
+    let index = checklike.indexOf(usersData)
+         checklike.splice(index,1)
+         let new_liked_person = checklike
+
+         
+
+    updateDoc(
+
+        ref, {
+         p_like:--numlike,
+         liked_person:new_liked_person
+        }
+      ).then(async ()=>{
+        let newlike = await getDoc(ref)
+        x.parentElement.lastElementChild.innerText = newlike.data().p_like
+  
+
+    }
+)
+
+       
+}
+
+}  
+      
+
+
+///.............................................. Trending Views.........................
+
+let post_ref = collection(db,'post')
+let most_like = query(post_ref, orderBy("p_like"), limit(10));
+let res = await getDocs(most_like)
+res.forEach((rec)=>{console.log(rec.data());})  
