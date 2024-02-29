@@ -4,8 +4,8 @@
 
 let category_name
 let category_id
-
-document.addEventListener("DOMContentLoaded", function() {
+let select
+// document.addEventListener("DOMContentLoaded", function() {
     let selectButton = document.querySelector('.select');
     let dropCategory = document.querySelector('.drop-category');
     let categoryItems = dropCategory.querySelectorAll('li');
@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
             // console.log(category);
         });
     });
-});
+// });
+
+
 
 // ----------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
 
@@ -57,37 +59,60 @@ cancelButton.addEventListener('click', function()
     window.location.href = "HomePage.html";
 });
 
-// --------------------------------------------------------------Adding Image---------------------------------------------------------------------
+//----------------------------------------------------------------Publish Button-----------------------------------------------------------------------------
 
-let div = document.querySelector(".create")
-let imageUpload = document.getElementById("img") 
+let publishButton = document.querySelector('.btn');
+publishButton.addEventListener('click', function()
+ {
+    window.location.href = "HomePage.html";
+});
+
+// ---------------------------------------------------------------Adding Image----------------------------------------------------------------------------
+
+// let div = document.querySelector(".create")
+// let imageUpload = document.getElementById("img") 
+
+// imageUpload.addEventListener('change', function() {
+//     let img = document.createElement("img")
+//     let input = this.files[0];
+//     let text;
+//     if (input) {
+//         text = URL.createObjectURL(input);
+//         // text  = img.src
+//         console.log(text);
+//         // console.log(text);
+//     }
+//     // img.accept =".jpg,.png,.jpeg,.webp"
+//     img.src = text; 
+//     // img.id = 'p_image'
+//     div.prepend(img)
+    
+// });
+let imageUpload = document.getElementById("img");
 
 imageUpload.addEventListener('change', function() {
-    let img = document.createElement("img")
     let input = this.files[0];
     let text;
     if (input) {
         text = URL.createObjectURL(input);
-        // text  = img.src
-        console.log(text);
-        // console.log(text);
+        let existingImg = document.getElementById("img-src");
+        if(existingImg) {
+            existingImg.src = text;
+        } else {
+            console.error("Image element with id 'img-src' not found.");
+        }
     }
-    // img.accept =".jpg,.png,.jpeg,.webp"
-    img.src = text; 
-    // img.id = 'p_image'
-    div.prepend(img)
-    
 });
+
 
 //-------------------------------------------------------------------Adding data in firebase----------------------------------------------------------
 
 
 let publish =document.getElementById('submit')
     publish.addEventListener('click',create_post)
-let title = document.getElementById('create')
-let desc = document.getElementById('lines')
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------
+let title = document.getElementById('lines')
+let desc = document.getElementById('create')
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
   // Import the functions you need from the SDKs you need
@@ -115,27 +140,35 @@ const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
 let post_ref =collection(db,'post')
 
-let getData = await getDocs(post_ref)
+
+// let user_getRef = doc(db, "category", usersData);
+// let user_getData1 =  await  getDoc(getRef);
+
+
+
+
+async function create_post(){
+    
+
+  let getData = await getDocs(post_ref)
 let id = getData.size
 console.log(id);
+console.log(category_id);
 
-let getRef = doc(db, "category", `ca_id-${1}`);
+let getRef = doc(db, "category", `ca_id-${category_id}`);
 let getData1 =  await  getDoc(getRef);
 let p_array = getData1.data().post_id
 
-p_array.push(`p_id-${p_array.length+1}`)
-console.log(p_array);
+
+p_array.push(`p_id-${++id}`)
+
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
-let user_getRef = doc(db, "category", usersData);
-let user_getData1 =  await  getDoc(getRef);
 
 
 
 
-function create_post(){
-    
 let pimage = document.getElementById('img').files[0]
 
 let meta_data = {contentype:img.type}
@@ -146,12 +179,14 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
   let post_data = 
   {
     c_name:category_name,
-    p_desc:desc.value,
-    p_title:title.innerText,
+    p_desc:desc.innerText,
+    p_title:title.value,
     p_link:downloadURL,
     u_id:usersData
     
   }
+
+console.log(post_data);
 
 let ca_data =
  {
@@ -160,16 +195,23 @@ let ca_data =
     post_id:p_array,
   }
 
+console.log(ca_data);
+
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
 setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
         
  }))
   
 }
+// --------------------------------------------------------blurr and popup-----------------------------------------------------------------
 
+// var openButton = document.getElementById("open");
+// console.log(openButton); 
 
+// openButton.addEventListener('click', function() {
+//   console.log("Button clicked"); 
+//   container.style.display =  'block';
+//   mainDiv.classList.toggle('blur');
+// });
 
-
-
-
- 
+ let create_div=document

@@ -1,6 +1,4 @@
-
-
-  // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,30 +18,6 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //for see more ...
 let see_more = document.querySelectorAll('#see_more')
@@ -84,7 +58,7 @@ function changetheme(){
      
       
  let a = document.querySelector('.ca_popup').querySelectorAll('li')
-      a.forEach((e)=>{
+      a.forEach((e)=>{  
     e.querySelector('a').classList.toggle('blacktheme')
     e.addEventListener('click',function(){category_selected(this)})
      })
@@ -149,31 +123,17 @@ let check  = document.querySelector('#check_like')
     
   }
 
-
-
-
-
-
- 
-
 //firebase retrive post 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
 
 
 let user_getref = doc(db,'user',usersData)
 let user_getData = await getDoc(user_getref)
-let fav_arry= user_getData.data().u_favcategory 
-
-
-
-
-
+// let fav_arry= user_getData.data().u_favcategory 
 
 let i=0
 
-
-    
-   console.log(fav_arry);
+// console.log(fav_arry);
 
 //    for(i in fav_arry){
 
@@ -217,14 +177,9 @@ let i=0
 
     //  Categories
 
- 
-   async function category_selected(element){
+ async function category_selected(element){
 
-      
-
-
-      
-    if(element.innerText!='My favourtie' && element!=0){
+if(element.innerText!='My favourtie' && element!=0){
         let post_getref =  collection(db,'post')
         let q = query(post_getref,where('c_name','==',element.innerText))
         
@@ -235,9 +190,7 @@ let i=0
            console.log(rec.data());
          let uid =rec.data().u_id
 
-         
- 
-         let    mul_user_getref = doc(db,'user',uid)
+        let    mul_user_getref = doc(db,'user',uid)
          let   mu_user_getData  =await  getDoc(mul_user_getref)
              mu_user_getData.data().u_id
  
@@ -359,3 +312,237 @@ main_view.append(card)
 //     console.log(record.data().u_name);
 //    })
 }}
+
+
+/*////////////////////////////////////////////////////////////////////// Create  pages //////////////////////////////////////////////////////////////*/
+
+
+"use strict"
+
+// ----------------------------------------------------------Select The Category--------------------------------------------------------------------------------
+
+let category_name
+let category_id
+let select
+// document.addEventListener("DOMContentLoaded", function() {
+    let selectButton = document.querySelector('.select');
+    let dropCategory = document.querySelector('.drop-category');
+    let categoryItems = dropCategory.querySelectorAll('li');
+
+    selectButton.addEventListener('click', function() {
+        dropCategory.style.display = (dropCategory.style.display === 'block') ? 'none' : 'block';
+    });
+
+    categoryItems.forEach(function(item) {
+        
+        item.addEventListener('click', function() {
+            selectButton.textContent = this.textContent;
+            dropCategory.style.display = 'none';
+            category_name= this.innerText
+            category_id = this.id
+            // console.log(category);
+        });
+    });
+// });
+
+
+
+// ----------------------------------------------------------Style(Bold,Italic...)-------------------------------------------------------------------------------------
+
+let area = document.getElementById('create');
+area.addEventListener('click' ,function(){
+    area.focus();
+});
+
+let bold = document.getElementById('bold');
+let underline = document.getElementById('underline');
+let italic = document.getElementById('italic');
+
+bold.addEventListener('click', function() {
+  document.execCommand('bold');
+});
+
+underline.addEventListener('click', function() {
+  document.execCommand('underline');
+});
+
+italic.addEventListener('click', function() {
+  document.execCommand('italic');
+});
+
+// --------------------------------------------------------------Cancel Button-----------------------------------------------------------------------------------
+
+let cancelButton = document.querySelector('.can');
+cancelButton.addEventListener('click', function()
+ {
+    window.location.href = "HomePage.html";
+});
+
+//----------------------------------------------------------------Publish Button-----------------------------------------------------------------------------
+
+let publishButton = document.querySelector('.btn');
+publishButton.addEventListener('click', function()
+ {
+    window.location.href = "HomePage.html";
+});
+// --------------------------------------------------------------Adding Image---------------------------------------------------------------------
+
+// let div = document.querySelector(".create")
+// let imageUpload = document.getElementById("img") 
+
+// imageUpload.addEventListener('change', function() {
+//     let img = document.createElement("img")
+//     let input = this.files[0];
+//     let text;
+//     if (input) {
+//         text = URL.createObjectURL(input);
+//         // text  = img.src
+//         console.log(text);
+//         // console.log(text);
+//     }
+//     // img.accept =".jpg,.png,.jpeg,.webp"
+//     img.src = text; 
+//     // img.id = 'p_image'
+//     div.prepend(img)
+    
+// });
+let imageUpload = document.getElementById("img");
+
+imageUpload.addEventListener('change', function() {
+    let input = this.files[0];
+    let text;
+    if (input) {
+        text = URL.createObjectURL(input);
+        let existingImg = document.getElementById("img-src");
+        if(existingImg) {
+            existingImg.src = text;
+        } else {
+            console.error("Image element with id 'img-src' not found.");
+        }
+    }
+});
+
+
+//-------------------------------------------------------------------Adding data in firebase----------------------------------------------------------
+
+
+let publish =document.getElementById('submit')
+    publish.addEventListener('click',create_post)
+let title = document.getElementById('lines')
+let desc = document.getElementById('create')
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+  // Import the functions you need from the SDKs you need
+//   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import{getStorage,ref as sref,uploadBytesResumable,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js"
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+ 
+
+// Initialize Firebase
+
+let post_ref =collection(db,'post')
+
+
+// let user_getRef = doc(db, "category", usersData);
+// let user_getData1 =  await  getDoc(getRef);
+
+
+
+
+async function create_post(){
+    
+
+  let getData = await getDocs(post_ref)
+let id = getData.size
+console.log(id);
+console.log(category_id);
+
+let getRef = doc(db, "category", `ca_id-${category_id}`);
+let getData1 =  await  getDoc(getRef);
+let p_array = getData1.data().post_id
+
+
+p_array.push(`p_id-${++id}`)
+
+
+
+let usersData=JSON.parse(localStorage.getItem("usersData"))
+
+
+
+
+let pimage = document.getElementById('img').files[0]
+
+let meta_data = {contentype:img.type}
+let task = sref(getStorage(),'images'+pimage.name)
+let store = uploadBytesResumable(task,pimage,meta_data)
+store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
+ 
+  let post_data = 
+  {
+    c_name:category_name,
+    p_desc:desc.innerText,
+    p_title:title.value,
+    p_link:downloadURL,
+    u_id:usersData
+    
+  }
+
+console.log(post_data);
+
+let ca_data =
+ {
+    ca_id:`ca_id-${category_id}`,
+    ca_name:category_name,
+    post_id:p_array,
+  }
+
+console.log(ca_data);
+
+setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
+setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
+        
+ }))
+  
+}
+// ----------------------------------------------------------------blurr and popup-----------------------------------------------------------------------
+
+// var openButton = document.getElementById("open");
+// console.log(openButton); 
+
+// openButton.addEventListener('click', function() {
+//   console.log("Button clicked"); 
+//   container.style.display =  'block';
+//   mainDiv.classList.toggle('blur');
+// });
+
+
+
+
+
+
+
+
+///////////////////////////////
+ let create_btn = document.getElementById("create_btn");
+  let create_main_div = document.getElementById("create_main");
+  let container = document.getElementsByClassName("container");
+  let main_div = document.querySelector(".main_div");
+
+ create_btn.addEventListener("click",()=>{
+ 
+  
+  trending_views.style.display="none";
+  create_main_div.classList.add("create_main_div");
+  main_div.classList.remove("main_div");
+  main_div.classList.add("block");
+
+
+ })
+
+

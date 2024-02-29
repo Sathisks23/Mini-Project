@@ -10,10 +10,15 @@
 </head>
 <body>
   
+    <!-- <button id="open" onclick="openbutton()">Create</button> -->
     <div id="main_div" class="main_div">
+        
         <div class="container">
-           <div class="category">
+           
+            <div class="category">
+                
                 <button class="select">Select the Category <i class="fa-solid fa-caret-down"></i></button>
+                
                 <div class="cross">
                     <button class="can">&times;</button>
                 </div>
@@ -41,20 +46,29 @@
 
             
             </div>
+            
             <div class="main">
+                
                 <p>Headlines :</p>
+                
                 <input type="text" placeholder= "Headlines goes here.." id="lines" class="lines" width="500px" height="300px">
+            
             </div>
+            
             <div id="font">
                 <button id="bold"><i class="fa-solid fa-bold"></i></button>
                 <button id="underline"><i class="fa-solid fa-underline"></i></button>
                 <button id="italic"><i class="fa-solid fa-italic"></i></button>
+                <!-- <i class="fa-regular fa-image" id="img" style="color: #adadad;"></i> -->
                 <input type="file" id="img" ></input>
             
             </div>
+            
             <div class="create">
+                
                 <div class="text" id="create" contenteditable="true"></div>
-                <!-- <img id="dummy" alt=""> -->
+                
+                <img id="img-src" alt="">
             </div>
             <!-- <img id="dummy" alt=""> -->
             <div class="btn">
@@ -63,7 +77,11 @@
         </div>
     </div>
  
-    <script type="module" src="Js/create.js"></script>
+ 
+<script type="module" src="Js/create.js">
+
+
+</script>
     
 </body>
 </html>
