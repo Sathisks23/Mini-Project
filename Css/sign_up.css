@@ -289,10 +289,10 @@ i.fa-solid.fa-thumbs-up {
     width: 80px;
 }
 
-/* img{
+img{
     width: 100%;
     height: 100%;
-} */
+}
 .first_main_contianer,.second_main_contianer,.third_main_contianer{
     display: flex;
     justify-content: space-evenly;
