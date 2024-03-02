@@ -115,20 +115,21 @@ click()
 event.preventDefault()
     
  if (inputfile.value==false) {
-console.log("if");
+// console.log("if");
 updateDoc(doc(db,"user",usersData), {
     u_name: inputname.value,
     u_bio:bio1.value,
-    u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+    u_dp:mu_user_getData.data().u_dp
+    // u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
   }).then(()=>{
-    alert('sussess')
+  
     location.replace("spr.html")
   }
   )
  
    
  }else{
-  console.log("else");
+  // console.log("else");
   let pimage = document.getElementById('drop_zone').files[0]
 
   let meta_data = {contentype:pimage.type}
