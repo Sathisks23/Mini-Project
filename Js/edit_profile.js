@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore,getDocs,getDoc,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore,getDocs,getDoc,updateDoc,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import{getStorage,ref as sref,uploadBytesResumable,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js"
@@ -37,6 +37,8 @@ var a=document.getElementById("btn_link")
 var a2=document.getElementById("cancel_link")
 var edit=document.querySelector(".color")
 var bio1=document.getElementById("bio")
+var trash=document.querySelector("#icon")
+
 
 let ProfileImg = document.querySelector("#change");
     let inputfile= document.querySelector("#drop_zone");
@@ -44,10 +46,10 @@ let ProfileImg = document.querySelector("#change");
 inputfile.onchange = function(){
     ProfileImg.src = URL.createObjectURL(inputfile.files[0]) 
 }
-var trash=document.querySelector("#icon")
 trash.addEventListener("click",()=>{
-  ProfileImg.src="Assests/Edit Picture.jpg" 
+  ProfileImg.src="https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
 })
+
 var count=0
 
 // error.classList.add("none")
@@ -69,7 +71,7 @@ let uid =usersData
      bio1.innerText = mu_user_getData.data().u_bio
      if (bio1.value=="undefined") {
       bio1.value= ""
-      console.log("hi");
+      // console.log("hi");
     }
 function click() {
     var nameRegex =/[a-z]{3,}/gi;
@@ -109,7 +111,21 @@ click()
 
 event.preventDefault()
     
+ if (inputfile.value==false) {
+console.log("if");
+updateDoc(doc(db,"user",usersData), {
+    u_name: inputname.value,
+    u_bio:bio1.value,
+    u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+  }).then(()=>{
+    alert('sussess')
+    location.replace("spr.html")
+  }
+  )
  
+   
+ }else{
+  console.log("else");
   let pimage = document.getElementById('drop_zone').files[0]
 
   let meta_data = {contentype:pimage.type}
@@ -117,13 +133,11 @@ event.preventDefault()
   let usersData=JSON.parse(localStorage.getItem("usersData"))
   let store = uploadBytesResumable(task,pimage,meta_data)
   store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
-       dp = downloadURL
-       setDoc(doc(db,"user",usersData), {
-        u_bio:bio1,
-        u_dp:dp,
-        u_email:email,
-        u_favcategory:faver,
-        u_password:pass,
+      
+    updateDoc(doc(db,"user",usersData), {
+       
+        u_dp:downloadURL,
+     
   
         u_name: inputname.value,
         u_bio:bio1.value,
@@ -132,7 +146,7 @@ event.preventDefault()
         alert('sussess')
         location.replace("spr.html")
       }
-      );
+      )
      
   }))
     
@@ -143,12 +157,15 @@ event.preventDefault()
        pass = getData1.data().u_password
     
 
-   
+
+
+
+ }
+
+
 
 })
-
-
-button2.addEventListener("click",(e)=>{
-  e.preventDefault();
+button2.addEventListener("click",(event)=>{
+  event.preventDefault()
   location.replace("spr.html")
 })
