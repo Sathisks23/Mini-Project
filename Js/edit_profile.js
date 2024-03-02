@@ -146,7 +146,6 @@ updateDoc(doc(db,"user",usersData), {
         u_bio:bio1.value,
         
       }).then(()=>{
-        alert('sussess')
         location.replace("spr.html")
       }
       )
