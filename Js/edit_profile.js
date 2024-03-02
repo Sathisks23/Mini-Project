@@ -1,4 +1,4 @@
- // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore,getDocs,getDoc,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,25 +44,40 @@ let ProfileImg = document.querySelector("#change");
 inputfile.onchange = function(){
     ProfileImg.src = URL.createObjectURL(inputfile.files[0]) 
 }
-
+var trash=document.querySelector("#icon")
+trash.addEventListener("click",()=>{
+  ProfileImg.src="Assests/Edit Picture.jpg" 
+})
 var count=0
 
-error.classList.add("none")
+// error.classList.add("none")
 
 let getRef1 = doc(db, "user", usersData);
 
 let getData1 = await getDoc(getRef1);
 console.log(getData1.data().u_email); 
 
+let uid =usersData
 
+ let    mul_user_getref = doc(db,'user',uid)
+ let   mu_user_getData  =await  getDoc(mul_user_getref)
+   var user_id_pro=  mu_user_getData.data().u_id
+
+
+     ProfileImg.src = mu_user_getData.data().u_dp
+     inputname.value = mu_user_getData.data().u_name
+     bio1.innerText = mu_user_getData.data().u_bio
+     if (bio1.value=="undefined") {
+      bio1.value= ""
+      console.log("hi");
+    }
 function click() {
     var nameRegex =/[a-z]{3,}/gi;
-
     if (nameRegex.test(inputname.value)) {
-        error.classList.remove("block")
-        error.classList.add("none")
-        count=1
-      }
+      error.classList.remove("block")
+      error.classList.add("none")
+    }
+
       else{
         error.classList.remove("none")
         error.classList.add("block")
@@ -92,15 +107,8 @@ button.addEventListener("click",(event)=>{
 click()
 
 
-
-
-
-if (count<1) {
-  event.preventDefault()
-}
-else{    
-
-  event.preventDefault()
+event.preventDefault()
+    
  
   let pimage = document.getElementById('drop_zone').files[0]
 
@@ -110,6 +118,22 @@ else{
   let store = uploadBytesResumable(task,pimage,meta_data)
   store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
        dp = downloadURL
+       setDoc(doc(db,"user",usersData), {
+        u_bio:bio1,
+        u_dp:dp,
+        u_email:email,
+        u_favcategory:faver,
+        u_password:pass,
+  
+        u_name: inputname.value,
+        u_bio:bio1.value,
+        
+      }).then(()=>{
+        alert('sussess')
+        location.replace("spr.html")
+      }
+      );
+     
   }))
     
        bio= getData1.data().u_bio
@@ -119,21 +143,12 @@ else{
        pass = getData1.data().u_password
     
 
-    setDoc(doc(db,"user",usersData), {
-      u_bio:bio,
-      u_dp:dp,
-      u_email:email,
-      u_favcategory:faver,
-      u_password:pass,
+   
 
-      u_name: inputname.value,
-      u_bio:bio1.value,
-      
-    }).then(()=>alert("user added"));
-    a.setAttribute("href","spr.html")
-}
-})
-button2.addEventListener("click",()=>{
-  a2.setAttribute("href","spr.html")
 })
 
+
+button2.addEventListener("click",(e)=>{
+  e.preventDefault();
+  location.replace("spr.html")
+})

@@ -22,7 +22,7 @@ const db = getFirestore(app);
 let usersData=JSON.parse(localStorage.getItem("usersData"))
 
  if(usersData){
-      location.replace("HomePage.html");
+      location.replace("hmpg.html");
     }
 
 
@@ -110,7 +110,7 @@ async function   email_validate(){
 
             localStorage.setItem("usersData",JSON.stringify(no[i][2]));
 
-             location.replace('HomePage.html') 
+             location.replace('hmpg.html') 
 
         } 
         

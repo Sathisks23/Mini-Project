@@ -27,7 +27,7 @@ console.log(usersData);
 
 //Checking signup users
 if(usersData){
-  location.replace("HomePage.html");
+  location.replace("hmpg.html");
   
 }
 
@@ -447,7 +447,7 @@ alert('UserAdded')
 
 
 
- button.setAttribute("href","HomePage.html")
+ button.setAttribute("href","hmpg.html")
 
     }})
 
