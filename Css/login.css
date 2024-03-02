@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login_form {
+  width: 400px;
+  padding: 20px;
+  /* text-transform: uppercase; */
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.input_group {
+  margin: 20px 0;
+}
+
+.input_group label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.input_group input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+.input_group p {
+  font-size: 16px;
+  color: red;
+  display: none;
+  /* visibility: hidden; */
+}
+
+#submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  background-color: blueviolet;
+  border: none;
+  color: white;
+}
+
+.login_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 230px;
+}
+
+span {
+  color: blueviolet;
+}
+
+a {
+  text-decoration: none;
+}
+
+.login_form p {
+  text-align: center;
+}
+
+/*error icon*/
+
+
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+
+input:invalid {
+  animation: shake 300ms;
+  color: red;
+
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(4px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* #acountto_sign{
+  color: gray;
+}
+
+.line_tag h3{
+  text-align: center;
+}
+.fac_icon{
+  border: none;
+  background-color: rgb(76, 76, 242);
+  width: 90%;
+  height: 30px;
+  
+}
+
+.fac_icon i{
+ 
+ color: white;
+} */
