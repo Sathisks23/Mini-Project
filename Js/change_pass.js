@@ -55,6 +55,7 @@ console.log(id);
           }
         ).then(()=>{
           alert("Updated Successfully")
+          location.replace('hmpg.html')
         })
 
     }
