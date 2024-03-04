@@ -48,8 +48,12 @@ let   mu_user_getData  =await  getDoc(mul_user_getref)
 
     uprofile.src = mu_user_getData.data().u_dp
     username.innerText = mu_user_getData.data().u_name
-    userbio.innerText = mu_user_getData.data().u_bio
-
+    if(mu_user_getData.data().u_bio)
+{
+  userbio.innerText = mu_user_getData.data().u_bio
+}else{
+   userbio.innerText = ""
+}
 
 
 
