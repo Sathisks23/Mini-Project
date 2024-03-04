@@ -202,7 +202,7 @@ console.log('yes');
      `<div class='description'><h5>${rec.data().p_title}</h5>${p}</div>`+
      
     ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
-    ` <div class='social_section'><div class='like_div'> ${findlike} <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>0</b></div> </div>`
+    ` <div class='social_section'> <div class='like_div'> ${findlike} <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>0</b></div> </div>`
      "<div class=;comment_section'>"
          "<div class='add_comment_section'> <img id='comment_dp' src='' ><input id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
          " <div class='comments_list'>"
