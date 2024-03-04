@@ -746,7 +746,7 @@ let ca_data =
 console.log(ca_data);
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
-setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
+setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert( location.replace('hmpg.html'))}).catch((error)=>{console.log(error)})
         
  }))
   
