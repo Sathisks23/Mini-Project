@@ -43,6 +43,40 @@ for(i in fav_arry){
 
 
 
+//cahnge Theme
+let theme =document.getElementById('theme')
+    theme.addEventListener('click',changetheme)
+
+function changetheme(){
+    let img =document.getElementById('logo')
+    let b=img.src.slice(22)
+    console.log(b);
+      document.body.classList.toggle('blacktheme')
+      document.querySelector('header').classList.toggle('blacktheme')
+      document.querySelector('.search').classList.toggle('darkinput')
+     document.getElementById('theme').classList.toggle('blacktheme')
+     
+      
+ let a = document.querySelector('.ca_popup').querySelectorAll('li')
+      a.forEach((e)=>{
+    e.querySelector('a').classList.toggle('blacktheme')
+    document.getElementById('logo_div').classList.toggle('blacktheme')
+    e.addEventListener('click',function(){category_selected(this)})
+     })
+    
+
+        if(b=='Assests/logo.png'){
+            img.src='Assests/darklogo.png'
+           
+            // theme.innerText = "Dark Theme"
+         }else{
+            img.src='Assests/logo.png'
+            
+           
+            // theme.innerText = "Ligth Theme"
+
+        }
+}
 
 
 
@@ -84,7 +118,7 @@ let trending_views = document.querySelector('.trending_views')
 
 
 
-
+let old 
 
 category_selected(first)
 
@@ -92,15 +126,28 @@ category_selected(first)
 
 async function category_selected(element){
 
-    main_view.innerHTML = ''
-
+ 
+    
   
 let post_getref =  collection(db,'post')
 let q
 try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)) }
 let querysap = await getDocs(q)
     
-     
+ if(querysap.size==0){ 
+  main_view.innerHTML = ''
+
+console.log('yes');
+    let emptyshow = document.createElement('div')
+    emptyshow.id='empty_div'
+       emptyshow.innerHTML = '<h1>No Post Yet !</h1>'
+
+    main_view.append(emptyshow)
+ }else{
+
+  main_view.innerHTML = ''
+
+
     querysap.forEach(async(rec)=>{
        
        console.log(rec.data());
@@ -136,9 +183,23 @@ let querysap = await getDocs(q)
     }
 
 
+    let p
+      if(rec.data().p_desc.length>=100){ 
+        let string1 =  rec.data().p_desc.slice(0,100)
+        let string2 =  rec.data().p_desc.slice(100)
+        p =` <p id="post_desc">${string1}  <span  id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
+      }else{
+        p= ` <p id="post_desc">${rec.data().p_desc}</p> `
+      }
+
+
+
+
+
+
      card.innerHTML = 
-    ` <div class='post_head' > <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4>${mu_user_getData.data().u_name}</h4></div>`+
-     `<div class='description'><b>${rec.data().p_title}</b><p id='post_desc'>${rec.data().p_desc}</p> </div>`+
+    ` <div class='post_head' > <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h3>${mu_user_getData.data().u_name}</h3></div>`+
+     `<div class='description'><h5>${rec.data().p_title}</h5>${p}</div>`+
      
     ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
     ` <div class='social_section'><div class='like_div'> ${findlike} <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>0</b></div> </div>`
@@ -154,13 +215,18 @@ main_view.append(card)
 
 
 
-setTimeout(1500,letsget())
 
+setInterval(1600,letsget())
  
 }    
 
+
+
+
 )
 
+
+ }
 
   
 
@@ -176,6 +242,8 @@ setTimeout(1500,letsget())
 
 function letsget(){
 
+  console.log(1);
+
     let like=document.querySelectorAll("#check_like")
 let like_num=document.querySelector("#likes")
 
@@ -187,11 +255,13 @@ like.forEach((x)=>{
    
     x.addEventListener("click", function(){updatelike(this)})})
 
-    let see_more = document.querySelectorAll('#see_more')
-    see_more.forEach(item=>{
-        item.addEventListener('click', function(){showmore(this)})
-    })
 
+    let see_more = document.querySelectorAll('#see_more')
+    see_more.forEach((x)=>{
+    console.log(x);
+      
+        x.addEventListener('click', function(){showmore(this)}) })
+   
 }
 
 
@@ -200,14 +270,24 @@ like.forEach((x)=>{
 //for see more ...
 
 function showmore(mm){
+
+  console.log( mm.parentElement.firstElementChild.id);
+
+
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
         mm.parentElement.firstElementChild.style.display = 'block';
+      
         mm.innerText = 'See Less..'
+        console.log('ss');
+    
+   
     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
         mm.parentElement.firstElementChild.style.display = 'none';
         mm.innerText = 'See More..'
-    }
+        console.log('ss');
 
+    }
+  
 }
 
 
@@ -295,20 +375,20 @@ let res = await getDocs(most_like)
 let trend_div = document.querySelector('.trending_views')
 
 res.forEach((rec)=>{
-    console.log(rec.data());
+   
 
    let card = document.createElement('div')
       card.className = 'trend_post_view'
 let p
       if(rec.data().p_desc.length>=100){ 
-        let string1 =  rec.data().p_desc.slice(0,rec.data().p_desc.length/2)
-        let string2 =  rec.data().p_desc.slice(rec.data().p_desc.length/2)
+        let string1 =  rec.data().p_desc.slice(0,100)
+        let string2 =  rec.data().p_desc.slice(100)
         p =` <p id="trend_description">${string1}<span id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
       }else{
         p= ` <p id="trend_description">${rec.data().p_desc}</p> `
       }
 
-    card.innerHTML =` <img id="trend_post" src=${rec.data().p_link} alt=""> ${p}`
+    card.innerHTML =` <h6 id='trnd_title'>${rec.data().p_title}</h6><img id="trend_post" src=${rec.data().p_link} alt=""> ${p}`
     
     
 trend_div.append(card)
@@ -699,9 +779,10 @@ setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Categ
  
   
   trending_views.style.visibility= "hidden";
-//   create_main_div.classList.add("create_main_div");
+  // create_main_div.classList.add("create_main_div");
   document.querySelector(".categories_nav").style.opacity = "0.2";
-  document.querySelector("header").style.opacity = "0.2";
+  document.querySelector("header").style.backgroundColor = "white";
+
   main_div.classList.remove("main_div");
   main_view.style.display="none";
   main_div.classList.add("dispaly_block");
