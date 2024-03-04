@@ -529,3 +529,15 @@ let post_ref = collection(db,'post')
 let most_like = query(post_ref, orderBy("p_like"), limit(10));
 let res = await getDocs(most_like)
 res.forEach((rec)=>{console.log(rec.data());})  
+
+
+
+
+
+///change_password////////////////////////
+//  let change_pass=document.getElementById("change_pass");
+
+//  change_pass.addEventListener("click",()=>{
+//     console.log("hiii");
+
+//  });

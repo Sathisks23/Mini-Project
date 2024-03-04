@@ -290,7 +290,7 @@ console.log(typeof(checklike));
 ///.............................................. Trending Views.........................
 
 let trend_post_ref = collection(db,'post')
-let most_like = query(trend_post_ref, orderBy("p_like",'desc'), limit(1));
+let most_like = query(trend_post_ref, orderBy("p_like",'desc'), limit(5));
 let res = await getDocs(most_like)
 let trend_div = document.querySelector('.trending_views')
 
