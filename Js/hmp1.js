@@ -752,7 +752,7 @@ console.log(ca_data);
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
 
- 
+ alert('post created'),
  
   setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false;  location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
 
