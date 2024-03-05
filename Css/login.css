@@ -68,8 +68,8 @@
   }
   
   .login_form p {
-    text-align: center;
-  }
+    text-align: left;
+}
   
   /*error icon*/
   
@@ -89,6 +89,23 @@
     color: red;
   
   }
+
+  .google_img{
+    height: 22px;
+    position: absolute;
+    left: 140px;
+    bottom: 131px;
+  }
+  button#google_btn {
+    width: 100%;
+    height: 42px;
+    border-radius: 5%;
+    background-color: white;
+}
+#Email_Error{
+  display: none;
+  color: red;
+}
   
   @keyframes shake {
     25% {

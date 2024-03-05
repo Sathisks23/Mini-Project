@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,10 +13,17 @@ const firebaseConfig = {
   appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
 };
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getAuth,GoogleAuthProvider,signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+const auth = getAuth(app);
+auth.languageCode = 'en';
+const provider = new GoogleAuthProvider();
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
@@ -72,6 +79,7 @@ console.log(password.value);
   email_validate()
 
   }
+  
 
 
 
@@ -82,7 +90,7 @@ console.log(password.value);
 
 // console.log(no);
 
-
+ let email_Error=document.querySelector("#Email_Error");
 
 
 let i= 0
@@ -110,11 +118,22 @@ async function   email_validate(){
 
             localStorage.setItem("usersData",JSON.stringify(no[i][2]));
 
-             location.replace('hmpg.html') 
+             location.replace('hmpg.html'); 
 
         } 
-        
+        else{
+          email_id.style.border='3px red solid';
+          setTimeout(() =>{
+            email_Error.style.display="block";
+          },1000)
+       
+          break;
+        }
+       
+       break;
      } 
+
+
 }
 
 
@@ -130,8 +149,8 @@ async function   email_validate(){
 
 
 
-
-var p=document.querySelectorAll(".Erro_msg");
+ let  p=document.querySelector(".Erro_msg");
+ let  p2=document.querySelector(".Erro_msg1");
 
 function error(element,msg){
   
@@ -140,27 +159,25 @@ function error(element,msg){
    
     console.log(p);
   
-    p.forEach(elem => {
-        elem.style. display="block";
-        elem.innerText=msg;
-    });
-
-
-
+        p.style. display="block";
+     
+      p2.style. display="block";
+      setTimeout(() =>{
+        p.style. display="none";
+        p2.style. display="none";
+      },1500)
+    
  }
  
  function success(element,msg){
     element.style.border='3px green solid';
     const parent=element.parentElement;
    
-    p.forEach(elem => {
-        elem.innerText= msg;
-    elem.style.display = "none";
-    });
+    p.style.display = "none";
+  
+    p2.style.display = "none";
    
-
-    // p.classList.remove("block");
-    // p.classList.add("none");
+  
    
  }
 
@@ -170,4 +187,31 @@ function error(element,msg){
 
 
 
-// console.log(no[9][1]==password.value,typeof(password.value),typeof(no[9][1]));
+//continue width google code
+
+
+
+// let usersData=JSON.parse(localStorage.getItem("usersData"))
+// console.log(usersData);
+ 
+let google_btn=document.getElementById("google_btn");
+google_btn.addEventListener("click",()=>{
+
+    signInWithPopup(auth, provider)
+  .then((result) => {
+  
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const user = result.user;
+    console.log(user);
+    location.replace("hmpg.html");
+    // window.location.href="";
+
+  
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+ 
+  });
+    console.log("hiii");
+})
