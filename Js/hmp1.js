@@ -695,6 +695,9 @@ let post_ref =collection(db,'post')
 
 async function create_post(){
     
+ 
+
+
 
   let getData = await getDocs(post_ref)
 let id = getData.size
@@ -743,10 +746,18 @@ let ca_data =
     post_id:p_array,
   }
 
+
+  document.getElementById('submit').disabled = true,
 console.log(ca_data);
 
-setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
-setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert( location.replace('hmpg.html'))}).catch((error)=>{console.log(error)})
+setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
+
+ 
+ 
+  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false;  location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+
+
+)
         
  }))
   
