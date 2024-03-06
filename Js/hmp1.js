@@ -35,13 +35,14 @@ let ul = document.querySelector('.ca_popup')
 
     let i=0
 for(i in fav_arry){
-    console.log(fav_arry[i]);
+  
    let li= document.createElement('li')
+   li.className = 'navlink'
    li.innerText = fav_arry[i]
    ul.append(li)
 }
 
-
+let li1 = document.querySelectorAll('.navlink')
 
 //cahnge Theme
 let theme =document.getElementById('theme')
@@ -119,15 +120,17 @@ let trending_views = document.querySelector('.trending_views')
 
 
 let old 
-
-category_selected(first)
+category_selected(li1[0])
 
 
 
 async function category_selected(element){
 
+if(old){old.classList.remove('active');console.log(old);}
+
  
-    
+  
+    element.classList.toggle('active')
   
 let post_getref =  collection(db,'post')
 let q
@@ -137,7 +140,7 @@ let querysap = await getDocs(q)
  if(querysap.size==0){ 
   main_view.innerHTML = ''
 
-console.log('yes');
+
     let emptyshow = document.createElement('div')
     emptyshow.id='empty_div'
        emptyshow.innerHTML = '<h1>No Post Yet !</h1>'
@@ -150,10 +153,10 @@ console.log('yes');
 
     querysap.forEach(async(rec)=>{
        
-       console.log(rec.data());
+      
      let uid =rec.data().u_id
 
-     console.log(uid);
+    
 
      let    mul_user_getref = doc(db,'user',uid)
      let   mu_user_getData  =await  getDoc(mul_user_getref)
@@ -168,9 +171,8 @@ console.log('yes');
         let postData= await  getDoc(ref)
         let numlike=postData.data().p_like
          let checklike = postData.data().liked_person
-    console.log(checklike);
      let checked = checklike.includes(usersData)
-    console.log(checked);
+   
      let findlike 
 
 
@@ -217,6 +219,7 @@ main_view.append(card)
 
 
 setTimeout(1600,letsget())
+setTimeout(1600,getdesc())
  
 }    
 
@@ -228,7 +231,7 @@ setTimeout(1600,letsget())
 
  }
 
-  
+  old = element
 
 }
 
@@ -242,23 +245,23 @@ setTimeout(1600,letsget())
 
 function letsget(){
 
-  console.log(1);
+
 
     let like=document.querySelectorAll("#check_like")
 let like_num=document.querySelector("#likes")
 
-console.log(like);
+
 
 
 like.forEach((x)=>{
-    console.log(x);
+   
    
     x.addEventListener("click", function(){updatelike(this)})},{once : true})
 
 
     let see_more = document.querySelectorAll('#see_more')
     see_more.forEach((x)=>{
-    console.log(x);
+    
       
         x.addEventListener('click', function(){showmore(this)}) },{once : true})
    
@@ -278,14 +281,13 @@ function showmore(mm){
         mm.parentElement.firstElementChild.style.display = 'block';
       
         mm.innerText = 'See Less..'
-        console.log('ss');
+       
     
    
     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
         mm.parentElement.firstElementChild.style.display = 'none';
         mm.innerText = 'See More..'
-        console.log('ss');
-
+     
     }
   
 }
@@ -397,6 +399,60 @@ trend_div.append(card)
 
     
 
+//-------------------------------------------search-------------------------------------------------
+
+
+
+function getdesc(){
+
+
+  let search_input = document.getElementById('searchinput')
+ 
+  search_input.addEventListener('keyup',function(){searching(search_input.value)})
+
+}
+ 
+function searching(str){
+
+ let  desc_value = document.querySelectorAll('#post_desc')
+
+let end = desc_value.length
+
+  for(i in desc_value){
+
+      let  a = desc_value[i].innerText.toLowerCase()
+              console.log(typeof(a));
+
+      if(a.indexOf(str.toLowerCase())!=-1){
+        desc_value[i].parentElement.parentElement.style.display = ''
+      }else{
+        desc_value[i].parentElement.parentElement.style.display = 'none'
+
+      }
+
+      if(i==8) break
+  }
+  
+
+
+  
+   
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -458,7 +514,7 @@ category.forEach((x,category)=>{
        
         fav_arry.push(x.innerText);
 
-        console.log(fav_arry);
+       
     }
 
     })
@@ -488,7 +544,7 @@ updateDoc(
 
     }
     else{
-        console.log("no");
+       
     }
     })
 
@@ -737,7 +793,7 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     liked_person:[]
   }
 
-console.log(post_data);
+
 
 let ca_data =
  {
@@ -791,8 +847,8 @@ setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
   
   trending_views.style.visibility= "hidden";
   // create_main_div.classList.add("create_main_div");
-  document.querySelector(".categories_nav").style.opacity = "0.2";
-  document.querySelector("header").style.backgroundColor = "white";
+  document.querySelector(".categories_nav").style.opacity = "0.10";
+  document.querySelector("header").style.opacity = "0.10";
 
   main_div.classList.remove("main_div");
   main_view.style.display="none";

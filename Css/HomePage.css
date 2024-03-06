@@ -76,6 +76,12 @@ input:focus{
     border: none;
 }
 
+.active{
+    background-color: #6452D0;
+    color: white;
+}
+
+
 header{
     display: flex;
     justify-content: space-around;
@@ -160,7 +166,8 @@ padding-top:12px;
    cursor: pointer;
 }
 .ca_popup>li:hover{
-    background-color:rgba(72, 69, 94, 0.041);
+    background-color:rgba(74, 61, 173, 0.425);
+    color: white;
 }
 
 
@@ -607,8 +614,11 @@ span#span {
     padding: 0;
     box-sizing: border-box;
 }
-
-
+body {
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #f0f0f0; */
+    /* background-color: #9e9b9b; */
+}
 .container {
  
     max-width: 800px;
@@ -616,10 +626,13 @@ span#span {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: rgba(10, 10, 10, 0.1) 0px 4px 2px, rgba(10, 10, 10, 0.1) 0px 8px 14px, rgba(10, 10, 26, 0.1) 0px 16px 46px;
     height: 500px; 
     overflow-y: auto;
-}
+    border: 1px solid #7B65FF;
+} 
+
 
 .category {
     display: flex;
