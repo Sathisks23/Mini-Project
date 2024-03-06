@@ -539,6 +539,8 @@ setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Categ
   
   trending_views.style.display="none";
   create_main_div.classList.add("create_main_div");
+  document.querySelector(".categories_nav").style.opacity = "0.10";
+  document.querySelector("header").style.opacity = "0.10";
   main_div.classList.remove("main_div");
   main_div.classList.add("block");
 

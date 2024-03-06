@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,27 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body>
-  
-    <!-- <button id="open" onclick="openbutton()">Create</button> -->
+
+<body onload="loderfunction()">
+
     <div id="main_div" class="main_div">
-        
+      
         <div class="container">
-           
+
+            <div class="loading-overlay" id="loadingOverlay">
+                
+                <div class="loading-spinner"></div>
+              
+            </div>
+
             <div class="category">
-                
+
                 <button class="select">Select the Category <i class="fa-solid fa-caret-down"></i></button>
-                
+
                 <div class="cross">
                     <button class="can">&times;</button>
                 </div>
-            </div> 
+            </div>
             <div class="drop-category">
 
                 <li id="4" class="World">World</li>
@@ -33,41 +40,42 @@
                 <li id="7" class="Science">Science</li>
                 <li id="8" class="Entertainment">Entertainment</li>
                 <li id="9" class="Business">Business</li>
-                <li id="10"class="Health">Health and Fitness</li>
+                <li id="10" class="Health">Health and Fitness</li>
                 <li id="1" class="Sports">Sports</li>
-                <li id="11"class="Crime">Crime</li>
-                <li id="12"class="Beauty">Beauty</li>
-                <li id="13"class="Religion">Religion</li>
-                <li id="14"class="Mobile">Mobile and Gadgets</li>
-                <li id="15"class="Politics">Politics</li>
-                <li id="16"class="Agriculture">Agriculture</li>
-                <li id="17"class="Weather">Weather</li>
-                <li id="18"class="Finance">Finance</li> 
+                <li id="11" class="Crime">Crime</li>
+                <li id="12" class="Beauty">Beauty</li>
+                <li id="13" class="Religion">Religion</li>
+                <li id="14" class="Mobile">Mobile and Gadgets</li>
+                <li id="15" class="Politics">Politics</li>
+                <li id="16" class="Agriculture">Agriculture</li>
+                <li id="17" class="Weather">Weather</li>
+                <li id="18" class="Finance">Finance</li>
 
-            
+
             </div>
-            
+
             <div class="main">
-                
+
                 <p>Headlines :</p>
-                
-                <input type="text" placeholder= "Headlines goes here.." id="lines" class="lines" width="500px" height="300px">
-            
+
+                <input type="text" placeholder="Headlines goes here.." id="lines" class="lines" width="500px"
+                    height="300px">
+
             </div>
-            
+
             <div id="font">
                 <button id="bold"><i class="fa-solid fa-bold"></i></button>
                 <button id="underline"><i class="fa-solid fa-underline"></i></button>
                 <button id="italic"><i class="fa-solid fa-italic"></i></button>
                 <!-- <i class="fa-regular fa-image" id="img" style="color: #adadad;"></i> -->
-                <input type="file" id="img" ></input>
-            
+                <input type="file" id="img"></input>
+
             </div>
-            
+
             <div class="create">
-                
+
                 <div class="text" id="create" contenteditable="true"></div>
-                
+
                 <img id="img-src" alt="">
             </div>
             <!-- <img id="dummy" alt=""> -->
@@ -76,12 +84,13 @@
             </div>
         </div>
     </div>
- 
- 
-<script type="module" src="Js/create.js">
 
 
-</script>
-    
+    <script type="module" src="Js/create.js">
+
+
+    </script>
+
 </body>
+
 </html>

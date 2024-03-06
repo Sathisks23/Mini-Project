@@ -61,11 +61,11 @@ cancelButton.addEventListener('click', function()
 
 //----------------------------------------------------------------Publish Button-----------------------------------------------------------------------------
 
-let publishButton = document.querySelector('.btn');
-publishButton.addEventListener('click', function()
- {
-    window.location.href = "HomePage.html";
-});
+// let publishButton = document.querySelector('.btn');
+// publishButton.addEventListener('click', function()
+//  {
+//     window.location.href = "HomePage.html";
+// });
 
 // ---------------------------------------------------------------Adding Image----------------------------------------------------------------------------
 
@@ -90,7 +90,7 @@ publishButton.addEventListener('click', function()
 // });
 let imageUpload = document.getElementById("img");
 
-imageUpload.addEventListener('change', function() {
+imageUpload.addEventListener('change', function() {     
     let input = this.files[0];
     let text;
     if (input) {
@@ -145,12 +145,9 @@ let post_ref =collection(db,'post')
 // let user_getData1 =  await  getDoc(getRef);
 
 
-
-
 async function create_post(){
-    
 
-  let getData = await getDocs(post_ref)
+let getData = await getDocs(post_ref)
 let id = getData.size
 console.log(id);
 console.log(category_id);
@@ -165,9 +162,6 @@ p_array.push(`p_id-${++id}`)
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
-
-
-
 
 let pimage = document.getElementById('img').files[0]
 
@@ -185,7 +179,6 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     u_id:usersData
     
   }
-
 console.log(post_data);
 
 let ca_data =
@@ -196,10 +189,11 @@ let ca_data =
   }
 
 console.log(ca_data);
+document.getElementById('loadingOverlay').style.visibility = 'visible';
 
-setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
-setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
-        
+// setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
+// setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
+// 
  }))
   
 }
@@ -212,6 +206,7 @@ setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Categ
 //   console.log("Button clicked"); 
 //   container.style.display =  'block';
 //   mainDiv.classList.toggle('blur');
-// });
+// }); 
 
- let create_div=document
+
+

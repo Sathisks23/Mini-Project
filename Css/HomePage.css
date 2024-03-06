@@ -370,8 +370,8 @@ background-color: rgba(233, 233, 233, 0.337);
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    /* background-color: #000000; */
+    /* background-color: #f0f0f0;
+    background-color: #9e9b9b; */
 }
 
 .container {
@@ -381,9 +381,11 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: rgba(10, 10, 10, 0.1) 0px 4px 2px, rgba(10, 10, 10, 0.1) 0px 8px 14px, rgba(10, 10, 26, 0.1) 0px 16px 46px;
     height: 500px; 
     overflow-y: auto;
+    border: 1px solid #7B65FF;
 }
 
 .category {
@@ -464,7 +466,7 @@ body {
 }
 /* .blur {
     filter: blur(5px); 
-/* } */
+/* /* }  */
 
 .publish {
     background-color: green;
