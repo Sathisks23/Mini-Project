@@ -41,7 +41,7 @@ const firebaseConfig = {
   btn.addEventListener("click",(event)=>{
       event.preventDefault();
       
-  console.log("hello");
+  // console.log("hello");
       if(email_id.value.trim()==""){
       
          
@@ -125,10 +125,10 @@ const firebaseConfig = {
               email_Error.style.display="block";
             },1000)
          
-            break;
+     
           }
          
-         break;
+ 
        } 
   
   
@@ -192,24 +192,24 @@ const firebaseConfig = {
   // let usersData=JSON.parse(localStorage.getItem("usersData"))
   // console.log(usersData);
    
-  let google_btn=document.getElementById("google_btn");
-  google_btn.addEventListener("click",()=>{
+  // let google_btn=document.getElementById("google_btn");
+  // google_btn.addEventListener("click",()=>{
   
-      signInWithPopup(auth, provider)
-    .then((result) => {
+  //     signInWithPopup(auth, provider)
+  //   .then((result) => {
     
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const user = result.user;
-      console.log(user);
-      location.replace("hmpg.html");
-      // window.location.href="";
+  //     const credential = GoogleAuthProvider.credentialFromResult(result);
+  //     const user = result.user;
+  //     console.log(user);
+  //     location.replace("hmpg.html");
+  //     // window.location.href="";
   
     
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
+  //   }).catch((error) => {
+  //     // Handle Errors here.
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
    
-    });
-      console.log("hiii");
-  })
+  //   });
+  //     console.log("hiii");
+  // })

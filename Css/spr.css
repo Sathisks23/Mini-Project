@@ -358,7 +358,7 @@ background-color: rgba(233, 233, 233, 0.337);
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 147px;
+    right: 20px;
     background-color: white;
     padding: 5px;
     border-radius: 20px;
@@ -382,7 +382,7 @@ background-color: rgba(233, 233, 233, 0.337);
    color: grey;
 }
 .imagediv {
-    width: 10%;
+    width: 3%;
 }
 .like_div,.comment_icon{
     cursor: pointer;

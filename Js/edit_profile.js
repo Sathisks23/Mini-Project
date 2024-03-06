@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
-
+console.log(usersData);
 
 
 // Initialize Firebase
