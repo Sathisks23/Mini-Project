@@ -87,7 +87,7 @@ function changetheme(){
 let a = document.querySelector('.ca_popup').querySelectorAll('li')
       a.forEach((e)=>{
     // e.querySelector('a').classList.toggle('blacktheme')
-    e.addEventListener('click',function(){category_selected(this)})
+    e.addEventListener('click',function(){category_selected(this)},{once : true})
      })
 
     
@@ -216,7 +216,7 @@ main_view.append(card)
 
 
 
-setInterval(1600,letsget())
+setTimeout(1600,letsget())
  
 }    
 
@@ -253,14 +253,14 @@ console.log(like);
 like.forEach((x)=>{
     console.log(x);
    
-    x.addEventListener("click", function(){updatelike(this)})})
+    x.addEventListener("click", function(){updatelike(this)})},{once : true})
 
 
     let see_more = document.querySelectorAll('#see_more')
     see_more.forEach((x)=>{
     console.log(x);
       
-        x.addEventListener('click', function(){showmore(this)}) })
+        x.addEventListener('click', function(){showmore(this)}) },{once : true})
    
 }
 
