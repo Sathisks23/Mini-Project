@@ -17,6 +17,41 @@
 
  import { getFirestore,query,where, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
+
+//THeme change 
+let theme = JSON.parse(localStorage.getItem("theme"))
+let a = document.querySelector('.img_nav').querySelectorAll('a')
+a.forEach((e)=>{
+e.classList.toggle('blacktheme')})
+
+if(theme=='dark'){
+  document.body.style.backgroundColor='black'
+  document.body.style.color = 'white'
+  document.querySelector('header').style.backgroundColor = 'black'
+  document.querySelector('header').style.color = 'white'
+
+  document.querySelector('.img_nav').style.backgroundColor='black'
+  document.querySelector('.img_nav').style.color='white'
+}else{
+  document.body.backgroundColor='white'
+  document.body.style.color = 'black'
+  document.querySelector('header').style.backgroundColor = 'white'
+  document.querySelector('header').style.color = 'black'
+  document.querySelector('.img_nav').style.backgroundColor='white'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
  // Initialize Firebase
  const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)

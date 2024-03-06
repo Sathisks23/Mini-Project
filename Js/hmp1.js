@@ -15,6 +15,21 @@
 
  import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
+changetheme()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  // Initialize Firebase
  const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
@@ -58,20 +73,31 @@ function changetheme(){
      document.getElementById('theme').classList.toggle('blacktheme')
      
       
- let a = document.querySelector('.ca_popup').querySelectorAll('li')
+ let a = document.querySelector('.img_nav').querySelectorAll('a')
       a.forEach((e)=>{
-    e.querySelector('a').classList.toggle('blacktheme')
-    document.getElementById('logo_div').classList.toggle('blacktheme')
-    e.addEventListener('click',function(){category_selected(this)})
+    e.classList.toggle('blacktheme')
+
+    // e.addEventListener('click',function(){category_selected(this)})
      })
     
 
         if(b=='Assests/logo.png'){
             img.src='Assests/darklogo.png'
+    document.querySelector('.logo_div').style.color='white'
+    document.querySelector('.logo_div').style.backgroundColor='black'
+    document.querySelector('.img_nav').style.backgroundColor='black'
+    document.querySelector('.img_nav').style.color='white'
            
+    localStorage.setItem("theme",JSON.stringify('dark'));
             // theme.innerText = "Dark Theme"
          }else{
             img.src='Assests/logo.png'
+    document.querySelector('.logo_div').style.color='black'
+    document.querySelector('.logo_div').style.backgroundColor='white'
+    document.querySelector('.img_nav').style.backgroundColor='white'
+    // document.querySelector('.img_nav').style.color='black'
+           
+    localStorage.setItem("theme",JSON.stringify('light'));
             
            
             // theme.innerText = "Ligth Theme"
@@ -256,14 +282,14 @@ let like_num=document.querySelector("#likes")
 like.forEach((x)=>{
    
    
-    x.addEventListener("click", function(){updatelike(this)})},{once : true})
+    x.addEventListener("click", function(){updatelike(this)})})
 
 
     let see_more = document.querySelectorAll('#see_more')
     see_more.forEach((x)=>{
     
       
-        x.addEventListener('click', function(){showmore(this)}) },{once : true})
+        x.addEventListener('click', function(){showmore(this)}) })
    
 }
 
@@ -493,7 +519,6 @@ category.forEach((x,category)=>{
             // x.classList.add("cat")
             x.style.boxShadow = "none";
             // removeItemAll(arr,x)
-            removeItemAll(arr2,x.innerText)
             removeItemAll(fav_arry,x.innerText);
 
          /////update array/////////////////////////////
@@ -505,7 +530,13 @@ category.forEach((x,category)=>{
              u_favcategory:fav_arry
          
            })
-       
+           if (fav_arry.length==0) {
+          
+            x.style.boxShadow = "0px 0px 2px 2px #6452D0";
+            fav_arry.push(x.innerText);
+            alert("Atlest one category has to be selected")
+        }
+      
         }
        else if(!(fav_arry.includes(x.innerText))) {
      
@@ -513,16 +544,24 @@ category.forEach((x,category)=>{
         count=count+1
        
         fav_arry.push(x.innerText);
+        let ref = doc(db,"user",usersData);
 
-       
+        updateDoc(
+          ref, {
+        
+            u_favcategory:fav_arry
+        
+          })
+        // console.log(fav_arry);
     }
 
     })
 })
 button.addEventListener("click",(event)=>{
+  event.preventDefault()
     let fav_arry_length=fav_arry.length
     console.log(fav_arry_length);
-    if (fav_arry_length>=3) {
+    if (fav_arry.length!=0) {
        
 
 //------------------------Update--------------------        
@@ -544,6 +583,9 @@ updateDoc(
 
     }
     else{
+     
+   
+      alert("select the category")
        
     }
     })
@@ -603,10 +645,11 @@ document.querySelector("header").style.opacity = "0.2";
 logout.addEventListener("click",()=>{
 
   localStorage.removeItem("usersData");
-  location.replace("index.html");
+  location.replace("Login.html");
 
 
 })
+
 
 
 
