@@ -440,7 +440,9 @@ setDoc(doc(db,"user",`u_id-${id}`), {
   u_name: username.value,
   u_email:email.value,
   u_password:pass1.value,   
-  u_favcategory:arr2
+  u_favcategory:arr2,
+  u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+
 })
 localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
 alert('UserAdded')

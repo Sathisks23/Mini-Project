@@ -1,5 +1,5 @@
 *{
-    font-family: 'Roboto', sans-serif;
+    font-family: "Rubik", sans-serif;
     margin: 0;
     padding:0;
 
@@ -151,8 +151,9 @@ padding-top:12px;
 }
 
 .ca_popup>li{
-   padding:6px;
+   padding: 15px 0 15px 0;
    /* text-align: center; */
+
    text-indent:30px;
    /* border-bottom: 1px solid rgba(170, 140, 224, 0.205); */
   
@@ -177,7 +178,11 @@ padding-top:12px;
     background-color: #F9F9F9;
     margin: 5px;
     border-radius: 20px;
-    cursor: pointer;
+    cursor:pointer;
+}
+
+#post{
+    border-radius: 5px;
 }
 #post_desc,#trend_description{
     font-size:14px;
@@ -188,7 +193,7 @@ padding-top:12px;
     width:15%;
     border-right: 1px solid rgba(128, 128, 128, 0.176);
     height: 100vh;
-    margin-top: 100px;
+    margin-top: 70px;
     position: fixed;
     
 }
@@ -203,8 +208,14 @@ padding-top:12px;
    
 }
 
-
-
+#empty_div{
+    margin: 100px auto;
+    text-align: center;
+}
+#empty_div>h1{
+    color: red;
+    font-size: 50px;
+}
 
 .main_view{
     width:57%;
@@ -227,7 +238,9 @@ padding-top:12px;
     border-radius: 15px;
     padding: 10px;
     padding-bottom: 20px;
-    margin-top: 10px;
+ margin:10px auto;
+    width:80%;
+
 }
 
 
@@ -241,11 +254,15 @@ padding-top:12px;
 }
 
 #user_dp{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
 }
+.description>b{
+    padding: 14px;
 
+
+}
 #post{
     width: 100%;
 }
@@ -280,24 +297,53 @@ background-color: rgba(233, 233, 233, 0.337);
 .logo_div{
     text-align: center;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    
 }
+
 
 .trending_views{
     width: 20%;
     position: absolute;
-    top:100px;
+    top:70px;
     left:74%;  
+  
+ 
+}
+
+.trending_views>*{
+    width: 100%;
 }
 
 
+#trnd_title{
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+
 .trend_post_view{
     padding: 10px;
-   border-bottom:1px solid rgba(128, 128, 128, 0.361);
+     
+   margin:10px 3px;
+   border-radius:5px;
+   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+   
+}
+#trend_description{
+      font-size: 13px;
+      padding:0 10px 0 10px;
 }
 
 #trend_post{
     width: 100%;
+    border-radius: 5px;
 }
+
 
 #more{
     display: none;
@@ -349,8 +395,10 @@ background-color: rgba(233, 233, 233, 0.337);
     position: sticky;
     top: 70px;
     width: 120%;
+ padding:  40px 0 40px 0;
     z-index: 0;
     background-color:white;
+    font-size: 18px;
 }
 .black{
     background-color: black;
@@ -605,7 +653,7 @@ span#span {
     display: none;
     margin-top: 86px;
     position: absolute;
-    top: 8%;
+    top: 5%;
     left: 21%;
     background-color: #fff;
     border: 1px solid #ddd;
