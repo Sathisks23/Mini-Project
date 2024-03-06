@@ -356,9 +356,11 @@ category.forEach((x,category)=>{
             // x.classList.remove("box")
             // x.classList.add("cat")
             x.style.boxShadow = "none";
-            // removeItemAll(arr,x)
-            removeItemAll(arr2,x.innerText)
             removeItemAll(fav_arry,x.innerText);
+            // console.log(fav_arry);
+            console.log(fav_arry.length);
+            // removeItemAll(arr,x)
+
 
          /////update array/////////////////////////////
          let ref = doc(db,"user",usersData);
@@ -369,24 +371,37 @@ category.forEach((x,category)=>{
              u_favcategory:fav_arry
          
            })
+           if (fav_arry.length==0){
+            x.style.boxShadow = "0px 0px 2px 2px #6452D0";
+            fav_arry.push(x.innerText);
+            alert("select one category")
+           }
        
         }
        else if(!(fav_arry.includes(x.innerText))) {
-     
-        x.style.boxShadow = "0px 0px 2px 2px #6452D0";
-        count=count+1
-       
         fav_arry.push(x.innerText);
+        // console.log(fav_arry);
 
-        console.log(fav_arry);
+        console.log(fav_arry.length);
+        x.style.boxShadow = "0px 0px 2px 2px #6452D0";
+        let ref = doc(db,"user",usersData);
+
+        updateDoc(
+          ref, {
+        
+            u_favcategory:fav_arry
+        
+          })
+        
+   
+       
     }
 
     })
 })
 button.addEventListener("click",(event)=>{
-    let fav_arry_length=fav_arry.length
-    console.log(fav_arry_length);
-    if (fav_arry_length>=3) {
+   event.preventDefault()
+    if (fav_arry.length!=0) {
        
 
 //------------------------Update--------------------        
@@ -408,7 +423,7 @@ updateDoc(
 
     }
     else{
-        console.log("no");
+        alert("no");
     }
     })
 
