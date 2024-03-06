@@ -110,9 +110,10 @@ imageUpload.addEventListener('change', function() {
 
 let publish =document.getElementById('submit')
     publish.addEventListener('click',create_post)
-let title = document.getElementById('lines')
-let desc = document.getElementById('create')
-//------------------------------------------------------------------------------------------------------------------------------------------------------
+let title = document.getElementById('create')
+let desc = document.getElementById('lines')
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 
 
   // Import the functions you need from the SDKs you need
@@ -145,9 +146,19 @@ let post_ref =collection(db,'post')
 // let user_getData1 =  await  getDoc(getRef);
 
 
-async function create_post(){
 
-let getData = await getDocs(post_ref)
+
+
+// let user_getRef = doc(db, "category", usersData);
+// let user_getData1 =  await  getDoc(getRef);
+
+
+
+
+async function create_post(){
+    
+
+  let getData = await getDocs(post_ref)
 let id = getData.size
 console.log(id);
 console.log(category_id);
@@ -162,7 +173,14 @@ p_array.push(`p_id-${++id}`)
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
+let user_getRef = doc(db, "category", usersData);
+let user_getData1 =  await  getDoc(getRef);
 
+
+
+
+function create_post(){
+    
 let pimage = document.getElementById('img').files[0]
 
 let meta_data = {contentype:img.type}
@@ -176,9 +194,14 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     p_desc:desc.innerText,
     p_title:title.value,
     p_link:downloadURL,
-    u_id:usersData
+    u_id:usersData,
+    p_like:0,
+    p_comment:[],
+    liked_person:[]
     
   }
+console.log(post_data);
+
 console.log(post_data);
 
 let ca_data =
@@ -188,25 +211,16 @@ let ca_data =
     post_id:p_array,
   }
 
-console.log(ca_data);
-document.getElementById('loadingOverlay').style.visibility = 'visible';
-
-// setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
-// setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
-// 
+setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
+setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})
+        
  }))
   
 }
-// --------------------------------------------------------blurr and popup-----------------------------------------------------------------
-
-// var openButton = document.getElementById("open");
-// console.log(openButton); 
-
-// openButton.addEventListener('click', function() {
-//   console.log("Button clicked"); 
-//   container.style.display =  'block';
-//   mainDiv.classList.toggle('blur');
-// }); 
 
 
+
+
+
+}
 

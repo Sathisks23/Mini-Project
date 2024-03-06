@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+//Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,10 +27,9 @@ console.log(usersData);
 
 //Checking signup users
 if(usersData){
-  location.replace("HomePage.html");
+  location.replace("hmpg.html");
   
 }
-
 
 
 
@@ -441,14 +440,16 @@ setDoc(doc(db,"user",`u_id-${id}`), {
   u_name: username.value,
   u_email:email.value,
   u_password:pass1.value,   
-  u_favcategory:arr2
+  u_favcategory:arr2,
+  u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+
 })
 localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
 alert('UserAdded')
 
 
 
- button.setAttribute("href","HomePage.html")
+ button.setAttribute("href","hmpg.html")
 
     }})
 
