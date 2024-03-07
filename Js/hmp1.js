@@ -15,7 +15,10 @@
 
  import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
-changetheme()
+
+
+ ///-------------------------------------------------------------  Theme finding
+ let theme1 = JSON.parse(localStorage.getItem("theme"))
 
 
 
@@ -25,6 +28,7 @@ changetheme()
 
 
 
+//-------------------------------------------------------------------------
 
 
 
@@ -64,31 +68,36 @@ let theme =document.getElementById('theme')
     theme.addEventListener('click',changetheme)
 
 function changetheme(){
+
+
+  
     let img =document.getElementById('logo')
     let b=img.src.slice(22)
-    console.log(b);
-      document.body.classList.toggle('blacktheme')
-      document.querySelector('header').classList.toggle('blacktheme')
-      document.querySelector('.search').classList.toggle('darkinput')
-     document.getElementById('theme').classList.toggle('blacktheme')
+    
      
       
- let a = document.querySelector('.img_nav').querySelectorAll('a')
-      a.forEach((e)=>{
-    e.classList.toggle('blacktheme')
 
-    // e.addEventListener('click',function(){category_selected(this)})
-     })
     
 
-        if(b=='Assests/logo.png'){
+        if(b=='Assests/logo.png' ){
+
             img.src='Assests/darklogo.png'
     document.querySelector('.logo_div').style.color='white'
     document.querySelector('.logo_div').style.backgroundColor='black'
     document.querySelector('.img_nav').style.backgroundColor='black'
     document.querySelector('.img_nav').style.color='white'
-           
-    localStorage.setItem("theme",JSON.stringify('dark'));
+    document.body.classList.toggle('blacktheme')
+    document.querySelector('header').classList.toggle('blacktheme')
+    document.querySelector('.search').classList.toggle('darkinput')
+   document.getElementById('theme').classList.toggle('blacktheme')
+   let a = document.querySelector('.img_nav').querySelectorAll('a')
+   a.forEach((e)=>{
+ e.classList.toggle('blacktheme')
+
+
+  })
+  localStorage.setItem("theme",JSON.stringify('dark'));
+
             // theme.innerText = "Dark Theme"
          }else{
             img.src='Assests/logo.png'
@@ -96,7 +105,16 @@ function changetheme(){
     document.querySelector('.logo_div').style.backgroundColor='white'
     document.querySelector('.img_nav').style.backgroundColor='white'
     // document.querySelector('.img_nav').style.color='black'
-           
+    document.body.classList.toggle('blacktheme')
+    document.querySelector('header').classList.toggle('blacktheme')
+    document.querySelector('.search').classList.toggle('darkinput')
+   document.getElementById('theme').classList.toggle('blacktheme')
+   let a = document.querySelector('.img_nav').querySelectorAll('a')
+   a.forEach((e)=>{
+ e.classList.toggle('blacktheme')
+
+
+  })
     localStorage.setItem("theme",JSON.stringify('light'));
             
            
@@ -794,7 +812,7 @@ let post_ref =collection(db,'post')
 
 async function create_post(){
     
- 
+  // document.getElementById('loadingOverlay').style.visibility = 'visible'
 
 
 
@@ -851,12 +869,15 @@ console.log(ca_data);
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
 
- alert('post created'),
+ alert('Post Created Sussesfully'),
  
-  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false;  location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
 
 
-)
+).catch(()=>{
+  // setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+    create_post()
+})
         
  }))
   

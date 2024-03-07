@@ -29,15 +29,22 @@ if(theme=='dark'){
   document.body.style.color = 'white'
   document.querySelector('header').style.backgroundColor = 'black'
   document.querySelector('header').style.color = 'white'
-
   document.querySelector('.img_nav').style.backgroundColor='black'
   document.querySelector('.img_nav').style.color='white'
+  document.body.classList.toggle('blacktheme')
+  document.querySelector('header').classList.toggle('blacktheme')
+  document.querySelector('.search').classList.toggle('darkinput')
+//  document.getElementById('theme').classList.toggle('blacktheme')
 }else{
   document.body.backgroundColor='white'
   document.body.style.color = 'black'
   document.querySelector('header').style.backgroundColor = 'white'
   document.querySelector('header').style.color = 'black'
   document.querySelector('.img_nav').style.backgroundColor='white'
+  // document.body.classList.toggle('blacktheme')
+  document.querySelector('header').classList.toggle('blacktheme')
+  document.querySelector('.search').classList.toggle('darkinput')
+//  document.getElementById('theme').classList.toggle('blacktheme')
 }
 
 
