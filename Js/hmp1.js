@@ -15,25 +15,6 @@
 
  import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
-
-
- ///-------------------------------------------------------------  Theme finding
- let theme1 = JSON.parse(localStorage.getItem("theme"))
-
-
-
-
-
-
-
-
-
-//-------------------------------------------------------------------------
-
-
-
-
-
  // Initialize Firebase
  const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
@@ -68,54 +49,29 @@ let theme =document.getElementById('theme')
     theme.addEventListener('click',changetheme)
 
 function changetheme(){
-
-
-  
     let img =document.getElementById('logo')
     let b=img.src.slice(22)
-    
+    console.log(b);
+      document.body.classList.toggle('blacktheme')
+      document.querySelector('header').classList.toggle('blacktheme')
+      document.querySelector('.search').classList.toggle('darkinput')
+     document.getElementById('theme').classList.toggle('blacktheme')
      
       
-
+ let a = document.querySelector('.ca_popup').querySelectorAll('li')
+      a.forEach((e)=>{
+    e.querySelector('a').classList.toggle('blacktheme')
+    document.getElementById('logo_div').classList.toggle('blacktheme')
+    e.addEventListener('click',function(){category_selected(this)})
+     })
     
 
-        if(b=='Assests/logo.png' ){
-
+        if(b=='Assests/logo.png'){
             img.src='Assests/darklogo.png'
-    document.querySelector('.logo_div').style.color='white'
-    document.querySelector('.logo_div').style.backgroundColor='black'
-    document.querySelector('.img_nav').style.backgroundColor='black'
-    document.querySelector('.img_nav').style.color='white'
-    document.body.classList.toggle('blacktheme')
-    document.querySelector('header').classList.toggle('blacktheme')
-    document.querySelector('.search').classList.toggle('darkinput')
-   document.getElementById('theme').classList.toggle('blacktheme')
-   let a = document.querySelector('.img_nav').querySelectorAll('a')
-   a.forEach((e)=>{
- e.classList.toggle('blacktheme')
-
-
-  })
-  localStorage.setItem("theme",JSON.stringify('dark'));
-
+           
             // theme.innerText = "Dark Theme"
          }else{
             img.src='Assests/logo.png'
-    document.querySelector('.logo_div').style.color='black'
-    document.querySelector('.logo_div').style.backgroundColor='white'
-    document.querySelector('.img_nav').style.backgroundColor='white'
-    // document.querySelector('.img_nav').style.color='black'
-    document.body.classList.toggle('blacktheme')
-    document.querySelector('header').classList.toggle('blacktheme')
-    document.querySelector('.search').classList.toggle('darkinput')
-   document.getElementById('theme').classList.toggle('blacktheme')
-   let a = document.querySelector('.img_nav').querySelectorAll('a')
-   a.forEach((e)=>{
- e.classList.toggle('blacktheme')
-
-
-  })
-    localStorage.setItem("theme",JSON.stringify('light'));
             
            
             // theme.innerText = "Ligth Theme"
@@ -300,14 +256,14 @@ let like_num=document.querySelector("#likes")
 like.forEach((x)=>{
    
    
-    x.addEventListener("click", function(){updatelike(this)})})
+    x.addEventListener("click", function(){updatelike(this)})},{once : true})
 
 
     let see_more = document.querySelectorAll('#see_more')
     see_more.forEach((x)=>{
     
       
-        x.addEventListener('click', function(){showmore(this)}) })
+        x.addEventListener('click', function(){showmore(this)}) },{once : true})
    
 }
 
@@ -536,8 +492,6 @@ category.forEach((x,category)=>{
             // x.classList.remove("box")
             // x.classList.add("cat")
             x.style.boxShadow = "none";
-            // removeItemAll(arr,x)
-            removeItemAll(arr2,x.innerText)
             removeItemAll(fav_arry,x.innerText);
             // console.log(fav_arry);
             console.log(fav_arry.length);
@@ -553,6 +507,11 @@ category.forEach((x,category)=>{
              u_favcategory:fav_arry
          
            })
+           if (fav_arry.length==0){
+            x.style.boxShadow = "0px 0px 2px 2px #6452D0";
+            fav_arry.push(x.innerText);
+            alert("select one category")
+           }
        
         }
        else if(!(fav_arry.includes(x.innerText))) {
@@ -561,9 +520,7 @@ category.forEach((x,category)=>{
 
         console.log(fav_arry.length);
         x.style.boxShadow = "0px 0px 2px 2px #6452D0";
-        count=count+1
-       
-        fav_arry.push(x.innerText);
+        let ref = doc(db,"user",usersData);
 
         updateDoc(
           ref, {
@@ -571,15 +528,17 @@ category.forEach((x,category)=>{
             u_favcategory:fav_arry
         
           })
-        // console.log(fav_arry);
+        
+   
+
+       
     }
 
     })
 })
 button.addEventListener("click",(event)=>{
-    let fav_arry_length=fav_arry.length
-    console.log(fav_arry_length);
-    if (fav_arry_length>=3) {
+   event.preventDefault()
+    if (fav_arry.length!=0) {
        
 
 //------------------------Update--------------------        
@@ -601,7 +560,7 @@ updateDoc(
 
     }
     else{
-       
+        alert("no");
     }
     })
 
@@ -660,11 +619,10 @@ document.querySelector("header").style.opacity = "0.2";
 logout.addEventListener("click",()=>{
 
   localStorage.removeItem("usersData");
-  location.replace("Login.html");
+  location.replace("index.html");
 
 
 })
-
 
 
 
@@ -809,7 +767,7 @@ let post_ref =collection(db,'post')
 
 async function create_post(){
     
-  // document.getElementById('loadingOverlay').style.visibility = 'visible'
+ 
 
 
 
@@ -866,15 +824,12 @@ console.log(ca_data);
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
 
- alert('Post Created Sussesfully'),
+ alert('post created'),
  
-  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false;  location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
 
 
-).catch(()=>{
-  // setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
-    create_post()
-})
+)
         
  }))
   
