@@ -160,32 +160,24 @@ display: none;
 }
 /*passwords css*/
 #message{
-    display:none;
-    background: #f1f1f1;
-    color: #000;
-    position: absolute;
-    margin-top: -190px;
-    margin-left: 43%;
-    width:200px;
-    height: 210px;
-   
-  }
-  #message{
-    display:none;
-    background: #f4f4f4;
-    color: #000;
-    position: absolute;
-    margin-top: -190px;
-    margin-left: 43%;
-    width:200px;
-    height: 210px;
+  display:none;
+  background: #f4f4f4;
+  color: #000;
+  position: absolute;
+  top: 54%;
+  left: 40%;
+  width:200px;
+  height: 210px;
 
-  }
-  .message_flex {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}  
+}
+
+.message_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  height: 71%;
+  justify-content: space-around;
+}
 
 
   #message p {

@@ -71,7 +71,7 @@ button.close_btn {
     border: solid 1px #dfdfdf;
 }
 button.submit_btn {
-    background-color: #32CD32;
+    background-color: blueviolet;
     border: solid 1px #afafaf;
     color: white;
 }
