@@ -520,11 +520,18 @@ category.forEach((x,category)=>{
 
         console.log(fav_arry.length);
         x.style.boxShadow = "0px 0px 2px 2px #6452D0";
-        count=count+1
-       
-        fav_arry.push(x.innerText);
+        let ref = doc(db,"user",usersData);
 
-        console.log(fav_arry);
+        updateDoc(
+          ref, {
+        
+            u_favcategory:fav_arry
+        
+          })
+        
+   
+
+       
     }
 
     })
@@ -553,7 +560,7 @@ updateDoc(
 
     }
     else{
-        console.log("no");
+        alert("no");
     }
     })
 
