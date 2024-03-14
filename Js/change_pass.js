@@ -36,9 +36,9 @@ let id = getData.size
 console.log(id);
 
   
- submit_btn.addEventListener("click",(e)=>{
+ submit_btn.addEventListener("click",async(e)=>{
     e.preventDefault();
-    if(confirm_Passwors.value!=New_password.value){
+    if(confirm_Passwors.value != New_password.value){
 
       change_conformpass_error.innerText="Passwors doesn't matched"  
       setTimeout(()=>{
@@ -47,16 +47,25 @@ console.log(id);
 
     }
     else{
-        let ref = doc(db,"user",usersData);
-
-        updateDoc(
-          ref, {
+        let userref = doc(db,"user",usersData);
+        console.log("else")
+        await updateDoc(
+          userref, {
             u_password:New_password.value
           }
         ).then(()=>{
-          alert("Updated Successfully")
+          // alert("Updated Successfully");
+        
+        }).catch((error)=>{
+          alert(error)
         })
+       
+        localStorage.removeItem("usersData");
+        // setTimeout(()=>{
+        //   location.replace("Login.html");
+        // },2000)
 
+        location.replace("Login.html");
     }
 
    

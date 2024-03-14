@@ -437,7 +437,6 @@ category.forEach((x,category)=>{
             // x.classList.add("cat")
             x.style.boxShadow = "none";
             // removeItemAll(arr,x)
-            removeItemAll(arr2,x.innerText)
             removeItemAll(fav_arry,x.innerText);
 
          /////update array/////////////////////////////
@@ -449,7 +448,13 @@ category.forEach((x,category)=>{
              u_favcategory:fav_arry
          
            })
-       
+           if (fav_arry.length==0) {
+          
+            x.style.boxShadow = "0px 0px 2px 2px #6452D0";
+            fav_arry.push(x.innerText);
+            alert("Atlest one category has to be selected")
+        }
+      
         }
        else if(!(fav_arry.includes(x.innerText))) {
      
@@ -457,16 +462,24 @@ category.forEach((x,category)=>{
         count=count+1
        
         fav_arry.push(x.innerText);
+        let ref = doc(db,"user",usersData);
 
-        console.log(fav_arry);
+        updateDoc(
+          ref, {
+        
+            u_favcategory:fav_arry
+        
+          })
+        // console.log(fav_arry);
     }
 
     })
 })
 button.addEventListener("click",(event)=>{
+  event.preventDefault()
     let fav_arry_length=fav_arry.length
     console.log(fav_arry_length);
-    if (fav_arry_length>=3) {
+    if (fav_arry.length!=0) {
        
 
 //------------------------Update--------------------        
@@ -488,7 +501,10 @@ updateDoc(
 
     }
     else{
-        console.log("no");
+     
+   
+      alert("select the category")
+       
     }
     })
 
@@ -547,7 +563,7 @@ document.querySelector("header").style.opacity = "0.2";
 logout.addEventListener("click",()=>{
 
   localStorage.removeItem("usersData");
-  location.replace("index.html");
+  location.replace("Login.html");
 
 
 })
