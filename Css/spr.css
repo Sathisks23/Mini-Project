@@ -354,16 +354,16 @@ background-color: rgba(233, 233, 233, 0.337);
     background-color: black;
 }
 
-.img_nav {
+.img_nav{
     display: flex;
     flex-direction: column;
     position: absolute;
     right: 20px;
     background-color: white;
-    padding: 5px;
-    border-radius: 20px;
-    border: 2px solid rgba(128, 128, 128, 0.064);
-    visibility: hidden;
+    padding:5px;
+   border-radius:20px;
+   border: 2px solid rgba(128, 128, 128, 0.064);
+ visibility: hidden;
 }
 
 .liked{
@@ -381,9 +381,7 @@ background-color: rgba(233, 233, 233, 0.337);
  a:hover{
    color: grey;
 }
-.imagediv {
-    width: 3%;
-}
+
 .like_div,.comment_icon{
     cursor: pointer;
 }

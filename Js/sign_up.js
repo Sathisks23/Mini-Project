@@ -226,7 +226,6 @@ let u_id
     maincontainer.style.display="none";
 
     setDoc(doc(db,"user",`u_id-${++id}`), {
-      
       u_name: username.value,
       u_email:email.value,
       u_password:pass1.value,   

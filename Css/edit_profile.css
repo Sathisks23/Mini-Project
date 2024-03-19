@@ -10,6 +10,12 @@ body{
     color: #0000FF;
     cursor: pointer;
 }
+i.fa-solid.fa-trash {
+    position: relative;
+    left: 46px;
+    top: -17px;
+    font-size: 12px;
+}
 .container {
     margin: 0 auto;
     width: 312px;
@@ -23,7 +29,6 @@ input {
     border: none;
     font-size: 16px;
     height: 30px;
-    font-family: "Montserrat", sans-serif;
     margin-top: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid;
@@ -36,16 +41,6 @@ input {
     justify-content: space-between;
     position: relative;
     left: 84px;
-}
-i.fa-solid.fa-trash {
-    position: relative;
-    left: 46px;
-    top: -17px;
-    font-size: 12px;
-    transition: 0.2s;
-}
-i#icon:hover {
-    transform: scale(1.1,1.1);
 }
 label {
     font-size: 18px;
@@ -66,9 +61,8 @@ label {
 }
 
 .dropZoneOverlay {
-    font-family: "Rubik", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
-    font-size: 14px;
     font-style: normal;
     color: #7066fb;
     position: absolute;
@@ -130,14 +124,11 @@ label.error {
     top: -13px;
 }
 textarea {
-    margin-top: 10px;
     outline: none;
     width: 98%;
     height: 48px;
     border: none;
-    font-size: 16px;
     border-bottom: 1px solid;
-    font-family: "Montserrat", sans-serif;
 }
 .error1{
     height: 14px;

@@ -29,16 +29,14 @@ let getData = await getDocs(ref)
 let id = getData.size;
 
 
-var error=document.getElementById("err2")
 var inputname=document.getElementById("text2")
 var button=document.getElementById("btn")
 var button2=document.getElementById("btn2")
-var a=document.getElementById("btn_link")
-var a2=document.getElementById("cancel_link")
-var edit=document.querySelector(".color")
 var bio1=document.getElementById("bio")
 var trash=document.querySelector("#icon")
 
+
+//profile dp change
 
 let ProfileImg = document.querySelector("#change");
     let inputfile= document.querySelector("#drop_zone");
@@ -46,6 +44,9 @@ let ProfileImg = document.querySelector("#change");
 inputfile.onchange = function(){
     ProfileImg.src = URL.createObjectURL(inputfile.files[0]) 
 }
+
+//profile dp remove
+
 trash.addEventListener("click",()=>{
   if (confirm("Are you sure want to delete the image") && !(ProfileImg.src="https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4") ) {
     ProfileImg.src="https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
@@ -53,9 +54,7 @@ trash.addEventListener("click",()=>{
  
 })
 
-var count=0
-
-// error.classList.add("none")
+//Getting data from firebase
 
 let getRef1 = doc(db, "user", usersData);
 
@@ -76,26 +75,9 @@ let uid =usersData
       bio1.value= ""
       // console.log("hi");
     }
-function click() {
-    var nameRegex =/[a-z]{3,}/gi;
-    if (nameRegex.test(inputname.value)) {
-      error.classList.remove("block")
-      error.classList.add("none")
+    if ((inputname.value.trim()=="")||(inputname.value=="undefined")) {
+      inputname.value= "User"
     }
-
-      else{
-        error.classList.remove("none")
-        error.classList.add("block")
-      }
-    setTimeout(() => {
-        error.classList.remove("block")
-        error.classList.add("none")
-    },1500)
-}
-
-// retrive User
-
-// let  ref1 = doc(db,'user',)
 
 
 
@@ -109,17 +91,28 @@ let pass
 
 button.addEventListener("click",(event)=>{
 
-click()
-
 
 event.preventDefault()
-    
+    if (inputname.value.trim()=="") {
+      inputname.value="User"
+      updateDoc(doc(db,"user",usersData), {
+        u_name: inputname.value,
+        u_bio:bio1.value,
+        u_dp:ProfileImg.src 
+        // u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+      }).then(()=>{
+      
+        location.replace("spr.html")
+      }
+      )
+    }
  if (inputfile.value==false) {
 // console.log("if");
 updateDoc(doc(db,"user",usersData), {
     u_name: inputname.value,
     u_bio:bio1.value,
-    u_dp:mu_user_getData.data().u_dp
+    u_dp:ProfileImg.src
+
     // u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
   }).then(()=>{
   
