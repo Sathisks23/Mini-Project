@@ -16,7 +16,13 @@ body {
   padding: 20px;
   /* text-transform: uppercase; */
 }
-
+span.show {
+  color: black;
+  position: relative;
+  bottom: 28px;
+  left: 93%;
+  cursor: pointer;
+}
 .title {
   margin-bottom: 20px;
 }
