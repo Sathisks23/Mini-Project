@@ -144,11 +144,6 @@ a{
   border: 1px solid #77536F;
  
 }
-.img-box {
-  /* height: 713px;
-  width: 609px; */
-}
-
 h1{
   margin-bottom: 0;
   color: #7B65FF;
@@ -163,16 +158,24 @@ display: none;
 
 }
 /*passwords css*/
+i.show {
+    display: block;
+    position: absolute;
+    /* right: 10px; */
+    left: 86%;
+    top: 40px;
+    cursor: pointer;
+}
 #message{
   display:none;
-  background: #f4f4f4;
+  background: white;
   color: #000;
   position: absolute;
   top: 54%;
-  left: 40%;
-  width:200px;
+  left: 41%;
+  width: 200px;
   height: 210px;
-
+  box-shadow: 0px 1px 4px 3px #0000002b;
 }
 
 .message_flex {

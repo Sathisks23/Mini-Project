@@ -155,7 +155,7 @@ let trending_views = document.querySelector('.trending_views')
     main_view.addEventListener('wheel' ,mainscroll)
 
     function mainscroll(){
-    console.log('scroll');
+    // console.log('scroll');
      trending_views.style.position = 'fixed'
      trending_views.style.top = '100px'
      main_view.style.position = 'absolute'
@@ -221,7 +221,7 @@ let querysap = await getDocs(q)
 
 
      if(checked==true){
-        findlike=  " <i id='check_like' style='color:blue;'  class='fa-regular fa-thumbs-up'></i> "
+        findlike=  "<i id='check_like' class='fa-solid fa-thumbs-up' style='color: blue;'></i> "
 
     }else{
         findlike=  " <i id='check_like'   class='fa-regular fa-thumbs-up'></i> "
@@ -233,9 +233,9 @@ let querysap = await getDocs(q)
       if(rec.data().p_desc.length>=100){ 
         let string1 =  rec.data().p_desc.slice(0,100)
         let string2 =  rec.data().p_desc.slice(100)
-        p =` <p id="post_desc">${string1}  <span  id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
+        p =`<p id="post_desc">${string1}  <span  id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
       }else{
-        p= ` <p id="post_desc">${rec.data().p_desc}</p> `
+        p= `<p id="post_desc">${rec.data().p_desc}</p> `
       }
 
 
@@ -262,8 +262,8 @@ main_view.append(card)
 
 
 
-setTimeout(1600,letsget())
-setTimeout(1600,getdesc())
+setInterval(1600,letsget())
+setInterval(1600,getdesc())
  
 }    
 
@@ -292,23 +292,12 @@ function letsget(){
 
 
     let like=document.querySelectorAll("#check_like")
-let like_num=document.querySelector("#likes")
-
-
-
-
+let see_more = document.querySelectorAll('#see_more')
+see_more.forEach((x)=>{
+    x.addEventListener('click', function(){showmore(this)})
+   })
 like.forEach((x)=>{
-   
-   
     x.addEventListener("click", function(){updatelike(this)})})
-
-
-    let see_more = document.querySelectorAll('#see_more')
-    see_more.forEach((x)=>{
-    
-      
-        x.addEventListener('click', function(){showmore(this)}) })
-   
 }
 
 
@@ -316,23 +305,23 @@ like.forEach((x)=>{
 
 //for see more ...
 
-function showmore(mm){
+function showmore(see){
 
-  console.log( mm.parentElement.firstElementChild.id);
+  // console.log( mm.parentElement.firstElementChild.id);
 
 
-    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'block';
-      
-        mm.innerText = 'See Less..'
-       
-    
-   
-    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
-        mm.parentElement.firstElementChild.style.display = 'none';
-        mm.innerText = 'See More..'
-     
-    }
+  switch (see.parentElement.lastElementChild.innerText) {
+    case 'See More..':
+      see.parentElement.firstElementChild.style.display = 'block';
+      see.innerText = 'See Less..';
+      break;
+    case 'See Less..':
+      see.parentElement.firstElementChild.style.display = 'none';
+      see.innerText = 'See More..';
+      break;
+    default:
+      break;
+  }
   
 }
 
@@ -351,13 +340,13 @@ async function updatelike(x){
 
     let p_id =x.parentElement.parentElement.parentElement.id
     
-    console.log(p_id);
+    // console.log(p_id);
     let ref = doc(db,"post",p_id);
 
    let postData= await  getDoc(ref)
       let numlike=postData.data().p_like
        let checklike = postData.data().liked_person
-console.log(typeof(checklike));
+// console.log(typeof(checklike));
    let checked = checklike.includes(usersData)
 
    
@@ -365,7 +354,9 @@ console.log(typeof(checklike));
 
     
     if(x.style.color!= 'blue' && !checked){
-        x.style.color= 'blue';   
+      console.log("pass");
+        x.className='fa-solid fa-thumbs-up';
+        x.style.color= 'blue'
         let checklike = postData.data().liked_person
         let pushing = checklike.push(usersData)
         
@@ -385,8 +376,10 @@ console.log(typeof(checklike));
         }
 
         
-    else{x.style.color= 'black'  
-
+    else{
+      console.log("fail");
+    x.className='fa-regular fa-thumbs-up'
+    x.style.color= 'black'
     let checklike = postData.data().liked_person
     let index = checklike.indexOf(usersData)
          checklike.splice(index,1)
@@ -465,7 +458,7 @@ let end = desc_value.length
   for(i in desc_value){
 
       let  a = desc_value[i].innerText.toLowerCase()
-              console.log(typeof(a));
+              // console.log(typeof(a));
 
       if(a.indexOf(str.toLowerCase())!=-1){
         desc_value[i].parentElement.parentElement.style.display = ''
