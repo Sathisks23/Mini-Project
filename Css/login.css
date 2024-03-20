@@ -50,6 +50,7 @@ span.show {
 }
 
 #submit {
+  cursor: pointer;
   width: 100%;
   padding: 10px;
   font-size: 20px;
