@@ -794,6 +794,7 @@ let publish =document.getElementById('submit')
     publish.addEventListener('click',create_post)
 let title = document.getElementById('lines')
 let desc = document.getElementById('create')
+let loader=document.getElementById('loader')
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -874,12 +875,18 @@ let ca_data =
 
   document.getElementById('submit').disabled = true,
 console.log(ca_data);
+loader.style.display='block';
+document.body.querySelector('.container').style.opacity='0.5'
+
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
-
- alert('Post Created Sussesfully'),
  
-  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+  
+ 
+  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden';
+  setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
+  setTimeout(loader.style.display='none',3000)
+  setTimeout(location.replace('hmpg.html'), 3000)}).catch((error)=>{console.log(error)})
 
 
 ).catch(()=>{
