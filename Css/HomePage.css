@@ -198,7 +198,7 @@ padding: 10px;
     width:15%;
     border-right: 1px solid rgba(128, 128, 128, 0.176);
     height: 100vh;
-    margin-top: 70px;
+    top: 70px;
     position: fixed;
     
 }

@@ -138,15 +138,29 @@ let a = document.querySelector('.ca_popup').querySelectorAll('li')
     
 
 //for scrolling .......
+
+let category_scroll=document.querySelector('.categories_nav')
+let category_scroll_child=document.querySelector('.ca_popup').childElementCount
+console.log(category_scroll_child);
 let main_view = document.querySelector('.main_view')
 
 let trending_views = document.querySelector('.trending_views')
     trending_views.addEventListener('wheel',trending_views_scroll)
     
+category_scroll.addEventListener('wheel',category_views_scroll)
 
-
-    
+function category_views_scroll() {
+  if (category_scroll_child>=13) {
+  trending_views.style.position='fixed'
+  trending_views.style.top = '100px'
+  main_view.style.position = 'fixed'
+  main_view.style.top = '100px'
+ category_scroll.style.position = 'absolute'
+  }
+}    
     function trending_views_scroll(){
+      category_scroll.style.position='fixed'
+      category_scroll.style.top = '70px'
       main_view.style.position = 'fixed'
       main_view.style.top = '100px'
      trending_views.style.position = 'absolute'
@@ -155,7 +169,8 @@ let trending_views = document.querySelector('.trending_views')
     main_view.addEventListener('wheel' ,mainscroll)
 
     function mainscroll(){
-    // console.log('scroll');
+    category_scroll.style.position='fixed'
+    category_scroll.style.top = '70px'
      trending_views.style.position = 'fixed'
      trending_views.style.top = '100px'
      main_view.style.position = 'absolute'
