@@ -329,10 +329,12 @@ function showmore(see){
     case 'See More..':
       see.parentElement.firstElementChild.style.display = 'block';
       see.innerText = 'See Less..';
+      // console.log("true");
       break;
     case 'See Less..':
       see.parentElement.firstElementChild.style.display = 'none';
       see.innerText = 'See More..';
+      // console.log("false");
       break;
     default:
       break;
@@ -369,7 +371,7 @@ async function updatelike(x){
 
     
     if(x.style.color!= 'blue' && !checked){
-      console.log("pass");
+      // console.log("pass");
         x.className='fa-solid fa-thumbs-up';
         x.style.color= 'blue'
         let checklike = postData.data().liked_person
@@ -392,7 +394,7 @@ async function updatelike(x){
 
         
     else{
-      console.log("fail");
+      // console.log("fail");
     x.className='fa-regular fa-thumbs-up'
     x.style.color= 'black'
     let checklike = postData.data().liked_person
@@ -780,12 +782,23 @@ imageUpload.addEventListener('change', function() {
         let existingImg = document.getElementById("img-src");
         if(existingImg) {
             existingImg.src = text;
+            deleteImgBtn.style.display = "block";
         } else {
             console.error("Image element with id 'img-src' not found.");
         }
     }
 });
-
+let deleteImgBtn = document.getElementById("delete-img");
+deleteImgBtn.addEventListener('click', function() {
+    let existingImg = document.getElementById("img-src");
+    if (existingImg) {
+        existingImg.src = ""; 
+        imageUpload.value = null;
+        deleteImgBtn.style.display = "none";
+    } else {
+        console.error("Image element with id 'img-src' not found.");
+    }
+});
 
 //-------------------------------------------------------------------Adding data in firebase----------------------------------------------------------
 

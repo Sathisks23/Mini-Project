@@ -16,7 +16,9 @@
     height: 30px;
     border-radius:50%;
 }
-
+#delete-img{
+    display: none;
+}
 
 .darkinput{
     background-color: white;
