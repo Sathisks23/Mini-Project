@@ -23,6 +23,12 @@
     color: black;
     transition:all 0.5s;
 
+
+}
+
+#error{
+    color: red;
+    visibility: hidden;
 }
 
 .blacktheme{

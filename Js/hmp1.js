@@ -783,9 +783,29 @@ imageUpload.addEventListener('change', function() {
 
 
 let publish =document.getElementById('submit')
-    publish.addEventListener('click',create_post)
+publish.addEventListener('click',validate)
 let title = document.getElementById('lines')
+
 let desc = document.getElementById('create')
+desc.addEventListener('keyup',
+  () => {
+    if (desc.innerText.length > 250) { document.getElementById('error').style.visibility = 'hidden' }
+    else {
+      document.getElementById('error').style.visibility = 'visible'
+    }
+  }
+)
+
+
+function validate(){
+  if(desc.innerText.length>250){ 
+   document.getElementById('error').style.visibility ='hidden'
+
+    create_post()
+  }else{
+   document.getElementById('error').style.visibility ='visible'
+  }
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -801,12 +821,14 @@ let desc = document.getElementById('create')
 
 // Initialize Firebase
 
+
+
+
 let post_ref =collection(db,'post')
 
 
 // let user_getRef = doc(db, "category", usersData);
 // let user_getData1 =  await  getDoc(getRef);
-
 
 
 
@@ -882,6 +904,8 @@ setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
  }))
   
 }
+
+// }
 // ----------------------------------------------------------------blurr and popup-----------------------------------------------------------------------
 
 // var openButton = document.getElementById("open");

@@ -221,6 +221,9 @@ let u_id
    if(otp_value==otp_random){
    
    alert("OTP sucessfull")
+
+ 
+
     otpmaincontainer.remove()
     container1.style.display="flex";
     maincontainer.style.display="none";
