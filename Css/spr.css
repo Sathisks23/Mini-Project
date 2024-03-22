@@ -174,10 +174,9 @@ padding-top:12px;
     border-radius: 20px;
     cursor: pointer;
 }
-#post_desc,#trend_description{
-    font-size:14px;
-     
- 
+#post_desc, #trend_description {
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 .categories_nav {
     width:15%;
@@ -223,7 +222,7 @@ padding-top:12px;
     padding-bottom: 20px;
     width: 40%;
     margin:0 auto;
-    /* height: 500px; */
+    height: 100%;
     margin-top: 20px;
    
 
@@ -243,9 +242,9 @@ padding-top:12px;
     padding: 5px;
 }
 
-#user_dp{
-    width: 20px;
-    height: 20px;
+#user_dp {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
