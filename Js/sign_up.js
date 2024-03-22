@@ -220,22 +220,12 @@ let u_id
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
    
-   alert("OTP sucessfull")
 
- 
-
-    otpmaincontainer.remove()
-    container1.style.display="flex";
-    maincontainer.style.display="none";
-
-    setDoc(doc(db,"user",`u_id-${++id}`), {
-      u_name: username.value,
-      u_email:email.value,
-      u_password:pass1.value,   
-      // u_favcategory:arr2
-    })
-    localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
-    
+    otpmaincontainer.innerHTML = '<i class="fa-solid fa-thumbs-up"></i><br><h4 style=color:green; >Sussess</h4>'
+    otpmaincontainer.style.boxShadow ='none'
+    otpmaincontainer.style.backgroundColor='transparent'
+  
+   setTimeout(category_listing,2000)
    
    }
    else{
@@ -248,7 +238,20 @@ let u_id
 
 }
 
+function category_listing(){
+   otpmaincontainer.remove()
+    container1.style.display="flex";
+    maincontainer.style.display="none";
 
+    setDoc(doc(db,"user",`u_id-${++id}`), {
+      u_name: username.value,
+      u_email:email.value,
+      u_password:pass1.value,   
+      // u_favcategory:arr2
+    })
+    localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
+    
+}
  
 
 
