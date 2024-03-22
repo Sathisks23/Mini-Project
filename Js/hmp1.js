@@ -141,7 +141,6 @@ let a = document.querySelector('.ca_popup').querySelectorAll('li')
 
 let category_scroll=document.querySelector('.categories_nav')
 let category_scroll_child=document.querySelector('.ca_popup').childElementCount
-console.log(category_scroll_child);
 let main_view = document.querySelector('.main_view')
 
 let trending_views = document.querySelector('.trending_views')
