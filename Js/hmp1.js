@@ -235,7 +235,7 @@ let querysap = await getDocs(q)
 
 
      if(checked==true){
-        findlike=  "<i id='check_like' class='fa-solid fa-thumbs-up' style='color: blue;'></i> "
+        findlike=  "<i id='check_like' class='fa-solid fa-thumbs-up' style='color: #7E75FC;'></i> "
 
     }else{
         findlike=  " <i id='check_like'   class='fa-regular fa-thumbs-up'></i> "
@@ -326,7 +326,7 @@ function showmore(see){
 
   switch (see.parentElement.lastElementChild.innerText) {
     case 'See More..':
-      see.parentElement.firstElementChild.style.display = 'block';
+      see.parentElement.firstElementChild.style.display = 'contents';
       see.innerText = 'See Less..';
       // console.log("true");
       break;
@@ -372,7 +372,7 @@ async function updatelike(x){
     if(x.style.color!= 'blue' && !checked){
       // console.log("pass");
         x.className='fa-solid fa-thumbs-up';
-        x.style.color= 'blue'
+        x.style.color= '#7E75FC'
         let checklike = postData.data().liked_person
         let pushing = checklike.push(usersData)
         
