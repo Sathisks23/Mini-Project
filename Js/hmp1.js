@@ -280,20 +280,12 @@ setTimeout(1600,letsget())
 setTimeout(1600,getdesc())
  
 }    
-
-
-
-
 )
-
-
  }
 
   old = element
 
 }
-
-
 
 
 
