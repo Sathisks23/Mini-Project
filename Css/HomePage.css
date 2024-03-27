@@ -321,7 +321,7 @@ background-color: rgba(233, 233, 233, 0.337);
 }
 
 .trending_views>*{
-    width: 100%;
+    width: 98%;
 }
 
 
@@ -400,7 +400,7 @@ background-color: rgba(233, 233, 233, 0.337);
 .logo_div{
     position: sticky;
     top: 70px;
-    width: 120%;
+    width: 100%;
  padding:  40px 0 40px 0;
     z-index: 0;
     background-color:white;
