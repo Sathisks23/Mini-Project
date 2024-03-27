@@ -275,9 +275,9 @@ main_view.append(card)
 
 
 
-
-setInterval(1600,letsget())
-setInterval(1600,getdesc())
+setTimeout(1600,lets_get())
+setTimeout(1600,letsget())
+setTimeout(1600,getdesc())
  
 }    
 
@@ -299,17 +299,18 @@ setInterval(1600,getdesc())
 
 
 //-----------------------------------Storing elemenent
+function lets_get(){
+  let see_more = document.querySelectorAll('#see_more')
+see_more.forEach((x)=>{
 
+  
+    x.addEventListener('click', function(){showmore(this)}) })
+
+}
 
 function letsget(){
 
-
-
     let like=document.querySelectorAll("#check_like")
-let see_more = document.querySelectorAll('#see_more')
-see_more.forEach((x)=>{
-    x.addEventListener('click', function(){showmore(this)})
-   })
 like.forEach((x)=>{
     x.addEventListener("click", function(){updatelike(this)})})
 }
@@ -319,25 +320,23 @@ like.forEach((x)=>{
 
 //for see more ...
 
-function showmore(see){
+function showmore(mm){
 
-  // console.log( mm.parentElement.firstElementChild.id);
+  
 
 
-  switch (see.parentElement.lastElementChild.innerText) {
-    case 'See More..':
-      see.parentElement.firstElementChild.style.display = 'contents';
-      see.innerText = 'See Less..';
-      // console.log("true");
-      break;
-    case 'See Less..':
-      see.parentElement.firstElementChild.style.display = 'none';
-      see.innerText = 'See More..';
-      // console.log("false");
-      break;
-    default:
-      break;
-  }
+    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
+        mm.parentElement.firstElementChild.style.display = 'contents';
+      
+        mm.innerText = 'See Less..'
+        console.log("True");
+    
+   
+    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
+        mm.parentElement.firstElementChild.style.display = 'none';
+        mm.innerText = 'See More..'
+        console.log("False");
+    }
   
 }
 
@@ -519,8 +518,6 @@ let button=document.getElementById("next_page")
 let button2=document.querySelector(".btn")
 let span=document.getElementById("span")
 let count=0
-let arr=[]
-let arr2=[]
 // console.log(category);
 span.classList.add("none")
 button2.classList.add("col4")
