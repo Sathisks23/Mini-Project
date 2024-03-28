@@ -224,9 +224,6 @@ see_more.forEach((x)=>{
 
 function showmore(mm){
 
-  console.log( mm.parentElement.firstElementChild.id);
-
-
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
         mm.parentElement.firstElementChild.style.display = 'block';
       
