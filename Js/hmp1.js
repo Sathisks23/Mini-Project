@@ -789,7 +789,7 @@ let title = document.getElementById('lines')
 let desc = document.getElementById('create')
 desc.addEventListener('keyup',
   () => {
-    if (desc.innerText.length > 250) { document.getElementById('error').style.visibility = 'hidden' }
+    if (desc.innerText.trim().length > 250) { document.getElementById('error').style.visibility = 'hidden' }
     else {
       document.getElementById('error').style.visibility = 'visible'
     }
@@ -797,13 +797,16 @@ desc.addEventListener('keyup',
 )
 
 
-function validate(){
-  if(desc.innerText.length>250){ 
-   document.getElementById('error').style.visibility ='hidden'
 
+function validate(){
+  console.log( desc.innerText.trim().length);
+  if( desc.innerText.trim().length>250){ 
+   document.getElementById('error').style.visibility ='hidden'
     create_post()
   }else{
    document.getElementById('error').style.visibility ='visible'
+  console.log(newDscription);
+
   }
 }
 
