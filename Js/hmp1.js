@@ -302,6 +302,8 @@ see_more.forEach((x)=>{
 
 function letsget(){
 
+
+
     let like=document.querySelectorAll("#check_like")
 like.forEach((x)=>{
     x.addEventListener("click", function(){updatelike(this)})})
@@ -792,10 +794,33 @@ deleteImgBtn.addEventListener('click', function() {
 
 
 let publish =document.getElementById('submit')
-    publish.addEventListener('click',create_post)
+publish.addEventListener('click',validate)
 let title = document.getElementById('lines')
+
 let desc = document.getElementById('create')
 let loader=document.getElementById('loader')
+desc.addEventListener('keyup',
+  () => {
+    if (desc.innerText.trim().length > 250) { document.getElementById('error').style.visibility = 'hidden' }
+    else {
+      document.getElementById('error').style.visibility = 'visible'
+    }
+  }
+)
+
+
+
+function validate(){
+  console.log( desc.innerText.trim().length);
+  if( desc.innerText.trim().length>250){ 
+   document.getElementById('error').style.visibility ='hidden'
+    create_post()
+  }else{
+   document.getElementById('error').style.visibility ='visible'
+  console.log(newDscription);
+
+  }
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -811,12 +836,14 @@ let loader=document.getElementById('loader')
 
 // Initialize Firebase
 
+
+
+
 let post_ref =collection(db,'post')
 
 
 // let user_getRef = doc(db, "category", usersData);
 // let user_getData1 =  await  getDoc(getRef);
-
 
 
 
@@ -898,6 +925,8 @@ setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
  }))
   
 }
+
+// }
 // ----------------------------------------------------------------blurr and popup-----------------------------------------------------------------------
 
 // var openButton = document.getElementById("open");

@@ -45,6 +45,14 @@ input {
 label {
     font-size: 18px;
 }
+#icon{
+    cursor: pointer;
+}
+
+#icon:hover{
+    color: #ce0000;
+}
+
 .profile_icon {
     background-color: rgb(221,221,221);
     height: 100px;

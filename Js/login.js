@@ -176,6 +176,13 @@ else if (password.type =='text') {
 
 
 
+
+
+
+
+
+
+
  let  p=document.querySelector(".Erro_msg");
  let  p2=document.querySelector(".Erro_msg1");
 

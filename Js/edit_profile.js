@@ -38,6 +38,8 @@ let loader=document.getElementById('loader')
 
 //profile dp change
 
+//profile dp change
+
 let ProfileImg = document.querySelector("#change");
     let inputfile= document.querySelector("#drop_zone");
 
