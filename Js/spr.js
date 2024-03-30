@@ -119,6 +119,14 @@ querysap.forEach(async(rec)=>{
      username.innerText = mu_user_getData.data().u_name
      userbio.innerText = mu_user_getData.data().u_bio
 
+     let p
+     if(rec.data().p_desc.length>=100){ 
+       let string1 =  rec.data().p_desc.slice(0,100)
+       let string2 =  rec.data().p_desc.slice(100)
+       p =` <p id="trend_description">${string1}<span id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
+     }else{
+       p= ` <p id="trend_description">${rec.data().p_desc}</p> `
+     }
 
 
 
@@ -128,10 +136,10 @@ let card = document.createElement('div')
  card.innerHTML = 
 
  ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4 id='mini_uname'>${mu_user_getData.data().u_name}</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
+        `<div class='description'><p id='post_desc'>${p}</p> </div>`+
         
        ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
-       ` <div class='social_section'><div class='like_div'> <i  id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
+       ` <div class='social_section'><div class='like_div'> <i  id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>${rec.data().p_like}</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>0</b></div> </div>`
         "<div class=;comment_section'>"
             "<div class='add_comment_section'> <img id='comment_dp' src='' ><input onkeyup='sendshow(this)' id='comment_input' placeholder='add a comment..' type='text'> <i id='sending' class='fa-regular fa-paper-plane'></i> <i   class='fa-regular fa-face-smile'></i></div>"
             " <div class='comments_list'>"
@@ -143,8 +151,10 @@ var c = document.querySelector('.post_container')
 c.append(card)
 
 
+}
+,setTimeout(lets_get,1600)
 
-})
+)
 
 
 // var pro_img = document.getElementById('news11');
@@ -240,3 +250,38 @@ c.append(card)
 //     news_expand.style.display="block";
 // })
 
+
+
+
+//for see more ...
+
+function lets_get(){
+  let see_more = document.querySelectorAll('#see_more')
+see_more.forEach((x)=>{
+
+  
+    x.addEventListener('click', function(){showmore(this)}) })
+
+}
+
+
+
+function showmore(mm){
+
+  console.log( mm.parentElement.firstElementChild.id);
+
+
+    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
+        mm.parentElement.firstElementChild.style.display = 'block';
+      
+        mm.innerText = 'See Less..'
+       
+    
+   
+    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
+        mm.parentElement.firstElementChild.style.display = 'none';
+        mm.innerText = 'See More..'
+     
+    }
+  
+}
