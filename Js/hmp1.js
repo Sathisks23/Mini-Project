@@ -64,8 +64,8 @@ for(i in fav_arry){
 let li1 = document.querySelectorAll('.navlink')
 
 //cahnge Theme
-let theme =document.getElementById('theme')
-    theme.addEventListener('click',changetheme)
+// let theme =document.getElementById('theme')
+//     theme.addEventListener('click',changetheme)
 
 function changetheme(){
 
@@ -149,7 +149,7 @@ let trending_views = document.querySelector('.trending_views')
 category_scroll.addEventListener('wheel',category_views_scroll)
 
 function category_views_scroll() {
-  if (category_scroll_child>=13) {
+  if (category_scroll_child>=12) {
   trending_views.style.position='fixed'
   trending_views.style.top = '100px'
   main_view.style.position = 'fixed'
@@ -192,7 +192,10 @@ if(old){old.classList.remove('active');console.log(old);}
   
 let post_getref =  collection(db,'post')
 let q
-try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)) }
+try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)  ) }
+q = query(q,orderBy('pid','desc'))
+
+
 let querysap = await getDocs(q)
     
  if(querysap.size==0){ 
@@ -291,21 +294,40 @@ setTimeout(1600,getdesc())
 
 
 //-----------------------------------Storing elemenent
+
+
+
+
+
+
+
+
+
+
+
+
 function lets_get(){
-  let see_more = document.querySelectorAll('#see_more')
-see_more.forEach((x)=>{
+  let hiden_des = document.querySelectorAll('#see_more')
+  hiden_des.forEach((x)=>{
 
-  
-    x.addEventListener('click', function(){showmore(this)}) })
+ 
+x.addEventListener('click', handleShowMore) }
 
+
+)}
+
+
+function handleShowMore(event) {
+  showmore(event.target);
 }
-
 function letsget(){
 
 
 
     let like=document.querySelectorAll("#check_like")
 like.forEach((x)=>{
+
+
     x.addEventListener("click", function(){updatelike(this)})})
 }
 
@@ -331,6 +353,9 @@ function showmore(mm){
         mm.innerText = 'See More..'
         console.log("False");
     }
+
+
+   
   
 }
 
@@ -887,6 +912,7 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     p_link:downloadURL,
     u_id:usersData,
     p_like:0,
+    pid:++id,
     p_comment:[],
     liked_person:[]
   }

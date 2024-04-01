@@ -22,28 +22,28 @@ let a = document.querySelector('.img_nav').querySelectorAll('a')
 a.forEach((e)=>{
 e.classList.toggle('blacktheme')})
 
-if(theme=='dark'){
-  document.body.style.backgroundColor='black'
-  document.body.style.color = 'white'
-  document.querySelector('header').style.backgroundColor = 'black'
-  document.querySelector('header').style.color = 'white'
-  document.querySelector('.img_nav').style.backgroundColor='black'
-  document.querySelector('.img_nav').style.color='white'
-  document.body.classList.toggle('blacktheme')
-  document.querySelector('header').classList.toggle('blacktheme')
-  document.querySelector('.search').classList.toggle('darkinput')
-//  document.getElementById('theme').classList.toggle('blacktheme')
-}else{
-  document.body.backgroundColor='white'
-  document.body.style.color = 'black'
-  document.querySelector('header').style.backgroundColor = 'white'
-  document.querySelector('header').style.color = 'black'
-  document.querySelector('.img_nav').style.backgroundColor='white'
-  // document.body.classList.toggle('blacktheme')
-  document.querySelector('header').classList.toggle('blacktheme')
-  document.querySelector('.search').classList.toggle('darkinput')
-//  document.getElementById('theme').classList.toggle('blacktheme')
-}
+// if(theme=='dark'){
+//   document.body.style.backgroundColor='black'
+//   document.body.style.color = 'white'
+//   document.querySelector('header').style.backgroundColor = 'black'
+//   document.querySelector('header').style.color = 'white'
+//   document.querySelector('.img_nav').style.backgroundColor='black'
+//   document.querySelector('.img_nav').style.color='white'
+//   document.body.classList.toggle('blacktheme')
+//   document.querySelector('header').classList.toggle('blacktheme')
+//   document.querySelector('.search').classList.toggle('darkinput')
+// //  document.getElementById('theme').classList.toggle('blacktheme')
+// }else{
+//   document.body.backgroundColor='white'
+//   document.body.style.color = 'black'
+//   document.querySelector('header').style.backgroundColor = 'white'
+//   document.querySelector('header').style.color = 'black'
+//   document.querySelector('.img_nav').style.backgroundColor='white'
+//   // document.body.classList.toggle('blacktheme')
+//   document.querySelector('header').classList.toggle('blacktheme')
+//   // document.querySelector('.search').classList.toggle('darkinput')
+// //  document.getElementById('theme').classList.toggle('blacktheme')
+// }
 
 
 
@@ -288,30 +288,30 @@ function showmore(mm){
 
 //for see more ...
 
-function lets_get(){
-  let see_more = document.querySelectorAll('#see_more')
-see_more.forEach((x)=>{
+// function lets_get(){
+//   let see_more = document.querySelectorAll('#see_more')
+// see_more.forEach((x)=>{
 
   
-    x.addEventListener('click', function(){showmore(this)}) })
+//     x.addEventListener('click', function(){showmore(this)}) })
 
-}
+// }
 
 
 
-function showmore(mm){
+// function showmore(mm){
 
-    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'block';
+//     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
+//         mm.parentElement.firstElementChild.style.display = 'block';
       
-        mm.innerText = 'See Less..'
+//         mm.innerText = 'See Less..'
        
     
    
-    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
-        mm.parentElement.firstElementChild.style.display = 'none';
-        mm.innerText = 'See More..'
+//     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
+//         mm.parentElement.firstElementChild.style.display = 'none';
+//         mm.innerText = 'See More..'
      
-    }
+//     }
   
-}
+// }
