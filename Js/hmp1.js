@@ -18,7 +18,7 @@
 
 
  ///-------------------------------------------------------------  Theme finding
- let theme1 = JSON.parse(localStorage.getItem("theme"))
+//  let theme1 = JSON.parse(localStorage.getItem("theme"))
 
 
 

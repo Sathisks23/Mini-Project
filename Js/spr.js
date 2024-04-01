@@ -13,14 +13,14 @@
    appId: "1:845776141467:web:49a16a51ae3d1673695a3e"
  };
 
- import { getFirestore,query,where, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+ import { getFirestore,query,where,orderBy, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
 
 
 //THeme change 
-let theme = JSON.parse(localStorage.getItem("theme"))
-let a = document.querySelector('.img_nav').querySelectorAll('a')
-a.forEach((e)=>{
-e.classList.toggle('blacktheme')})
+// let theme = JSON.parse(localStorage.getItem("theme"))
+// let a = document.querySelector('.img_nav').querySelectorAll('a')
+// a.forEach((e)=>{
+// e.classList.toggle('blacktheme')})
 
 // if(theme=='dark'){
 //   document.body.style.backgroundColor='black'
@@ -100,7 +100,7 @@ let   mu_user_getData  =await  getDoc(mul_user_getref)
 
 let post_getref =  collection(db,'post')
 let q = query(post_getref,where('u_id','==',usersData))
-
+q=query(q,orderBy('pid','desc'))
  let querysap = await getDocs(q)
  
 querysap.forEach(async(rec)=>{
