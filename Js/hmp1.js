@@ -18,7 +18,7 @@ import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, u
 
 
 ///-------------------------------------------------------------  Theme finding
-let theme1 = JSON.parse(localStorage.getItem("theme"))
+//  let theme1 = JSON.parse(localStorage.getItem("theme"))
 
 
 
@@ -64,8 +64,8 @@ for(i in fav_arry){
 let li1 = document.querySelectorAll('.navlink')
 
 //cahnge Theme
-let theme =document.getElementById('theme')
-   theme.addEventListener('click',changetheme)
+// let theme =document.getElementById('theme')
+//     theme.addEventListener('click',changetheme)
 
 function changetheme(){
 
@@ -149,7 +149,7 @@ let trending_views = document.querySelector('.trending_views')
 category_scroll.addEventListener('wheel',category_views_scroll)
 
 function category_views_scroll() {
- if (category_scroll_child>=13) {
+ if (category_scroll_child>=12) {
  trending_views.style.position='fixed'
  trending_views.style.top = '100px'
  main_view.style.position = 'fixed'
@@ -192,7 +192,10 @@ if(old){old.classList.remove('active');console.log(old);}
  
 let post_getref =  collection(db,'post')
 let q
-try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)) }
+try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)  ) }
+q = query(q,orderBy('pid','desc'))
+
+
 let querysap = await getDocs(q)
    
 if(querysap.size==0){ 
@@ -291,19 +294,40 @@ setTimeout(1600,getdesc())
 
 
 //-----------------------------------Storing elemenent
+
+
+
+
+
+
+
+
+
+
+
+
 function lets_get(){
- let see_more = document.querySelectorAll('#see_more')
-see_more.forEach((x)=>{
+ let hiden_des = document.querySelectorAll('#see_more')
+ hiden_des.forEach((x)=>{
 
- 
-   x.addEventListener('click', function(){showmore(this)}) })
 
+x.addEventListener('click', handleShowMore) }
+
+
+)}
+
+
+function handleShowMore(event) {
+ showmore(event.target);
 }
-
 function letsget(){
+
+
 
    let like=document.querySelectorAll("#check_like")
 like.forEach((x)=>{
+
+
    x.addEventListener("click", function(){updatelike(this)})})
 }
 
@@ -329,6 +353,9 @@ function showmore(mm){
        mm.innerText = 'See More..'
        console.log("False");
    }
+
+
+  
  
 }
 
@@ -792,10 +819,33 @@ deleteImgBtn.addEventListener('click', function() {
 
 
 let publish =document.getElementById('submit')
-   publish.addEventListener('click',create_post)
+publish.addEventListener('click',validate)
 let title = document.getElementById('lines')
+
 let desc = document.getElementById('create')
 let loader=document.getElementById('loader')
+desc.addEventListener('keyup',
+ () => {
+   if (desc.innerText.trim().length > 250) { document.getElementById('error').style.visibility = 'hidden' }
+   else {
+     document.getElementById('error').style.visibility = 'visible'
+   }
+ }
+)
+
+
+
+function validate(){
+ console.log( desc.innerText.trim().length);
+ if( desc.innerText.trim().length>250){ 
+  document.getElementById('error').style.visibility ='hidden'
+   create_post()
+ }else{
+  document.getElementById('error').style.visibility ='visible'
+ console.log(newDscription);
+
+ }
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -811,12 +861,14 @@ let loader=document.getElementById('loader')
 
 // Initialize Firebase
 
+
+
+
 let post_ref =collection(db,'post')
 
 
 // let user_getRef = doc(db, "category", usersData);
 // let user_getData1 =  await  getDoc(getRef);
-
 
 
 
@@ -860,6 +912,7 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
    p_link:downloadURL,
    u_id:usersData,
    p_like:0,
+   pid:++id,
    p_comment:[],
    liked_person:[]
  }
@@ -898,6 +951,8 @@ setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
 }))
  
 }
+
+// }
 // ----------------------------------------------------------------blurr and popup-----------------------------------------------------------------------
 
 // var openButton = document.getElementById("open");
