@@ -16,7 +16,9 @@
     height: 30px;
     border-radius:50%;
 }
-
+#delete-img{
+    display: none;
+}
 
 .darkinput{
     background-color: white;
@@ -204,7 +206,7 @@ padding: 10px;
     width:15%;
     border-right: 1px solid rgba(128, 128, 128, 0.176);
     height: 100vh;
-    margin-top: 70px;
+    top: 70px;
     position: fixed;
     
 }
@@ -215,8 +217,7 @@ padding: 10px;
 }
 .categories_nav li{
    list-style: none;
- 
-   
+   overflow: hidden;
 }
 
 #empty_div{
@@ -326,7 +327,7 @@ background-color: rgba(233, 233, 233, 0.337);
 }
 
 .trending_views>*{
-    width: 100%;
+    width: 98%;
 }
 
 
@@ -405,7 +406,7 @@ background-color: rgba(233, 233, 233, 0.337);
 .logo_div{
     position: sticky;
     top: 70px;
-    width: 120%;
+    width: 100%;
  padding:  40px 0 40px 0;
     z-index: 0;
     background-color:white;
@@ -600,16 +601,7 @@ span#span {
 } */
 
 .block{
-    display: block;
     display: flex;
-    flex-direction: column;
-    width: 720px;
-    height: 649px;
-    justify-content: space-evenly;
-    border: 1px solid #0000002b;
-    text-align: center;
-    margin: 55px auto;
-    box-shadow: 0px 1px 4px 3px #0000002b;
     border: 1px solid #7B65FF;
 }
 
@@ -815,3 +807,48 @@ body {
     visibility: visible;
     /* display: block; */
 }
+/* ---------------loader ------------*/
+#loader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #7B65FF;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }

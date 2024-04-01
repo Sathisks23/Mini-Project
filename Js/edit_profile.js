@@ -34,7 +34,9 @@ var button=document.getElementById("btn")
 var button2=document.getElementById("btn2")
 var bio1=document.getElementById("bio")
 var trash=document.querySelector("#icon")
+let loader=document.getElementById('loader')
 
+//profile dp change
 
 //profile dp change
 
@@ -59,7 +61,7 @@ trash.addEventListener("click",()=>{
 let getRef1 = doc(db, "user", usersData);
 
 let getData1 = await getDoc(getRef1);
-console.log(getData1.data().u_email); 
+// console.log(getData1.data().u_email); 
 
 let uid =usersData
 
@@ -95,19 +97,23 @@ button.addEventListener("click",(event)=>{
 event.preventDefault()
     if (inputname.value.trim()=="") {
       inputname.value="User"
+      loader.style.display='block';
+      document.body.querySelector('.container').style.opacity='0.5'
       updateDoc(doc(db,"user",usersData), {
         u_name: inputname.value,
         u_bio:bio1.value,
         u_dp:ProfileImg.src 
         // u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
       }).then(()=>{
-      
+        setTimeout(loader.style.display='none',3000)
+        setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
         location.replace("spr.html")
       }
       )
     }
  if (inputfile.value==false) {
-// console.log("if");
+  loader.style.display='block';
+  document.body.querySelector('.container').style.opacity='0.5'
 updateDoc(doc(db,"user",usersData), {
     u_name: inputname.value,
     u_bio:bio1.value,
@@ -115,14 +121,16 @@ updateDoc(doc(db,"user",usersData), {
 
     // u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
   }).then(()=>{
-  
+    setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
+    setTimeout(loader.style.display='none',3000)
     location.replace("spr.html")
   }
   )
  
    
  }else{
-  // console.log("else");
+  loader.style.display='block';
+  document.body.querySelector('.container').style.opacity='0.5'
   let pimage = document.getElementById('drop_zone').files[0]
 
   let meta_data = {contentype:pimage.type}
@@ -140,6 +148,8 @@ updateDoc(doc(db,"user",usersData), {
         u_bio:bio1.value,
         
       }).then(()=>{
+        setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
+        setTimeout(loader.style.display='none',3000)
         location.replace("spr.html")
       }
       )

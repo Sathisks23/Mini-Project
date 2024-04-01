@@ -1,4 +1,3 @@
-//Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -69,9 +68,9 @@ document.getElementById("submit").addEventListener("click", function (event) {
     Subject : "Enter the OTP",
     Body : mail_msg
   }).then(
-  message => alert(message)
+  message => (message)
   
-  )  .catch(error => alert(error));
+  )  .catch(error => (error));
  
 
 
@@ -220,12 +219,19 @@ let u_id
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
    
+   alert("OTP sucessfull")
+    otpmaincontainer.remove()
+    container1.style.display="flex";
+    maincontainer.style.display="none";
 
-    otpmaincontainer.innerHTML = '<i class="fa-solid fa-thumbs-up"></i><br><h4 style=color:green; >Sussess</h4>'
-    otpmaincontainer.style.boxShadow ='none'
-    otpmaincontainer.style.backgroundColor='transparent'
-  
-   setTimeout(category_listing,2000)
+    setDoc(doc(db,"user",`u_id-${++id}`), {
+      u_name: username.value,
+      u_email:email.value,
+      u_password:pass1.value,   
+      // u_favcategory:arr2
+    })
+    localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
+    
    
    }
    else{
@@ -238,20 +244,7 @@ let u_id
 
 }
 
-function category_listing(){
-   otpmaincontainer.remove()
-    container1.style.display="flex";
-    maincontainer.style.display="none";
 
-    setDoc(doc(db,"user",`u_id-${++id}`), {
-      u_name: username.value,
-      u_email:email.value,
-      u_password:pass1.value,   
-      // u_favcategory:arr2
-    })
-    localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
-    
-}
  
 
 
@@ -363,6 +356,37 @@ var length=document.getElementById("length")
 
     } 
   
+//-------Eye icon js----------
+var icon=document.getElementById("eye1")
+var icon2=document.getElementById("eye2")
+icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+icon2.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+
+icon.addEventListener("click",function() {
+if (pass1.type =='password') {
+  pass1.type='text'
+  icon.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+}
+else if (pass1.type =='text') {
+  pass1.type='password'
+  icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+}
+})
+icon2.addEventListener("click",function() {
+  if (pass2.type =='password') {
+    pass2.type='text'
+    icon2.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+  }
+  else if (pass2.type =='text') {
+    pass2.type='password'
+    icon2.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+  }
+  })
+
+
+
+
+
 
 //------------------------------------------select catgeorypages js -----------------------------------------------------------
 let category=document.querySelectorAll(".category1")
@@ -496,7 +520,6 @@ async function   email_validate(){
         }
      } 
 }
-
 
 
 

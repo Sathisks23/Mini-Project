@@ -155,6 +155,20 @@ async function   email_validate(){
 
 
 }
+//-------Eye icon js----------
+var icon=document.getElementById("eye1")
+icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+
+icon.addEventListener("click",function() {
+if (password.type =='password') {
+  password.type='text'
+  icon.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+}
+else if (password.type =='text') {
+  password.type='password'
+  icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+}
+})
 
 
 
