@@ -1,4 +1,4 @@
-//Import the functions you need from the SDKs you need
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore,getDocs,setDoc,addDoc,doc,collection} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -495,7 +495,7 @@ alert('UserAdded')
     }})
 
     
-     let email_exit_error=document.getElementById('email_exit_error') ;
+      
     
 let i= 0
 async function   email_validate(){
@@ -519,15 +519,7 @@ async function   email_validate(){
             let validotp = true;
      for(i in no){
         if((no[i][0])==email.value ){
-          
-          
-          email_exit_error.innerText="sorry this email already  login";
-
-         
-          // alert("sorry this email already  login");
-
-          validotp=false
-
+          alert("sorry this email already  login")
      break
             // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
 
@@ -539,8 +531,8 @@ async function   email_validate(){
 
         // }
      } 
-
-     if(validotp){
-      otpdiv()
-    }
 }
+
+
+
+
