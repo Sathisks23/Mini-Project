@@ -84,8 +84,8 @@ imageUpload.addEventListener('change', function() {
 
 let publish =document.getElementById('submit')
     publish.addEventListener('click',create_post)
-let title = document.getElementById('create')
-let desc = document.getElementById('lines')
+let title = document.getElementById('lines')
+let desc = document.getElementById('create')
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -115,27 +115,35 @@ const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
 let post_ref =collection(db,'post')
 
-let getData = await getDocs(post_ref)
+
+// let user_getRef = doc(db, "category", usersData);
+// let user_getData1 =  await  getDoc(getRef);
+
+
+
+
+async function create_post(){
+    
+
+  let getData = await getDocs(post_ref)
 let id = getData.size
 console.log(id);
+console.log(category_id);
 
-let getRef = doc(db, "category", `ca_id-${1}`);
+let getRef = doc(db, "category", `ca_id-${category_id}`);
 let getData1 =  await  getDoc(getRef);
 let p_array = getData1.data().post_id
 
-p_array.push(`p_id-${p_array.length+1}`)
-console.log(p_array);
+
+p_array.push(`p_id-${++id}`)
+
 
 
 let usersData=JSON.parse(localStorage.getItem("usersData"))
-let user_getRef = doc(db, "category", usersData);
-let user_getData1 =  await  getDoc(getRef);
 
 
 
 
-function create_post(){
-    
 let pimage = document.getElementById('img').files[0]
 
 let meta_data = {contentype:img.type}
@@ -146,12 +154,17 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
   let post_data = 
   {
     c_name:category_name,
-    p_desc:desc.value,
-    p_title:title.innerText,
+    p_desc:desc.innerText,
+    p_title:title.value,
     p_link:downloadURL,
-    u_id:usersData
+    u_id:usersData,
+    p_like:0,
+    p_comment:[],
+    liked_person:[]
     
   }
+
+console.log(post_data);
 
 let ca_data =
  {
@@ -159,6 +172,8 @@ let ca_data =
     ca_name:category_name,
     post_id:p_array,
   }
+
+console.log(ca_data);
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(()=>{alert('Post created')}).catch((error)=>{console.log(error)})
 setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{alert('Category created')}).catch((error)=>{console.log(error)})

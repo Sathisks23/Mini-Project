@@ -27,7 +27,7 @@ console.log(usersData);
 
 //Checking signup users
 if(usersData){
-  location.replace("HomePage.html");
+  location.replace("hmpg.html");
   
 }
 
@@ -68,11 +68,10 @@ document.getElementById("submit").addEventListener("click", function (event) {
     From : "dckapnews@gmail.com",
     Subject : "Enter the OTP",
     Body : mail_msg
-  })
-  // .then(
-  // message => alert(message)
+  }).then(
+  message => alert(message)
   
-  // )  .catch(error => alert(error));
+  )  .catch(error => alert(error));
  
 
 
@@ -443,14 +442,15 @@ setDoc(doc(db,"user",`u_id-${id}`), {
   u_email:email.value,
   u_password:pass1.value,   
   u_favcategory:arr2,
-  u_dp:'https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4'
+  u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
+
 })
 localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
 alert('UserAdded')
 
 
 
- button.setAttribute("href","HomePage.html")
+ button.setAttribute("href","hmpg.html")
 
     }})
 
@@ -477,6 +477,16 @@ async function   email_validate(){
     
 
 
+<<<<<<< HEAD
+=======
+     for(i in no){
+        if((no[i][0])==email.value ){
+          alert("sorry this email already  login")
+     break
+            // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
+
+            //  location.replace('HomePage.html') 
+>>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
 
      for(i=0;i<no.length;i++){
       if(no[i][0] == email.value){

@@ -31,6 +31,32 @@ let userbio = document.getElementById('bio')
 let usersData=JSON.parse(localStorage.getItem("usersData"))
 
 
+let user_getref = doc(db,'user',usersData)
+let user_getData = await getDoc(user_getref)
+
+
+let up=  document.getElementById('profile')
+up.src=user_getData.data().u_dp
+
+
+
+
+let    mul_user_getref = doc(db,'user',usersData)
+let   mu_user_getData  =await  getDoc(mul_user_getref)
+    mu_user_getData.data().u_id
+
+
+    uprofile.src = mu_user_getData.data().u_dp
+    username.innerText = mu_user_getData.data().u_name
+    if(mu_user_getData.data().u_bio)
+{
+  userbio.innerText = mu_user_getData.data().u_bio
+}else{
+   userbio.innerText = ""
+}
+
+
+
 
 let post_getref =  collection(db,'post')
 let q = query(post_getref,where('u_id','==',usersData))
@@ -60,7 +86,7 @@ let card = document.createElement('div')
  card.innerHTML = 
 
  ` <div class='post_head'> <img id='user_dp' src='${ mu_user_getData.data().u_dp}'> <h4 id='mini_uname'>${mu_user_getData.data().u_name}</h4></div>`+
-        `<div class='description'><p id='post_desc'>'${rec.data().u_desc}'</p> </div>`+
+        `<div class='description'><p id='post_desc'>'${rec.data().p_desc}'</p> </div>`+
         
        ` <div class='post_div'><img id='post' src='${rec.data().p_link}'></div>`+
        ` <div class='social_section'><div class='like_div'> <i onclick='uplike(this)' id='check_like'  class='fa-regular fa-thumbs-up'></i>  <b  id='likes'>0</b> </div> <div class='comment_icon'> <i onclick='showcomment(this)'' class='fa-regular fa-comment'></i>  <b id='comment_counnt'>100</b></div> </div>`
