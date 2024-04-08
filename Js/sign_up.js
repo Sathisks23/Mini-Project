@@ -168,7 +168,8 @@ function checkData() {
   }
   if (count==3) {
     email_validate();
-  // otpdiv();
+    // location.replace("hmpg.html")
+  otpdiv();
 
     }
 }
@@ -526,10 +527,10 @@ async function   email_validate(){
             //  location.replace('HomePage.html') 
 
         } 
-        // else{
-        //   validotp=true
+        else{
+          validotp=true
 
-        // }
+        }
      } 
 }
 
