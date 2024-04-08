@@ -23,7 +23,6 @@ i.fa-solid.fa-trash {
 .main_container {
     display: flex;
     margin: 40px auto;
-    justify-content: center;
 }
 input {
     width: 98%;
@@ -46,6 +45,14 @@ input {
 label {
     font-size: 18px;
 }
+#icon{
+    cursor: pointer;
+}
+
+#icon:hover{
+    color: #ce0000;
+}
+
 .profile_icon {
     background-color: rgb(221,221,221);
     height: 100px;
@@ -93,16 +100,11 @@ button{
 }
 .cancel_btn{
     height: 30px;
-    width: 53px;
-     border: none;
+    width: 100px;
+    border: none;
     border-radius: 8px;
     color: white;
     background-color: #FF0000;
-}
-a#cancel_link {
-    position: relative;
-    bottom: 33px;
-    right: 239px;
 }
 .cancel_btn:hover{
     background-color: #ce0000;
@@ -148,8 +150,48 @@ textarea {
 .block{
     display: block;
 }
-.sub_container {
-    width: 50%;
-    height: 480px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+/* ---------------loader ------------*/
+#loader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #7B65FF;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }

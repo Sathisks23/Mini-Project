@@ -1,6 +1,4 @@
-
-
-// TODO: Add SDKs for Firebase products that you want to use
+//TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -43,7 +41,7 @@ let two = false
 btn.addEventListener("click",(event)=>{
     event.preventDefault();
     
-// console.log("hello");
+console.log("hello");
     if(email_id.value.trim()==""){
     
        
@@ -70,7 +68,7 @@ btn.addEventListener("click",(event)=>{
 
         success(password);
         two = true
-// console.log(password.value);
+console.log(password.value);
        
     }
 
@@ -157,6 +155,20 @@ async function   email_validate(){
 
 
 }
+//-------Eye icon js----------
+var icon=document.getElementById("eye1")
+icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+
+icon.addEventListener("click",function() {
+if (password.type =='password') {
+  password.type='text'
+  icon.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+}
+else if (password.type =='text') {
+  password.type='password'
+  icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+}
+})
 
 
 
@@ -176,26 +188,8 @@ async function   email_validate(){
 
 function error(element,msg){
   
-    // console.log(msg);
     element.style.border='3px red solid';
     const parent=element.parentElement;
-<<<<<<< HEAD
-    // console.log(p);
-
-
-
-    Array.from(errorMessages).slice(0, 2).forEach(elem => {
-        elem.style.display = "block";
-        elem.innerText = msg;
-    });
-    p.forEach(elem => {
-        elem.style. display="block";
-        elem.innerText=msg;
-    });
-
-
-
-=======
    
     console.log(p);
   
@@ -207,24 +201,15 @@ function error(element,msg){
         p2.style. display="none";
       },1500)
     
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
  }
  
  function success(element,msg){
     element.style.border='3px green solid';
     const parent=element.parentElement;
    
-<<<<<<< HEAD
-    p.forEach(elem => {
-        elem.innerText= msg;
-        // console.log(msg);
-    elem.style.display = "none";
-    });
-=======
     p.style.display = "none";
   
     p2.style.display = "none";
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
    
   
    

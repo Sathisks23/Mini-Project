@@ -11,11 +11,16 @@
 </head>
 <body>
     <div class="main_container">
-        <div class="sub_container">
+        <div id="loader"></div>
+        <div class="container">
+           
+            <div class="loading-overlay" id="loadingOverlay">
+    
+                <div class="loading-spinner"></div>
     <div class="container">
         <div class="top">
         <p class="title">Edit Your Profile</p>
-     <a id="cancel_link" href=""><button id="btn2" class="cancel_btn">X</button></a>  
+     <a id="cancel_link" href=""><button id="btn2" class="cancel_btn">Cancel</button></a>  
         </div>
         <div class="profile">
             <div class="profile_icon">
@@ -37,12 +42,11 @@
     </div>
     <div class="bio_block">
        <label for="Bio">Bio</label>
-       <textarea id="bio" name="Bio"></textarea>
+       <textarea id="bio" name="Bio" placeholder="Enter your bio"></textarea>   
     </div>
    <a id="btn_link" href=""><button id="btn" class="save_btn">Save</button></a> 
     </div>
     </div>
-</div>
 </div>
 <script type="module" src="Js/edit_profile.js"></script>
 </body>

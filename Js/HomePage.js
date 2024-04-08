@@ -181,6 +181,7 @@ let i=0
 
 
     
+   console.log(fav_arry);
 
 //    for(i in fav_arry){
 
@@ -424,47 +425,6 @@ main_view.append(card)
 }
 setInterval(3000,letsget())
 
-<<<<<<< HEAD
-function removeItemAll(arr, value) {
-    var i = 0;
-    while (i < arr.length) {
-      if (arr[i] === value) {
-        arr.splice(i, 1);
-      } else {
-        ++i;
-      }
-    }
-    return arr;
-  }
-category.forEach((x,category)=>{
-    x.classList.add("cat")
-    button2.classList.remove("col2")
-    button2.classList.add("col4")
-    x.addEventListener("click",()=>{
-        if(fav_arry.includes(x.innerText)) {
-            // x.classList.remove("box")
-            // x.classList.add("cat")
-            x.style.boxShadow = "none";
-            // removeItemAll(arr,x)
-            // removeItemAll(arr2,x.innerText)
-            removeItemAll(fav_arry,x.innerText);
-
-         /////update array/////////////////////////////
-         let ref = doc(db,"user",usersData);
-
-         updateDoc(
-           ref, {
-         
-             u_favcategory:fav_arry
-         
-           })
-        //  ).then(()=>{
-        //    alert("Updated Successfully")
-        //  }).catch((e)=>{console.log(e);})
-         
-         
-        //  button.setAttribute("href","HomePage.html")
-=======
 }
 
 ;
@@ -485,14 +445,10 @@ let like_num
    
     x.addEventListener("click", function(){updatelike(this)})})
 }
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
 
 
 
 
-<<<<<<< HEAD
-            
-=======
 
 
 async function updatelike(x){
@@ -534,51 +490,8 @@ console.log(typeof(checklike));
         })
     
         
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
         }
 
-<<<<<<< HEAD
-        console.log(fav_arry);
-    }
-
-    })
-})
-button.addEventListener("click",(event)=>{
-    let fav_arry_length=fav_arry.length
-    console.log(fav_arry);
-    if (fav_arry_length>=3) {
-        // button2.classList.remove("col2")
-        // button2.classList.add("col4")
-
-//------------------------Update--------------------        
-let ref = doc(db,"user",usersData);
-
-updateDoc(
-  ref, {
-
-    u_favcategory:fav_arry
-
-  }
-).then(()=>{
-  alert("Updated Successfully")
-   location.replace("HomePage.html")
-}).catch((e)=>{console.log(e);})
-
-
-
-// 
-    }
-    else{
-        console.log("no");
-    }
-    
-   
-
-
-})
-
-
-=======
         
     else{x.style.color= 'black'  
 
@@ -607,7 +520,6 @@ updateDoc(
 }
 
 }  
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
       
 
 
@@ -617,88 +529,3 @@ let post_ref = collection(db,'post')
 let most_like = query(post_ref, orderBy("p_like"), limit(10));
 let res = await getDocs(most_like)
 res.forEach((rec)=>{console.log(rec.data());})  
-
-
-
-
-
-///change_password////////////////////////
-//  let change_pass=document.getElementById("change_pass");
-
-//  change_pass.addEventListener("click",()=>{
-//     console.log("hiii");
-
-<<<<<<< HEAD
-
-
-
-
-
-
-/*//////////////////// Editi  Catgeory page /////////////////////////////////*/
-
-let container1= document.querySelector(".container1")
- 
-let navbar_div=document.getElementById("navbar_div");
-
- let Category_div=document.querySelector(".Category_div");
-
- let editi_catgeory=document.querySelector("#editi_catgeory");
- editi_catgeory.addEventListener("click",()=>{
-    
-
-    trending_views.style.display="none";
-//    navbar_div.classList.add("navbar_div");
-   container1.classList.add("block");
-document.querySelector(".categories_nav").style.opacity = "0.2";
-
-document.querySelector("header").style.opacity = "0.2";
-
-
-
-   let editCategory = document.querySelectorAll("#text");
-   let j= 0
-   let k= 0
-   
-//  let parent=editCategory.parentElement;
-//  console.log(parent);
-
-      for(k in fav_arry){
-        for(j in  editCategory){
-            if( editCategory[j].innerText == fav_arry[k]){
-                // parent.classList.add("box");
-
-                editCategory[j].parentElement.style.boxShadow = "0px 0px 2px 2px #6452D0";
-
-            
-              }
-        }
-      }
-
-
-
- 
-   
-
-
-
- })
-
-
-/*Logout  pagess*/
-
- let logout=document.querySelector("#logout");
-
-  
-logout.addEventListener("click",()=>{
-
-  localStorage.removeItem("usersData");
-  location.replace("index.html");
-
-
-
-
-})
-=======
-//  });
->>>>>>> 4139c67c2a0d1a7165965aafebd318307a3f710c
