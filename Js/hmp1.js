@@ -18,7 +18,15 @@
 
 
  ///-------------------------------------------------------------  Theme finding
- let theme1 = JSON.parse(localStorage.getItem("theme"))
+//  let theme1 = JSON.parse(localStorage.getItem("theme"))
+
+
+
+
+
+
+
+
 
 //-------------------------------------------------------------------------
 
@@ -51,7 +59,7 @@ for(i in fav_arry){
 
 let li1 = document.querySelectorAll('.navlink')
 
-//cahnge Theme..................................................................................
+//cahnge Theme
 // let theme =document.getElementById('theme')
 //     theme.addEventListener('click',changetheme)
 
@@ -225,15 +233,28 @@ let a = document.querySelector('.ca_popup').querySelectorAll('li')
     
 
 //for scrolling .......
+
+let category_scroll=document.querySelector('.categories_nav')
+let category_scroll_child=document.querySelector('.ca_popup').childElementCount
 let main_view = document.querySelector('.main_view')
 
 let trending_views = document.querySelector('.trending_views')
     trending_views.addEventListener('wheel',trending_views_scroll)
     
+category_scroll.addEventListener('wheel',category_views_scroll)
 
-
-    
+function category_views_scroll() {
+  if (category_scroll_child>=12) {
+  trending_views.style.position='fixed'
+  trending_views.style.top = '100px'
+  main_view.style.position = 'fixed'
+  main_view.style.top = '100px'
+ category_scroll.style.position = 'absolute'
+  }
+}    
     function trending_views_scroll(){
+      category_scroll.style.position='fixed'
+      category_scroll.style.top = '70px'
       main_view.style.position = 'fixed'
       main_view.style.top = '100px'
      trending_views.style.position = 'absolute'
@@ -242,7 +263,8 @@ let trending_views = document.querySelector('.trending_views')
     main_view.addEventListener('wheel' ,mainscroll)
 
     function mainscroll(){
-    console.log('scroll');
+    category_scroll.style.position='fixed'
+    category_scroll.style.top = '70px'
      trending_views.style.position = 'fixed'
      trending_views.style.top = '100px'
      main_view.style.position = 'absolute'
@@ -265,7 +287,10 @@ if(old){old.classList.remove('active');console.log(old);}
   
 let post_getref =  collection(db,'post')
 let q
-try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)) }
+try{q = query(post_getref,where('c_name','==',element.innerText))}catch{ q = query(post_getref,where('c_name','==',element)  ) }
+q = query(q,orderBy('pid','desc'))
+
+
 let querysap = await getDocs(q)
     
  if(querysap.size==0){ 
@@ -308,7 +333,7 @@ let querysap = await getDocs(q)
 
 
      if(checked==true){
-        findlike=  " <i id='check_like' style='color:blue;'  class='fa-regular fa-thumbs-up'></i> "
+        findlike=  "<i id='check_like' class='fa-solid fa-thumbs-up' style='color: #7E75FC;'></i> "
 
     }else{
         findlike=  " <i id='check_like'   class='fa-regular fa-thumbs-up'></i> "
@@ -320,9 +345,9 @@ let querysap = await getDocs(q)
       if(rec.data().p_desc.length>=100){ 
         let string1 =  rec.data().p_desc.slice(0,100)
         let string2 =  rec.data().p_desc.slice(100)
-        p =` <p id="post_desc">${string1}  <span  id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
+        p =`<p id="post_desc">${string1}  <span  id='more'>${string2}</span> <span id="see_more">See More..</span></p> `
       }else{
-        p= ` <p id="post_desc">${rec.data().p_desc}</p> `
+        p= `<p id="post_desc">${rec.data().p_desc}</p> `
       }
 
 
@@ -348,18 +373,12 @@ main_view.append(card)
 
 
 
-
+setTimeout(1600,lets_get())
 setTimeout(1600,letsget())
 setTimeout(1600,getdesc())
  
 }    
-
-
-
-
 )
-
-
  }
 
   old = element
@@ -369,33 +388,42 @@ setTimeout(1600,getdesc())
 
 
 
-
-
 //-----------------------------------Storing elemenent
 
 
+
+
+
+
+
+
+
+
+
+
+function lets_get(){
+  let hiden_des = document.querySelectorAll('#see_more')
+  hiden_des.forEach((x)=>{
+
+ 
+x.addEventListener('click', handleShowMore) }
+
+
+)}
+
+
+function handleShowMore(event) {
+  showmore(event.target);
+}
 function letsget(){
 
 
 
     let like=document.querySelectorAll("#check_like")
-let like_num=document.querySelector("#likes")
-
-
-
-
 like.forEach((x)=>{
-   
-   
+
+
     x.addEventListener("click", function(){updatelike(this)})})
-
-
-    let see_more = document.querySelectorAll('#see_more')
-    see_more.forEach((x)=>{
-    
-      
-        x.addEventListener('click', function(){showmore(this)}) })
-   
 }
 
 
@@ -405,21 +433,24 @@ like.forEach((x)=>{
 
 function showmore(mm){
 
-  console.log( mm.parentElement.firstElementChild.id);
+  
 
 
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'block';
+        mm.parentElement.firstElementChild.style.display = 'contents';
       
         mm.innerText = 'See Less..'
-       
+        console.log("True");
     
    
     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
         mm.parentElement.firstElementChild.style.display = 'none';
         mm.innerText = 'See More..'
-     
+        console.log("False");
     }
+
+
+   
   
 }
 
@@ -438,21 +469,23 @@ async function updatelike(x){
 
     let p_id =x.parentElement.parentElement.parentElement.id
     
-    console.log(p_id);
+    // console.log(p_id);
     let ref = doc(db,"post",p_id);
 
    let postData= await  getDoc(ref);
       let numlike=postData.data().p_like
        let checklike = postData.data().liked_person
- console.log(typeof(checklike));
-   let checked = checklike.includes(usersData);
+// console.log(typeof(checklike));
+   let checked = checklike.includes(usersData)
 
    
     
 
     
     if(x.style.color!= 'blue' && !checked){
-        x.style.color= 'blue';   
+      // console.log("pass");
+        x.className='fa-solid fa-thumbs-up';
+        x.style.color= '#7E75FC'
         let checklike = postData.data().liked_person
         let pushing = checklike.push(usersData)
         
@@ -472,8 +505,10 @@ async function updatelike(x){
         }
 
         
-    else{x.style.color= 'black';
-
+    else{
+      // console.log("fail");
+    x.className='fa-regular fa-thumbs-up'
+    x.style.color= 'black'
     let checklike = postData.data().liked_person
     let index = checklike.indexOf(usersData)
          checklike.splice(index,1)
@@ -558,7 +593,7 @@ let end = desc_value.length
   for(i in desc_value){
 
       let  a = desc_value[i].innerText.toLowerCase()
-              console.log(typeof(a));
+              // console.log(typeof(a));
 
       if(a.indexOf(str.toLowerCase())!=-1){
         desc_value[i].parentElement.parentElement.style.display = '';
@@ -603,8 +638,6 @@ let button=document.getElementById("next_page")
 let button2=document.querySelector(".btn")
 let span=document.getElementById("span")
 let count=0
-let arr=[]
-let arr2=[]
 // console.log(category);
 span.classList.add("none")
 button2.classList.add("col4")
@@ -865,20 +898,55 @@ imageUpload.addEventListener('change', function() {
         let existingImg = document.getElementById("img-src");
         if(existingImg) {
             existingImg.src = text;
+            deleteImgBtn.style.display = "block";
         } else {
             console.error("Image element with id 'img-src' not found.");
         }
     }
 });
-
+let deleteImgBtn = document.getElementById("delete-img");
+deleteImgBtn.addEventListener('click', function() {
+    let existingImg = document.getElementById("img-src");
+    if (existingImg) {
+        existingImg.src = ""; 
+        imageUpload.value = null;
+        deleteImgBtn.style.display = "none";
+    } else {
+        console.error("Image element with id 'img-src' not found.");
+    }
+});
 
 //-------------------------------------------------------------------Adding data in firebase----------------------------------------------------------
 
 
 let publish =document.getElementById('submit')
-    publish.addEventListener('click',create_post)
+publish.addEventListener('click',validate)
 let title = document.getElementById('lines')
+
 let desc = document.getElementById('create')
+let loader=document.getElementById('loader')
+desc.addEventListener('keyup',
+  () => {
+    if (desc.innerText.trim().length > 250) { document.getElementById('error').style.visibility = 'hidden' }
+    else {
+      document.getElementById('error').style.visibility = 'visible'
+    }
+  }
+)
+
+
+
+function validate(){
+  console.log( desc.innerText.trim().length);
+  if( desc.innerText.trim().length>250){ 
+   document.getElementById('error').style.visibility ='hidden'
+    create_post()
+  }else{
+   document.getElementById('error').style.visibility ='visible'
+  console.log(newDscription);
+
+  }
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -894,12 +962,14 @@ let desc = document.getElementById('create')
 
 // Initialize Firebase
 
+
+
+
 let post_ref =collection(db,'post')
 
 
 // let user_getRef = doc(db, "category", usersData);
 // let user_getData1 =  await  getDoc(getRef);
-
 
 
 
@@ -943,6 +1013,7 @@ store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{
     p_link:downloadURL,
     u_id:usersData,
     p_like:0,
+    pid:++id,
     p_comment:[],
     liked_person:[]
   }
@@ -959,12 +1030,18 @@ let ca_data =
 
   document.getElementById('submit').disabled = true,
 console.log(ca_data);
+loader.style.display='block';
+document.body.querySelector('.container').style.opacity='0.5'
+
 
 setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
-
- alert('Post Created Sussesfully'),
  
-  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden'; location.replace('hmpg.html')}).catch((error)=>{console.log(error)})
+  
+ 
+  setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{ document.getElementById('submit').disabled = false; document.getElementById('loadingOverlay').style.visibility = 'hidden';
+  setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
+  setTimeout(loader.style.display='none',3000)
+  setTimeout(location.replace('hmpg.html'), 3000)}).catch((error)=>{console.log(error)})
 
 
 ).catch(()=>{
@@ -975,6 +1052,8 @@ setDoc(doc(db,'post',`p_id-${++id}`),post_data).then(
  }))
   
 }
+
+// }
 // ----------------------------------------------------------------blurr and popup-----------------------------------------------------------------------
 
 // var openButton = document.getElementById("open");

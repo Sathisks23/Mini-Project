@@ -17,13 +17,13 @@
    
    
    
-   
+    <!-- <a id="theme">Dark Theme</a>  -->
    <div class="mains"> <button id="create_btn"> Create</button>  </div>
-   <div class="imagediv"><img id="profile" src="" alt="">  <div id="img_nav"> <a href="spr.html">View Profile</a> <a id="editi_catgeory">Edit Category</a> <a id="theme">Dark Theme</a> <a href="change_pass.html" >Change Password</a> <a id="logout">Logout</a> </div>  </div>
+  <div id="navbar_div"> 
+    <div class="imagediv"><img id="profile" src="" alt="">  <div class="img_nav"> <a href="spr.html">View Profile</a> <a id="editi_catgeory">Edit Category</a> <a href="change_pass.html" >Change Password</a> <a id="logout">Logout</a> </div>  </div>
    </div>
    </header>
    
-  <div id="navbar_div"> 
 <div class="categories_nav">
     
      <ul class="ca_popup">
@@ -56,7 +56,7 @@
     <div id="category2"  class="category1">
         <div class="cat_img1"><img class="img" src="Assests/indian-states-and-union-ter.jpg" alt=""></div>
         <div class="cat_text1"id="text">India</div>
-    </div>
+    </div> 
     <div id="category3"  class="category1">
         <div class="cat_img1"><img class="img" src="Assests/business-food.webp" alt=""></div>
         <div class="cat_text1" id="text">Food</div>
@@ -140,7 +140,7 @@
 <!------------------------------------- Create-----------------------------------------------------------------------  -->
 
 <div class="main_div">
-        
+    <div id="loader"></div>
     <div class="container">
        
         <div class="loading-overlay" id="loadingOverlay">
@@ -206,7 +206,9 @@
             <div class="text" id="create" contenteditable="true"></div>
             
             <img id="img-src" alt="">
+            <button id="delete-img"><i class="fa-solid fa-trash"></i></button>
         </div>
+        <small id="error">Description must be 250 Character above</small>
         <!-- <img id="dummy" alt=""> -->
         <div class="btn">
             <button id="submit" class="publish">Publish</button>

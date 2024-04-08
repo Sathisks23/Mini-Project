@@ -69,9 +69,9 @@ document.getElementById("submit").addEventListener("click", function (event) {
     Subject : "Enter the OTP",
     Body : mail_msg
   }).then(
-  message => alert(message)
+  message => (message)
   
-  )  .catch(error => alert(error));
+  )  .catch(error => (error));
  
 
 
@@ -379,6 +379,37 @@ var length=document.getElementById("length")
 
     } 
   
+//-------Eye icon js----------
+var icon=document.getElementById("eye1")
+var icon2=document.getElementById("eye2")
+icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+icon2.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+
+icon.addEventListener("click",function() {
+if (pass1.type =='password') {
+  pass1.type='text'
+  icon.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+}
+else if (pass1.type =='text') {
+  pass1.type='password'
+  icon.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+}
+})
+icon2.addEventListener("click",function() {
+  if (pass2.type =='password') {
+    pass2.type='text'
+    icon2.innerHTML=`<i class="fa-regular fa-eye-slash"></i>` 
+  }
+  else if (pass2.type =='text') {
+    pass2.type='password'
+    icon2.innerHTML=`<i id="eye" class="fa-regular fa-eye"></i>`
+  }
+  })
+
+
+
+
+
 
 //------------------------------------------select catgeorypages js -----------------------------------------------------------
 let category=document.querySelectorAll(".category1")

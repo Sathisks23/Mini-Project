@@ -18,7 +18,9 @@
     height: 30px;
     border-radius:50%;
 }
-
+#delete-img{
+    display: none;
+}
 
 .darkinput{
     background-color: white;
@@ -230,7 +232,7 @@ padding: 10px;
     width:15%;
     border-right: 1px solid rgba(128, 128, 128, 0.176);
     height: 100vh;
-    margin-top: 70px;
+    top: 70px;
     position: fixed;
     
 }
@@ -241,8 +243,7 @@ padding: 10px;
 }
 .categories_nav li{
    list-style: none;
- 
-   
+   overflow: hidden;
 }
 
 #empty_div{
@@ -351,7 +352,7 @@ background-color: rgba(233, 233, 233, 0.337);
 }
 
 .trending_views>*{
-    width: 100%;
+    width: 98%;
 }
 
 
@@ -431,7 +432,7 @@ background-color: rgba(233, 233, 233, 0.337);
     position: sticky;
     top: 70px;
     width: 120%;
-   padding:  40px 0 40px 0;
+ padding:  40px 0 40px 0;
     z-index: 0;
     /* background-color:white; */
     font-size: 18px;
@@ -624,16 +625,7 @@ span#span {
 } */
 
 .block{
-    display: block;
     display: flex;
-    flex-direction: column;
-    width: 720px;
-    height: 649px;
-    justify-content: space-evenly;
-    border: 1px solid #0000002b;
-    text-align: center;
-    margin: 55px auto;
-    box-shadow: 0px 1px 4px 3px #0000002b;
     border: 1px solid #7B65FF;
 }
 
@@ -840,24 +832,4 @@ body {
 .dispaly_block{
     visibility: visible;
     /* display: block; */
-}
-
-
-
-/* create page drk theme ..................................*/
-
-.categ{
-    background-color: #000000;
-    color: rgb(255, 254, 254);
-}
-.drop-categ{  
-    background-color: #070707;
-    border: 1px solid #c2bdbd;
-    
-}
-.cont{
-    background-color: black;
-}
-text{
-    color: white;
 }

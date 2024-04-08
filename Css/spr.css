@@ -110,7 +110,7 @@ input:focus{
 }
 header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items:center;
     background-color: #F9F9F9;
     position: fixed;
@@ -139,54 +139,6 @@ a{
     text-decoration: none;
     color: black;
 }
-.mains{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-#create_btn{
-    background-color: #7B65FF;
-    border: none;
-    text-align: center;
-    padding: 10px;
-    border-radius: 20px;
-}
-#create_btn:hover{
-    background-color: #7B65FF;
-    
-}
-
-#create_btn>a{
-    color: white;
-text-align: center;
-width:  60px;
-padding: 10px;
-}
-.ca_popup{
-padding-top:12px;
-}
-
-.ca_popup>li{
-   padding:6px;
-   /* text-align: center; */
-   text-indent:30px;
-   /* border-bottom: 1px solid rgba(170, 140, 224, 0.205); */
-  
-   cursor: pointer;
-}
-.ca_popup>li:hover{
-    background-color:rgba(72, 69, 94, 0.041);
-}
-
-
-.ca_popup>li>a{
-    font-size:12px;
-   
-}
-
-
-
 #categories{
     color: blue;
     border:1px solid rgba(128, 128, 128, 0.751);
@@ -196,10 +148,9 @@ padding-top:12px;
     border-radius: 20px;
     cursor: pointer;
 }
-#post_desc,#trend_description{
-    font-size:14px;
-     
- 
+#post_desc, #trend_description {
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 .categories_nav {
     width:15%;
@@ -245,7 +196,7 @@ padding-top:12px;
     padding-bottom: 20px;
     width: 40%;
     margin:0 auto;
-    /* height: 500px; */
+    height: 100%;
     margin-top: 20px;
    
 
@@ -265,9 +216,9 @@ padding-top:12px;
     padding: 5px;
 }
 
-#user_dp{
-    width: 20px;
-    height: 20px;
+#user_dp {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
@@ -380,7 +331,7 @@ background-color: rgba(233, 233, 233, 0.337);
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 20px;
+    right: 3px;
     background-color: white;
     padding:5px;
    border-radius:20px;
@@ -395,6 +346,7 @@ background-color: rgba(233, 233, 233, 0.337);
 
 .imagediv{
     cursor: pointer;
+    margin-right: 10px;
 }
 .imagediv a{
     padding:5px;
@@ -445,6 +397,7 @@ background-color: rgba(233, 233, 233, 0.337);
 .box_icon1{
     display: flex;
     margin-right:50%;
+   
 }
 
 
@@ -471,8 +424,16 @@ background-color: rgba(233, 233, 233, 0.337);
 
 
 
+/* .black{
+    display: block;
+} */
 
-
+div#edtipage {
+    display: none;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+}
 
 
 
