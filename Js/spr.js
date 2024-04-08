@@ -270,7 +270,7 @@ function showmore(mm){
 
 
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'block';
+        mm.parentElement.firstElementChild.style.display = 'contents';
       
         mm.innerText = 'See Less..'
        
