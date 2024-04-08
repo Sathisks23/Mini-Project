@@ -495,7 +495,7 @@ alert('UserAdded')
     }})
 
     
-     
+     let email_exit_error=document.getElementById('email_exit_error') ;
     
 let i= 0
 async function   email_validate(){
@@ -519,7 +519,12 @@ async function   email_validate(){
             let validotp = true;
      for(i in no){
         if((no[i][0])==email.value ){
-          alert("sorry this email already  login")
+          
+          
+          email_exit_error.innerText="sorry this email already  login";
+
+         
+          // alert("sorry this email already  login");
 
           validotp=false
 
