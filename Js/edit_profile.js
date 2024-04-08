@@ -23,7 +23,7 @@ console.log(usersData);
 const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
-  
+const storage = getStorage();
 let ref = collection(db,'user')
 let getData = await getDocs(ref)
 let id = getData.size;
@@ -32,7 +32,7 @@ let id = getData.size;
 var inputname=document.getElementById("text2")
 var button=document.getElementById("btn")
 var button2=document.getElementById("btn2")
-var bio1=document.getElementById("bio")
+var bio1=document.getElementById("bio1")
 var trash=document.querySelector("#icon")
 let loader=document.getElementById('loader')
 
@@ -134,7 +134,7 @@ updateDoc(doc(db,"user",usersData), {
   let pimage = document.getElementById('drop_zone').files[0]
 
   let meta_data = {contentype:pimage.type}
-  let task = sref(getStorage(),'images'+pimage.name)
+  let task = sref(storage,'images'+pimage.name)
   let usersData=JSON.parse(localStorage.getItem("usersData"))
   let store = uploadBytesResumable(task,pimage,meta_data)
   store.then(getDownloadURL(store.snapshot.ref).then((downloadURL)=>{

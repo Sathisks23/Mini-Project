@@ -203,6 +203,7 @@ a{
 #post{
     width: 100%;
     height: 300px;
+    border-radius:5px;
 }
 .social_section{
     display: flex;
@@ -375,6 +376,7 @@ background-color: rgba(233, 233, 233, 0.337);
 .box_icon1{
     display: flex;
     margin-right:50%;
+   
 }
 
 
@@ -398,3 +400,22 @@ background-color: rgba(233, 233, 233, 0.337);
 #full_discription{
     margin-top: 10px;
 }
+
+
+
+/* .black{
+    display: block;
+} */
+
+div#edtipage {
+    display: none;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+}
+
+
+
+
+
+

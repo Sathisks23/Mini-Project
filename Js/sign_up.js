@@ -169,7 +169,7 @@ function checkData() {
   if (count==3) {
     email_validate();
     // location.replace("hmpg.html")
-  otpdiv();
+  // otpdiv();
 
     }
 }
@@ -496,7 +496,7 @@ alert('UserAdded')
     }})
 
     
-      
+  let email_exit_error=document.getElementById("email_exit_error")     
     
 let i= 0
 async function   email_validate(){
@@ -520,8 +520,10 @@ async function   email_validate(){
             let validotp = true;
      for(i in no){
         if((no[i][0])==email.value ){
-          alert("sorry this email already  login")
-     break
+          email_exit_error.innerText="sorry this email already exit";
+
+          // alert("sorry this email already  login")
+     break;
             // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
 
             //  location.replace('HomePage.html') 
@@ -533,7 +535,3 @@ async function   email_validate(){
         }
      } 
 }
-
-
-
-
