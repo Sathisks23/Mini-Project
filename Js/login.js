@@ -36,7 +36,7 @@ let two = false
 btn.addEventListener("click",(event)=>{
     event.preventDefault();
     
-console.log("hello");
+// console.log("hello");
     if(email_id.value.trim()==""){
     
        
@@ -63,7 +63,7 @@ console.log("hello");
 
         success(password);
         two = true
-console.log(password.value);
+// console.log(password.value);
        
     }
 
@@ -135,11 +135,17 @@ var p=document.querySelectorAll(".Erro_msg");
 
 function error(element,msg){
   
+    // console.log(msg);
     element.style.border='3px red solid';
     const parent=element.parentElement;
-   
-    console.log(p);
-  
+    // console.log(p);
+
+
+
+    Array.from(errorMessages).slice(0, 2).forEach(elem => {
+        elem.style.display = "block";
+        elem.innerText = msg;
+    });
     p.forEach(elem => {
         elem.style. display="block";
         elem.innerText=msg;
@@ -155,6 +161,7 @@ function error(element,msg){
    
     p.forEach(elem => {
         elem.innerText= msg;
+        // console.log(msg);
     elem.style.display = "none";
     });
    

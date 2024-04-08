@@ -17,6 +17,7 @@ body{
 .main_container {
     display: flex;
     margin: 40px auto;
+    justify-content: center;
 }
 input {
     width: 98%;
@@ -86,11 +87,16 @@ button{
 }
 .cancel_btn{
     height: 30px;
-    width: 100px;
-    border: none;
+    width: 53px;
+     border: none;
     border-radius: 8px;
     color: white;
     background-color: #FF0000;
+}
+a#cancel_link {
+    position: relative;
+    bottom: 33px;
+    right: 239px;
 }
 .cancel_btn:hover{
     background-color: #ce0000;
@@ -135,4 +141,9 @@ textarea {
 }
 .block{
     display: block;
+}
+.sub_container {
+    width: 50%;
+    height: 480px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

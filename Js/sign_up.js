@@ -193,8 +193,8 @@ let otpdiv1=document.createElement('div');
      otpinput.type="text";
      otpinput.id="otpinputvalue";
 let otpbutton=document.createElement("button");
-let p=document.createElement("p")
-
+// let p=document.createElement("p");
+// p=`<i class="fa-solid fa-thumbs-up"></i>`;
  otpbutton.textContent="Ok";
  otpbutton.className="otpbtn";
 
@@ -220,7 +220,8 @@ let u_id
     console.log("otp")
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
-   
+
+  //  otpdiv1.append(p);
    alert("OTP sucessfull")
     otpmaincontainer.remove()
     container1.style.display="flex";
@@ -476,17 +477,18 @@ async function   email_validate(){
     
 
 
-     for(i in no){
-        if((no[i][0])==email.value ){
-          alert("This Email_id Allreday sign up so go to login");
-           break;
-           
 
-        } 
-        else{
-          otpdiv();
-        }
-     } 
+     for(i=0;i<no.length;i++){
+      if(no[i][0] == email.value){
+        alert("email already exists");
+        location.replace("index.html");
+      }
+
+    else {
+       otpdiv()
+    }
+
+     }
 }
 
 

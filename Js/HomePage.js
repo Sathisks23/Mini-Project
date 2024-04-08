@@ -172,7 +172,6 @@ let i=0
 
 
     
-   console.log(fav_arry);
 
 //    for(i in fav_arry){
 
@@ -395,9 +394,28 @@ category.forEach((x,category)=>{
             x.style.boxShadow = "none";
             // removeItemAll(arr,x)
             // removeItemAll(arr2,x.innerText)
-            removeItemAll(fav_arry,x.innerText)
-            // console.log(arr);  
-            // console.log(arr2);
+            removeItemAll(fav_arry,x.innerText);
+
+         /////update array/////////////////////////////
+         let ref = doc(db,"user",usersData);
+
+         updateDoc(
+           ref, {
+         
+             u_favcategory:fav_arry
+         
+           })
+        //  ).then(()=>{
+        //    alert("Updated Successfully")
+        //  }).catch((e)=>{console.log(e);})
+         
+         
+        //  button.setAttribute("href","HomePage.html")
+
+
+
+
+            
         }
        else if(!(fav_arry.includes(x.innerText))) {
         // x.classList.remove("cat")
@@ -410,20 +428,14 @@ category.forEach((x,category)=>{
         fav_arry.push(x.innerText);
 
         console.log(fav_arry);
-
-
-
-
-
-
-
-                 
-       }
+    }
 
     })
 })
 button.addEventListener("click",(event)=>{
-
+    let fav_arry_length=fav_arry.length
+    console.log(fav_arry);
+    if (fav_arry_length>=3) {
         // button2.classList.remove("col2")
         // button2.classList.add("col4")
 
@@ -438,12 +450,21 @@ updateDoc(
   }
 ).then(()=>{
   alert("Updated Successfully")
+   location.replace("HomePage.html")
 }).catch((e)=>{console.log(e);})
 
 
-button.setAttribute("href","HomePage.html")
 
-    })
+// 
+    }
+    else{
+        console.log("no");
+    }
+    
+   
+
+
+})
 
 
       
@@ -475,9 +496,11 @@ let navbar_div=document.getElementById("navbar_div");
     
 
     trending_views.style.display="none";
-   navbar_div.classList.add("navbar_div");
+//    navbar_div.classList.add("navbar_div");
    container1.classList.add("block");
+document.querySelector(".categories_nav").style.opacity = "0.2";
 
+document.querySelector("header").style.opacity = "0.2";
 
 
 
