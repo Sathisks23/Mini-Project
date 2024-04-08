@@ -41,6 +41,27 @@
     transition:all 0.5s;
 }
 
+/* drk theme */
+
+.sty{
+    background-color: #222121;
+    
+}
+
+.ins{
+    background-color: #222121;
+}
+.place_for_search{
+    
+    background-color:#222121;
+    color: rgb(250, 246, 246);
+}
+.trend{
+   
+    color: rgb(238, 233, 233);
+    background-color: #000000;
+}
+
 body{
     padding:0;
     margin: 0;
@@ -68,10 +89,7 @@ input[type=date]::-webkit-datetime-edit-text {
     display: none;
 }
 
-#dateinput{
-    width: 15px;
-    border: none;
-}
+
 input:focus{
     outline: none;
 }
@@ -82,10 +100,14 @@ input:focus{
     border-radius: 30px;
     
 }
-#searchinput{
-    border: none;
-}
 
+#searchinput {
+    border: none;
+    border-radius: 22px;
+    height: 27px;
+    
+   
+}
 header{
     display: flex;
     justify-content: space-around;
@@ -110,9 +132,9 @@ header{
      width: 10px;
      height: 10px;
 }
-#searchinput{
+/* #searchinput{
     background-color: #F9F9F9;
-}
+} */
 a{
     text-decoration: none;
     color: black;
@@ -354,7 +376,7 @@ background-color: rgba(233, 233, 233, 0.337);
     background-color: black;
 }
 
-.img_nav{
+#img_nav{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -386,7 +408,7 @@ background-color: rgba(233, 233, 233, 0.337);
     cursor: pointer;
 }
 
-.imagediv:hover .img_nav{
+.imagediv:hover #img_nav{
     visibility: visible;
 }
 #edit_pro {

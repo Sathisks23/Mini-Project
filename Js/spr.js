@@ -19,33 +19,33 @@
 
 
 //THeme change 
-let theme = JSON.parse(localStorage.getItem("theme"))
-let a = document.querySelector('.img_nav').querySelectorAll('a')
-a.forEach((e)=>{
-e.classList.toggle('blacktheme')})
+// let theme = JSON.parse(localStorage.getItem("theme"))
+// let a = document.querySelector('.img_nav').querySelectorAll('a')
+// a.forEach((e)=>{
+// e.classList.toggle('blacktheme')})
 
-if(theme=='dark'){
-  document.body.style.backgroundColor='black'
-  document.body.style.color = 'white'
-  document.querySelector('header').style.backgroundColor = 'black'
-  document.querySelector('header').style.color = 'white'
-  document.querySelector('.img_nav').style.backgroundColor='black'
-  document.querySelector('.img_nav').style.color='white'
-  document.body.classList.toggle('blacktheme')
-  document.querySelector('header').classList.toggle('blacktheme')
-  document.querySelector('.search').classList.toggle('darkinput')
-//  document.getElementById('theme').classList.toggle('blacktheme')
-}else{
-  document.body.backgroundColor='white'
-  document.body.style.color = 'black'
-  document.querySelector('header').style.backgroundColor = 'white'
-  document.querySelector('header').style.color = 'black'
-  document.querySelector('.img_nav').style.backgroundColor='white'
-  // document.body.classList.toggle('blacktheme')
-  document.querySelector('header').classList.toggle('blacktheme')
-  document.querySelector('.search').classList.toggle('darkinput')
-//  document.getElementById('theme').classList.toggle('blacktheme')
-}
+// if(theme=='dark'){
+//   document.body.style.backgroundColor='black'
+//   document.body.style.color = 'white'
+//   document.querySelector('header').style.backgroundColor = 'black'
+//   document.querySelector('header').style.color = 'white'
+//   document.querySelector('.img_nav').style.backgroundColor='black'
+//   document.querySelector('.img_nav').style.color='white'
+//   document.body.classList.toggle('blacktheme')
+//   document.querySelector('header').classList.toggle('blacktheme')
+//   document.querySelector('.search').classList.toggle('darkinput')
+// //  document.getElementById('theme').classList.toggle('blacktheme')
+// }else{
+//   document.body.backgroundColor='white'
+//   document.body.style.color = 'black'
+//   document.querySelector('header').style.backgroundColor = 'white'
+//   document.querySelector('header').style.color = 'black'
+//   document.querySelector('.img_nav').style.backgroundColor='white'
+//   // document.body.classList.toggle('blacktheme')
+//   document.querySelector('header').classList.toggle('blacktheme')
+//   document.querySelector('.search').classList.toggle('darkinput')
+// //  document.getElementById('theme').classList.toggle('blacktheme')
+// }
 
 
 
@@ -239,4 +239,70 @@ c.append(card)
 //     container.style.display = "none";
 //     news_expand.style.display="block";
 // })
+
+
+
+// dark mode.............................
+
+const body = document.querySelector('body');
+
+var dark_theme = document.getElementById('theme');
+
+dark_theme.addEventListener('click',dark_mode);
+
+
+
+
+
+function dark_mode() {
+  console.log("log");
+  var theme = body.classList.toggle('blacktheme');
+  document.querySelector('header').classList.toggle('blacktheme');
+  document.querySelector('.search').classList.toggle('sty');
+  document.querySelector('#searchinput').classList.toggle('ins');
+  
+  let img =document.getElementById('logo')
+  let real_src=img.src.slice(22);
+
+  if(document.querySelector('#img_nav').style.backgroundColor!="black"){
+
+    img.src='Assests/darklogo.png'
+    let category=document.querySelectorAll(".category1")
+    let img_nav=document.querySelector("#img_nav")
+      category.forEach((x)=>{
+        x.backgroundColor ='black';
+      })
+    img_nav.style.backgroundColor="black";
+    let a=document.querySelectorAll("a")
+    a.forEach((x)=>{
+      x.style.color ='white';
+    })
+      console.log(document.querySelector('#img_nav'));
+    sessionStorage.setItem("drk_theme", theme);
+  
+}else{
+
+    img.src='Assests/logo.png'
+    let category=document.querySelectorAll(".category1")
+    let img_nav=document.querySelector("#img_nav")
+    category.forEach((x)=>{
+      x.backgroundColor ='white';
+})
+img_nav.style.backgroundColor="white";
+let a=document.querySelectorAll("a")
+a.forEach((x)=>{
+x.style.color ='black';
+})
+// console.log(document.querySelector('#img_nav'));
+}
+
+  sessionStorage.setItem("drk_theme", theme);
+
+}
+
+var get_theme = sessionStorage.getItem("drk_theme");
+
+if (get_theme == "true") {
+  dark_mode();
+}
 

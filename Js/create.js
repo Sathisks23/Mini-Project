@@ -190,3 +190,24 @@ setDoc(doc(db,'category',`ca_id-${category_id}`),ca_data).then(()=>{location.rep
 
 
  
+// dark mode
+
+const body = document.querySelector('body');
+
+var dark_theme = document.getElementById('theme');
+
+dark_theme.addEventListener('click',dark_mode);
+
+function dark_mode() {
+  console.log('hii');
+  var theme = body.classList.toggle('blacktheme');
+  // document.body.classList.toggle('blacktheme');
+  sessionStorage.setItem("drk_theme", theme);
+}
+
+var get_theme = sessionStorage.getItem("drk_theme");
+
+if (get_theme == "true") {
+  dark_mode();
+}
+

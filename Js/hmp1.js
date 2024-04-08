@@ -20,19 +20,7 @@
  ///-------------------------------------------------------------  Theme finding
  let theme1 = JSON.parse(localStorage.getItem("theme"))
 
-
-
-
-
-
-
-
-
 //-------------------------------------------------------------------------
-
-
-
-
 
  // Initialize Firebase
  const app = initializeApp(firebaseConfig);
@@ -63,67 +51,166 @@ for(i in fav_arry){
 
 let li1 = document.querySelectorAll('.navlink')
 
-//cahnge Theme
-let theme =document.getElementById('theme')
-    theme.addEventListener('click',changetheme)
+//cahnge Theme..................................................................................
+// let theme =document.getElementById('theme')
+//     theme.addEventListener('click',changetheme)
 
-function changetheme(){
+// function changetheme(){
 
 
-  
-    let img =document.getElementById('logo')
-    let b=img.src.slice(22)
-    
-     
+
       
 
     
 
-        if(b=='Assests/logo.png' ){
+//         if(b=='Assests/logo.png' ){
 
-            img.src='Assests/darklogo.png'
-    document.querySelector('.logo_div').style.color='white'
-    document.querySelector('.logo_div').style.backgroundColor='black'
-    document.querySelector('.img_nav').style.backgroundColor='black'
-    document.querySelector('.img_nav').style.color='white'
-    document.body.classList.toggle('blacktheme')
-    document.querySelector('header').classList.toggle('blacktheme')
-    document.querySelector('.search').classList.toggle('darkinput')
-   document.getElementById('theme').classList.toggle('blacktheme')
-   let a = document.querySelector('.img_nav').querySelectorAll('a')
-   a.forEach((e)=>{
- e.classList.toggle('blacktheme')
-
-
-  })
-  localStorage.setItem("theme",JSON.stringify('dark'));
-
-            // theme.innerText = "Dark Theme"
-         }else{
-            img.src='Assests/logo.png'
-    document.querySelector('.logo_div').style.color='black'
-    document.querySelector('.logo_div').style.backgroundColor='white'
-    document.querySelector('.img_nav').style.backgroundColor='white'
-    // document.querySelector('.img_nav').style.color='black'
-    document.body.classList.toggle('blacktheme')
-    document.querySelector('header').classList.toggle('blacktheme')
-    document.querySelector('.search').classList.toggle('darkinput')
-   document.getElementById('theme').classList.toggle('blacktheme')
-   let a = document.querySelector('.img_nav').querySelectorAll('a')
-   a.forEach((e)=>{
- e.classList.toggle('blacktheme')
+//             img.src='Assests/darklogo.png'
+//     document.querySelector('.logo_div').style.color='white'
+//     document.querySelector('.logo_div').style.backgroundColor='black'
+//     document.querySelector('.img_nav').style.backgroundColor='black'
+//     document.querySelector('.img_nav').style.color='white'
+//     document.body.classList.toggle('blacktheme')
+//     document.querySelector('header').classList.toggle('blacktheme')
+//     document.querySelector('.search').classList.toggle('darkinput')
+//    document.getElementById('theme').classList.toggle('blacktheme')
+//    let a = document.querySelector('.img_nav').querySelectorAll('a')
+//    a.forEach((e)=>{
+//  e.classList.toggle('blacktheme')
 
 
-  })
-    localStorage.setItem("theme",JSON.stringify('light'));
+//   })
+//   localStorage.setItem("theme",JSON.stringify('dark'));
+
+//             // theme.innerText = "Dark Theme"
+//          }else{
+//             img.src='Assests/logo.png'
+//     document.querySelector('.logo_div').style.color='black'
+//     document.querySelector('.logo_div').style.backgroundColor='white'
+//     document.querySelector('.img_nav').style.backgroundColor='white'
+//     // document.querySelector('.img_nav').style.color='black'
+//     document.body.classList.toggle('blacktheme')
+//     document.querySelector('header').classList.toggle('blacktheme')
+//     document.querySelector('.search').classList.toggle('darkinput')
+//    document.getElementById('theme').classList.toggle('blacktheme')
+//    let a = document.querySelector('.img_nav').querySelectorAll('a')
+//    a.forEach((e)=>{
+//  e.classList.toggle('blacktheme')
+
+
+//   })
+//     localStorage.setItem("theme",JSON.stringify('light'));
             
            
-            // theme.innerText = "Ligth Theme"
+//             // theme.innerText = "Ligth Theme"
 
+//         }
+// }
+
+
+
+// document.querySelector('#img_nav').style.backgroundColor="white";
+
+
+const body = document.querySelector('body');
+
+var dark_theme = document.getElementById('theme');
+
+dark_theme.addEventListener('click',dark_mode);
+
+function dark_mode() {
+
+  
+  let img =document.getElementById('logo')
+  let real_src=img.src.slice(22)
+  
+   
+
+
+  var theme = body.classList.toggle('blacktheme');
+  document.querySelector('header').classList.toggle('blacktheme');
+  document.querySelector('.search').classList.toggle('sty');
+  document.querySelector('.logo_div').classList.toggle('trend');
+  document.querySelector('#searchinput').classList.toggle('place_for_search');
+ 
+
+  // create page..... = document.querySelectorAll('#text');
+              
+        //   text.forEach((x)=>{
+        //     x.style.color="black";
+        //     x.parentElement.style.backgroundColor ='white';
+        //     document.querySelector('#img_nav').style.backgroundColor="white";
+        // }).............
+
+  document.querySelector('.container').classList.toggle('cont');
+  document.querySelector('.lines').classList.toggle('categ');
+  document.querySelector('.drop-category').classList.toggle('categ');
+  document.querySelector('.select').classList.toggle('categ');
+
+
+  //hover popup ................
+
+  // document.querySelector('#img_nav').classList.toggle('mini_hove_box');
+  // document.querySelector('a').classList.toggle('a_tag');
+  
+ 
+  // edit cat........................
+
+  if(document.querySelector('#img_nav').style.backgroundColor!="black"){
+
+                img.src='Assests/darklogo.png'
+                let category=document.querySelectorAll(".category1")
+                let img_nav=document.querySelector("#img_nav")
+                  category.forEach((x)=>{
+                    x.backgroundColor ='black';
+                  })
+                img_nav.style.backgroundColor="black";
+                let a=document.querySelectorAll("a")
+                a.forEach((x)=>{
+                  x.style.color ='white';
+                })
+                  console.log(document.querySelector('#img_nav'));
+                sessionStorage.setItem("drk_theme", theme);
+              
+        }else{
+
+                img.src='Assests/logo.png'
+                let category=document.querySelectorAll(".category1")
+                let img_nav=document.querySelector("#img_nav")
+                category.forEach((x)=>{
+                  x.backgroundColor ='white';
+        })
+        img_nav.style.backgroundColor="white";
+        let a=document.querySelectorAll("a")
+        a.forEach((x)=>{
+          x.style.color ='black';
+        })
+        // console.log(document.querySelector('#img_nav'));
         }
+        sessionStorage.setItem("drk_theme", theme);
+
+      }
+
+
+     
+      var get_theme = sessionStorage.getItem("drk_theme");
+if (get_theme == "true") {
+  dark_mode();
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+//........................................................................................
 
 
 
@@ -354,11 +441,11 @@ async function updatelike(x){
     console.log(p_id);
     let ref = doc(db,"post",p_id);
 
-   let postData= await  getDoc(ref)
+   let postData= await  getDoc(ref);
       let numlike=postData.data().p_like
        let checklike = postData.data().liked_person
-console.log(typeof(checklike));
-   let checked = checklike.includes(usersData)
+ console.log(typeof(checklike));
+   let checked = checklike.includes(usersData);
 
    
     
@@ -385,7 +472,7 @@ console.log(typeof(checklike));
         }
 
         
-    else{x.style.color= 'black'  
+    else{x.style.color= 'black';
 
     let checklike = postData.data().liked_person
     let index = checklike.indexOf(usersData)
@@ -403,7 +490,13 @@ console.log(typeof(checklike));
       ).then(async ()=>{
         let newlike = await getDoc(ref)
         x.parentElement.lastElementChild.innerText = newlike.data().p_like
-  
+        = document.querySelectorAll('#text');
+              
+        //   text.forEach((x)=>{
+        //     x.style.color="black";
+        //     x.parentElement.style.backgroundColor ='white';
+        //     document.querySelector('#img_nav').style.backgroundColor="white";
+        // })
 
     }
 )
@@ -415,10 +508,10 @@ console.log(typeof(checklike));
       
 ///.............................................. Trending Views.........................
 
-let trend_post_ref = collection(db,'post')
+let trend_post_ref = collection(db,'post');
 let most_like = query(trend_post_ref, orderBy("p_like",'desc'), limit(5));
-let res = await getDocs(most_like)
-let trend_div = document.querySelector('.trending_views')
+let res = await getDocs(most_like);
+let trend_div = document.querySelector('.trending_views');
 
 res.forEach((rec)=>{
    
@@ -450,7 +543,7 @@ trend_div.append(card)
 function getdesc(){
 
 
-  let search_input = document.getElementById('searchinput')
+  let search_input = document.getElementById('searchinput');
  
   search_input.addEventListener('keyup',function(){searching(search_input.value)})
 
@@ -458,7 +551,7 @@ function getdesc(){
  
 function searching(str){
 
- let  desc_value = document.querySelectorAll('#post_desc')
+ let  desc_value = document.querySelectorAll('#post_desc');
 
 let end = desc_value.length
 
@@ -468,9 +561,9 @@ let end = desc_value.length
               console.log(typeof(a));
 
       if(a.indexOf(str.toLowerCase())!=-1){
-        desc_value[i].parentElement.parentElement.style.display = ''
+        desc_value[i].parentElement.parentElement.style.display = '';
       }else{
-        desc_value[i].parentElement.parentElement.style.display = 'none'
+        desc_value[i].parentElement.parentElement.style.display = 'none';
 
       }
 
