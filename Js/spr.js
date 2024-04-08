@@ -270,7 +270,7 @@ function showmore(mm){
 
 
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'block';
+        mm.parentElement.firstElementChild.style.display = 'contents';
       
         mm.innerText = 'See Less..'
        
@@ -315,3 +315,15 @@ function showmore(mm){
 //     }
   
 // }
+ let profilepage=document.getElementById("profilepage");
+ let edtipage=document.getElementById("edtipage");
+
+
+ let edit_pro=document.getElementById("edit_pro");
+ edit_pro.addEventListener("click",()=>{
+  profilepage.style.opacity='0.5'
+  
+     edtipage.style.display="block";
+   
+
+ })

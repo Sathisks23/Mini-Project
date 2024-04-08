@@ -16,13 +16,9 @@ i.fa-solid.fa-trash {
     top: -17px;
     font-size: 12px;
 }
-.container {
-    margin: 0 auto;
-    width: 312px;
-}
 .main_container {
     display: flex;
-    margin: 40px auto;
+    justify-content: center;
 }
 input {
     width: 98%;
@@ -37,10 +33,10 @@ input {
 .top {
     display: flex;
     align-items: center;
-    width: 208%;
+    width: 172%;
     justify-content: space-between;
     position: relative;
-    left: 84px;
+    left: 63px;
 }
 label {
     font-size: 18px;
@@ -74,7 +70,7 @@ label {
     font-style: normal;
     color: #7066fb;
     position: absolute;
-    top: 231px;
+    top: 158px;
     text-align: center;
 }
 
@@ -100,7 +96,10 @@ button{
 }
 .cancel_btn{
     height: 30px;
-    width: 100px;
+    width: 46px;
+    position: relative;
+    bottom: 11px;
+    right: 187px;
     border: none;
     border-radius: 8px;
     color: white;
@@ -111,7 +110,7 @@ button{
 }
 #btn_link {
     position: relative;
-    left: 100px;
+    left: 83px;
     top: 24px;
 }
 .save_btn{
@@ -149,6 +148,14 @@ textarea {
 }
 .block{
     display: block;
+}
+.sub_container {
+    width: 412px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 489px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
 }
 /* ---------------loader ------------*/
 #loader {

@@ -214,35 +214,14 @@ function otpdiv(){
  
 
 let u_id 
-   console.log('outide click  event');
+
    otpbutton.addEventListener("click",()=>{
     console.log("otp")
    let otp_value=document.getElementById("otpinputvalue").value;
    if(otp_value==otp_random){
    
-
-    otpmaincontainer.innerHTML = '<i class="fa-solid fa-thumbs-up"></i><br><h4 style=color:green; >Sussess</h4>'
-    otpmaincontainer.style.boxShadow ='none'
-    otpmaincontainer.style.backgroundColor='transparent'
-  
-   setTimeout(category_listing,2000)
-   
-   }
-   else{
-    console.log("invalid otp")
- alert("invalid OTP")
-
-
-   }
-   
-  
-    
-  })
-
-}
-
-function category_listing(){
-   otpmaincontainer.remove()
+   alert("OTP sucessfull")
+    otpmaincontainer.remove()
     container1.style.display="flex";
     maincontainer.style.display="none";
 
@@ -254,7 +233,19 @@ function category_listing(){
     })
     localStorage.setItem("usersData",JSON.stringify(`u_id-${id}`))
     
+   
+   }
+   else{
+ alert("invalid OTP")
+   }
+   
+  
+    
+  })
+
 }
+
+
  
 
 
@@ -481,7 +472,6 @@ setDoc(doc(db,"user",`u_id-${id}`), {
   u_email:email.value,
   u_password:pass1.value,   
   u_favcategory:arr2,
-
   u_dp:"https://firebasestorage.googleapis.com/v0/b/dckap-news-904dc.appspot.com/o/dp.png?alt=media&token=c62830cb-cb05-429e-8390-8485c2dac6c4" 
 
 })
@@ -495,7 +485,7 @@ alert('UserAdded')
     }})
 
     
-     
+      
     
 let i= 0
 async function   email_validate(){
@@ -516,28 +506,20 @@ async function   email_validate(){
             });
     
 
-            let validotp = true;
+
      for(i in no){
         if((no[i][0])==email.value ){
           alert("sorry this email already  login")
-
-          validotp=false
-
      break
             // localStorage.setItem("usersData",JSON.stringify(no[i][2]));
 
             //  location.replace('HomePage.html') 
 
         } 
-        // else{
-        //   validotp=true
-
-        // }
+        else{
+          otpdiv();
+        }
      } 
-
-     if(validotp){
-      otpdiv()
-    }
 }
 
 
