@@ -242,13 +242,16 @@ function error(element,msg){
        otpinput.type="text";
        otpinput.id="otpinputvalue";
   let otpbutton=document.createElement("button");
+  let error_email_id=document.createElement('p');
+  error_email_id.className = "error_em";
  
   
    otpbutton.textContent="Ok";
    otpbutton.className="otpbtn";
   
 
-   let no
+   let no;
+ 
 
    search_button.addEventListener("click",async ()=>{
    
@@ -284,7 +287,7 @@ function error(element,msg){
             otpdiv1.append(label);
             otpdiv1.append(otpinput);
             otpdiv1.append(otpbutton);
-         
+            otpdiv1.append(error_email_id);
          
                 otp_random=Math.floor(Math.random()*100000);
                 console.log(otp_random);
@@ -300,7 +303,7 @@ function error(element,msg){
              Subject : "Enter the OTP",
              Body : mail_msg
            }).then(
-           message => alert(message)
+          //  message => alert(message)
            
            ).catch(error => alert(error));
           
@@ -323,15 +326,18 @@ function error(element,msg){
           localStorage.setItem("usersData",JSON.stringify(userID));
           console.log(localStorage.getItem("usersData"));
          
+         
         //  alert("OTP sucessfull")
          location.replace("change_pass.html")
          }
          else{
-       alert("invalid OTP")
+      //  alert("invalid OTP")
+              error_email_id.innerText = "invalid OPT";
+              setTimeout(()=>{
+                document.querySelector('.error_em').innerHTML = " "},3000);            
+             
          }
-         
-        
-          
+               
         })
        
       
@@ -342,12 +348,18 @@ function error(element,msg){
 
      
      else{
-
-      alert("enter your correct email_id");
+console.log("false");
+      document.querySelector('#forgotpass_error').innerHTML = "Enter correct email";
+      setTimeout(()=>{
+      document.querySelector('#forgotpass_error').innerHTML = " "},3000)
+      
    
 
    }
+
+  
   })
+
  
   
 

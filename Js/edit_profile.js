@@ -189,8 +189,9 @@ dark_theme.addEventListener('click',dark_mode);
 function dark_mode() {
   console.log('hii');
   var theme =document.body.classList.toggle('blacktheme');
-  // document.body.classList.toggle('blacktheme');
-
+  document.querySelector('.sub_container').classList.toggle('bcolor');
+  document.querySelector('#text2').classList.toggle('blk');
+  document.querySelector('#bio1').classList.toggle('blk');
 
 
   sessionStorage.setItem("drk_theme", theme);

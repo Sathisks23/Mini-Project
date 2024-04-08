@@ -217,3 +217,12 @@ width: 45%;
 height: 31px;
 /* gap: 52px; */
 }
+
+
+#forgotpass_error{
+  color: red;
+}
+.error_em{
+  margin-right: 268px;
+  color:red;
+}

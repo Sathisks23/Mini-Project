@@ -265,6 +265,7 @@ see_more.forEach((x)=>{
 
 // dark mode.............................
 
+
 const body = document.querySelector('body');
 
 var dark_theme = document.getElementById('theme');
@@ -274,48 +275,38 @@ dark_theme.addEventListener('click',dark_mode);
 
 
 
-
 function dark_mode() {
   console.log("log");
-  var theme = body.classList.toggle('blacktheme');
-  document.querySelector('header').classList.toggle('blacktheme');
-  document.querySelector('.search').classList.toggle('sty');
-  document.querySelector('#searchinput').classList.toggle('ins');
-  
-  let img =document.getElementById('logo')
+ var theme = document.querySelector('body').classList.toggle('black');
+
+   document.querySelector('header').classList.toggle('blacktheme');
+  let img =document.getElementById('logo');
   let real_src=img.src.slice(22);
 
   if(document.querySelector('#img_nav').style.backgroundColor!="black"){
 
     img.src='Assests/darklogo.png'
-    let category=document.querySelectorAll(".category1")
     let img_nav=document.querySelector("#img_nav")
-      category.forEach((x)=>{
-        x.backgroundColor ='black';
-      })
     img_nav.style.backgroundColor="black";
     let a=document.querySelectorAll("a")
     a.forEach((x)=>{
       x.style.color ='white';
     })
-      console.log(document.querySelector('#img_nav'));
+      // console.log(document.querySelector('#img_nav'));
     sessionStorage.setItem("drk_theme", theme);
   
 }else{
 
     img.src='Assests/logo.png'
-    let category=document.querySelectorAll(".category1")
     let img_nav=document.querySelector("#img_nav")
-    category.forEach((x)=>{
-      x.backgroundColor ='white';
-})
 img_nav.style.backgroundColor="white";
 let a=document.querySelectorAll("a")
 a.forEach((x)=>{
 x.style.color ='black';
 })
-// console.log(document.querySelector('#img_nav'));
+console.log(document.querySelector('#img_nav'));
 }
+
 
   sessionStorage.setItem("drk_theme", theme);
 
@@ -326,27 +317,6 @@ var get_theme = sessionStorage.getItem("drk_theme");
 if (get_theme == "true") {
   dark_mode();
 }
-
-function showmore(mm){
-
-  console.log( mm.parentElement.firstElementChild.id);
-
-
-    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-        mm.parentElement.firstElementChild.style.display = 'contents';
-      
-        mm.innerText = 'See Less..'
-       
-    
-   
-    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
-        mm.parentElement.firstElementChild.style.display = 'none';
-        mm.innerText = 'See More..'
-     
-    }
-  
-}
-
 
 
 //for see more ...

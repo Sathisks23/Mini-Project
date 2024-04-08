@@ -28,7 +28,9 @@
     transition:all 0.5s;
 
 }
-
+.cont{
+    background-color: black;
+}
 .blacktheme{
     background-color: black;
     color: white;
@@ -675,7 +677,7 @@ body {
  
     max-width: 800px;
     margin: 65px auto;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 20px;
     border-radius: 8px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -832,4 +834,8 @@ body {
 .dispaly_block{
     visibility: visible;
     /* display: block; */
+}
+
+.blk{
+    background-color: black;
 }

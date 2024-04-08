@@ -142,13 +142,9 @@ function dark_mode() {
   document.querySelector('#searchinput').classList.toggle('place_for_search');
  
 
-  // create page..... = document.querySelectorAll('#text');
-              
-        //   text.forEach((x)=>{
-        //     x.style.color="black";
-        //     x.parentElement.style.backgroundColor ='white';
-        //     document.querySelector('#img_nav').style.backgroundColor="white";
-        // }).............
+  // create page..... 
+
+  document.querySelector(".lines").classList.toggle('blk');
 
   document.querySelector('.container').classList.toggle('cont');
   document.querySelector('.lines').classList.toggle('categ');
