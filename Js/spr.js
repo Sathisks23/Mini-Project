@@ -265,3 +265,15 @@ function showmore(mm){
 //     }
   
 // }
+ let profilepage=document.getElementById("profilepage");
+ let edtipage=document.getElementById("edtipage");
+
+
+ let edit_pro=document.getElementById("edit_pro");
+ edit_pro.addEventListener("click",()=>{
+  profilepage.style.opacity='0.5'
+  
+     edtipage.style.display="block";
+   
+
+ })

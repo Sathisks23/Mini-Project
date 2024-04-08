@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="Css/spr.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="Css/edit_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 <body>
+
+  
 
     <header>
         <a href="hmpg.html"><img id="logo" src="Assests/logo.png" alt=""></a>   
@@ -22,14 +25,14 @@
    <div class="imagediv"><img id="profile" src="Assests/user.png" alt="">  <div class="img_nav"> <a href="spr.html">View Profile</a> <a href="#">Edit Ctegory</a> <a onclick='changetheme()' id="them">Dark Theme</a> <a href="#">Change Password</a> <a href="#">Logut</a> </div>  </div>
    </div>
    </header>
-
+   <div id="profilepage">
 
     <!-- profile -->
    <div class="profile_container">
        <img id="userpro" src="" alt="">
        <h4 id="user_name"></h4>
        <p id="bio"></p>
-       <a href="edit_profile_page.html"><button id="edit_pro" >Edit Profile</button></a>
+       <button id="edit_pro" >Edit Profile</button>
    </div>
   
 
@@ -38,6 +41,56 @@
    <div class="post_container">
 
    </div>
+</div>
+
+<div id="edtipage">
+    <div class="main_container">
+        <div class="sub_container">
+        <div id="loader"></div>
+        <div class="container">
+           
+            <div class="loading-overlay" id="loadingOverlay">
+    
+                <div class="loading-spinner"></div>
+    <div class="container">
+        <div class="top">
+        <p class="title">Edit Your Profile</p>
+     <a id="cancel_link" href=""><button id="btn2" class="cancel_btn">X</button></a>  
+        </div>
+        <div class="profile">
+            <div class="profile_icon">
+          <img id="change"  src="Assests/Edit Picture.jpg" alt="">
+            </div>
+            <i id="icon" class="fa-solid fa-trash"></i>
+            <div class="dropZoneContainer">
+                <input type="file" id="drop_zone" class="FileUpload" accept=".jpg,.png,.jpeg,.webp" />
+                <div class="dropZoneOverlay">Edit Picture</div>
+            </div>
+       </div>
+    
+    <div class="name_block">
+       <label for="Name">Name</label>
+       <input type="text" id="text2">
+       <div class="error1">
+        <label id="err2" class="error none">Invalid Name</label>
+        </div>
+    </div>
+    <div class="bio_block">
+       <label for="Bio">Bio</label>
+       <textarea id="bio1" name="Bio" placeholder="Enter your bio"></textarea>   
+    </div>
+   <a id="btn_link" href=""><button id="btn" class="save_btn">Save</button></a> 
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+
 
 
 <!-- --------------view hole page--------------------------------------------------------------------- -->
@@ -56,7 +109,7 @@
 
 
 
-
+<script type="module" src="Js/edit_profile.js"></script>
 <script type="module" src="Js/spr.js"></script>
 
 </body>
