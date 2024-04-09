@@ -251,6 +251,7 @@ c.append(card)
 
 
 
+
 //for see more ...
 
 function lets_get(){
@@ -262,12 +263,65 @@ see_more.forEach((x)=>{
 
 }
 
+// dark mode.............................
 
+
+const body = document.querySelector('body');
+
+var dark_theme = document.getElementById('theme');
+
+dark_theme.addEventListener('click',dark_mode);
+
+
+
+
+function dark_mode() {
+  console.log("log");
+  document.querySelector('header').classList.toggle('blacktheme');
+  var theme = document.querySelector('body').classList.toggle('black');
+
+  let img =document.getElementById('logo');
+  let real_src=img.src.slice(22);
+
+  if(document.querySelector('#img_nav').style.backgroundColor!="black"){
+
+    img.src='Assests/darklogo.png'
+    let img_nav=document.querySelector("#img_nav")
+    img_nav.style.backgroundColor="black";
+    let a=document.querySelectorAll("a")
+    a.forEach((x)=>{
+      x.style.color ='white';
+    })
+      // console.log(document.querySelector('#img_nav'));
+    sessionStorage.setItem("drk_theme", theme);
+  
+}else{
+
+    img.src='Assests/logo.png'
+    let img_nav=document.querySelector("#img_nav")
+img_nav.style.backgroundColor="white";
+let a=document.querySelectorAll("a")
+a.forEach((x)=>{
+x.style.color ='black';
+})
+console.log(document.querySelector('#img_nav'));
+}
+
+
+  sessionStorage.setItem("drk_theme", theme);
+
+}
+
+var get_theme = sessionStorage.getItem("drk_theme");
+
+if (get_theme == "true") {
+  dark_mode();
+}
+
+
+//for see more ...
 
 function showmore(mm){
-
-  console.log( mm.parentElement.firstElementChild.id);
-
 
     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
         mm.parentElement.firstElementChild.style.display = 'contents';
@@ -283,38 +337,6 @@ function showmore(mm){
     }
   
 }
-
-
-
-//for see more ...
-
-// function lets_get(){
-//   let see_more = document.querySelectorAll('#see_more')
-// see_more.forEach((x)=>{
-
-  
-//     x.addEventListener('click', function(){showmore(this)}) })
-
-// }
-
-
-
-// function showmore(mm){
-
-//     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-//         mm.parentElement.firstElementChild.style.display = 'block';
-      
-//         mm.innerText = 'See Less..'
-       
-    
-   
-//     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
-//         mm.parentElement.firstElementChild.style.display = 'none';
-//         mm.innerText = 'See More..'
-     
-//     }
-  
-// }
  let profilepage=document.getElementById("profilepage");
  let edtipage=document.getElementById("edtipage");
 
@@ -322,8 +344,9 @@ function showmore(mm){
  let edit_pro=document.getElementById("edit_pro");
  edit_pro.addEventListener("click",()=>{
   profilepage.style.opacity='0.5'
-  
+  body.style.overflow='hidden'
      edtipage.style.display="block";
    
 
  })
+

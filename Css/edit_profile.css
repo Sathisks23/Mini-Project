@@ -202,3 +202,20 @@ textarea {
     from{ bottom:-100px; opacity:0 } 
     to{ bottom:0; opacity:1 }
   }
+
+  /* drk theme .......................................*/
+
+
+
+.blk{
+    background-color: black;
+    color: white;
+    border-color: #6452D0;
+}
+
+.bcolor{
+    background-color: black;
+    color: white;
+    border-style: solid;;
+    border-color: #6452D0;
+}

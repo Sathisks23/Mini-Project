@@ -108,6 +108,7 @@ event.preventDefault()
         setTimeout(loader.style.display='none',3000)
         setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
         location.replace("spr.html")
+        body.style.overflow='auto';
       }
       )
     }
@@ -124,6 +125,7 @@ updateDoc(doc(db,"user",usersData), {
     setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
     setTimeout(loader.style.display='none',3000)
     location.replace("spr.html")
+    body.style.overflow='auto';
   }
   )
  
@@ -151,6 +153,7 @@ updateDoc(doc(db,"user",usersData), {
         setTimeout(document.body.querySelector('.container').style.opacity='1',3000)
         setTimeout(loader.style.display='none',3000)
         location.replace("spr.html")
+        body.style.overflow='auto';
       }
       )
      
@@ -174,4 +177,33 @@ updateDoc(doc(db,"user",usersData), {
 button2.addEventListener("click",(event)=>{
   event.preventDefault()
   location.replace("spr.html")
+  body.style.overflow='auto';
 })
+
+
+
+// Dark mode..............................................................
+
+var dark_theme = document.getElementById('theme');
+
+// const body = document.querySelector('body');
+
+
+dark_theme.addEventListener('click',dark_mode);
+
+function dark_mode() {
+  // console.log('hii');
+  var theme =document.body.classList.toggle('blacktheme');
+  document.querySelector('.sub_container').classList.toggle('bcolor');
+  document.querySelector('#text2').classList.toggle('blk');
+  document.querySelector('#bio1').classList.toggle('blk');
+
+
+  sessionStorage.setItem("drk_theme", theme);
+}
+
+var get_theme = sessionStorage.getItem("drk_theme");
+
+if (get_theme == "true") {
+  dark_mode();
+}

@@ -30,11 +30,8 @@ import { getFirestore,query,where, getDoc, getDocs, orderBy,limit,doc, setDoc, u
 
 //-------------------------------------------------------------------------
 
+ // Initialize Firebase
 
-
-
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 let db = getFirestore(app)
 let usersData=JSON.parse(localStorage.getItem("usersData"))
@@ -67,9 +64,11 @@ let li1 = document.querySelectorAll('.navlink')
 // let theme =document.getElementById('theme')
 //     theme.addEventListener('click',changetheme)
 
-function changetheme(){
+// function changetheme(){
 
 
+
+      
  
    let img =document.getElementById('logo')
    let b=img.src.slice(22)
@@ -79,51 +78,157 @@ function changetheme(){
 
    
 
-       if(b=='Assests/logo.png' ){
+//         if(b=='Assests/logo.png' ){
 
-           img.src='Assests/darklogo.png'
-   document.querySelector('.logo_div').style.color='white'
-   document.querySelector('.logo_div').style.backgroundColor='black'
-   document.querySelector('.img_nav').style.backgroundColor='black'
-   document.querySelector('.img_nav').style.color='white'
-   document.body.classList.toggle('blacktheme')
-   document.querySelector('header').classList.toggle('blacktheme')
-   document.querySelector('.search').classList.toggle('darkinput')
-  document.getElementById('theme').classList.toggle('blacktheme')
-  let a = document.querySelector('.img_nav').querySelectorAll('a')
-  a.forEach((e)=>{
-e.classList.toggle('blacktheme')
-
-
- })
- localStorage.setItem("theme",JSON.stringify('dark'));
-
-           // theme.innerText = "Dark Theme"
-        }else{
-           img.src='Assests/logo.png'
-   document.querySelector('.logo_div').style.color='black'
-   document.querySelector('.logo_div').style.backgroundColor='white'
-   document.querySelector('.img_nav').style.backgroundColor='white'
-   // document.querySelector('.img_nav').style.color='black'
-   document.body.classList.toggle('blacktheme')
-   document.querySelector('header').classList.toggle('blacktheme')
-   document.querySelector('.search').classList.toggle('darkinput')
-  document.getElementById('theme').classList.toggle('blacktheme')
-  let a = document.querySelector('.img_nav').querySelectorAll('a')
-  a.forEach((e)=>{
-e.classList.toggle('blacktheme')
+//             img.src='Assests/darklogo.png'
+//     document.querySelector('.logo_div').style.color='white'
+//     document.querySelector('.logo_div').style.backgroundColor='black'
+//     document.querySelector('.img_nav').style.backgroundColor='black'
+//     document.querySelector('.img_nav').style.color='white'
+//     document.body.classList.toggle('blacktheme')
+//     document.querySelector('header').classList.toggle('blacktheme')
+//     document.querySelector('.search').classList.toggle('darkinput')
+//    document.getElementById('theme').classList.toggle('blacktheme')
+//    let a = document.querySelector('.img_nav').querySelectorAll('a')
+//    a.forEach((e)=>{
+//  e.classList.toggle('blacktheme')
 
 
- })
-   localStorage.setItem("theme",JSON.stringify('light'));
+//   })
+//   localStorage.setItem("theme",JSON.stringify('dark'));
+
+//             // theme.innerText = "Dark Theme"
+//          }else{
+//             img.src='Assests/logo.png'
+//     document.querySelector('.logo_div').style.color='black'
+//     document.querySelector('.logo_div').style.backgroundColor='white'
+//     document.querySelector('.img_nav').style.backgroundColor='white'
+//     // document.querySelector('.img_nav').style.color='black'
+//     document.body.classList.toggle('blacktheme')
+//     document.querySelector('header').classList.toggle('blacktheme')
+//     document.querySelector('.search').classList.toggle('darkinput')
+//    document.getElementById('theme').classList.toggle('blacktheme')
+//    let a = document.querySelector('.img_nav').querySelectorAll('a')
+//    a.forEach((e)=>{
+//  e.classList.toggle('blacktheme')
+
+
+//   })
+//     localStorage.setItem("theme",JSON.stringify('light'));
+            
            
-          
-           // theme.innerText = "Ligth Theme"
+//             // theme.innerText = "Ligth Theme"
 
-       }
+//         }
+// }
+
+
+
+// document.querySelector('#img_nav').style.backgroundColor="white";
+
+
+const body = document.querySelector('body');
+
+var dark_theme = document.getElementById('theme');
+
+dark_theme.addEventListener('click',dark_mode);
+
+
+
+
+function dark_mode() {
+
+  
+  let img =document.getElementById('logo')
+  let real_src=img.src.slice(22)
+  
+
+
+
+  var theme = body.classList.toggle('blacktheme');
+  document.querySelector('header').classList.toggle('blacktheme');
+  document.querySelector('.search').classList.toggle('sty');
+  document.querySelector('.logo_div').classList.toggle('back');
+  document.querySelector('#searchinput').classList.toggle('place_for_search');
+
+ 
+
+  // create page..... 
+
+  document.querySelector(".lines").classList.toggle('blk');
+
+  document.querySelector('.container').classList.toggle('cont');
+  document.querySelector('.lines').classList.toggle('categ');
+  document.querySelector('.drop-category').classList.toggle('blacktheme');
+  document.querySelector('.drop-category').style.backgroundColor="black";
+  document.querySelector('.select').classList.toggle('categ');
+
+
+  //hover popup ................
+
+  // document.querySelector('#img_nav').classList.toggle('mini_hove_box');
+  // document.querySelector('a').classList.toggle('a_tag');
+  
+ 
+  // edit cat........................
+
+  if(document.querySelector('#img_nav').style.backgroundColor!="black"){
+
+                img.src='Assests/darklogo.png'
+                let category=document.querySelectorAll(".category1")
+                let img_nav=document.querySelector("#img_nav")
+                  category.forEach((x)=>{
+                    x.backgroundColor ='black';
+                  })
+                img_nav.style.backgroundColor="black";
+                let a=document.querySelectorAll("a")
+                a.forEach((x)=>{
+                  x.style.color ='white';
+                })
+                  console.log(document.querySelector('#img_nav'));
+                sessionStorage.setItem("drk_theme", theme);
+              
+        }else{
+
+                img.src='Assests/logo.png'
+                let category=document.querySelectorAll(".category1")
+                document.querySelector('.drop-category').style.backgroundColor="white";
+                let img_nav=document.querySelector("#img_nav")
+                category.forEach((x)=>{
+                  x.backgroundColor ='white';
+        })
+        img_nav.style.backgroundColor="white";
+        let a=document.querySelectorAll("a")
+        a.forEach((x)=>{
+          x.style.color ='black';
+        })
+        // console.log(document.querySelector('#img_nav'));
+        }
+        sessionStorage.setItem("drk_theme", theme);
+
+      }
+
+
+     
+      var get_theme = sessionStorage.getItem("drk_theme");
+if (get_theme == "true") {
+  dark_mode();
+
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+//........................................................................................
 
 
 
@@ -442,10 +547,10 @@ async function updatelike(x){
      
 ///.............................................. Trending Views.........................
 
-let trend_post_ref = collection(db,'post')
+let trend_post_ref = collection(db,'post');
 let most_like = query(trend_post_ref, orderBy("p_like",'desc'), limit(5));
-let res = await getDocs(most_like)
-let trend_div = document.querySelector('.trending_views')
+let res = await getDocs(most_like);
+let trend_div = document.querySelector('.trending_views');
 
 res.forEach((rec)=>{
   

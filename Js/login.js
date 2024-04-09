@@ -32,11 +32,11 @@ let usersData=JSON.parse(localStorage.getItem("usersData"))
 
 
 
-const email_id=document.querySelector("#email_id")
+const email_id=document.querySelector("#email_id");
 const password=document.querySelector("#passowrd");
 
 const btn =document.querySelector("#submit");
-let two = false
+let two = false;
 
 btn.addEventListener("click",(event)=>{
     event.preventDefault();
@@ -177,12 +177,6 @@ else if (password.type =='text') {
 
 
 
-
-
-
-
-
-
  let  p=document.querySelector(".Erro_msg");
  let  p2=document.querySelector(".Erro_msg1");
 
@@ -248,122 +242,132 @@ function error(element,msg){
        otpinput.type="text";
        otpinput.id="otpinputvalue";
   let otpbutton=document.createElement("button");
+  let error_email_id=document.createElement('p');
+  error_email_id.className = "error_em";
  
   
    otpbutton.textContent="Ok";
    otpbutton.className="otpbtn";
   
 
-   let no
+   let no;
+ 
 
    search_button.addEventListener("click",async ()=>{
    
     if(identify_email.value==""){
-      alert("enter  your email address")
+      alert("enter your email address");
+
      }
-     else{
-
-
+     else if(identify_email.value == email_id.value){
       let getRef = collection(db, "user");
-        no = []
-      
-              let getData1 = await getDocs(getRef);
-      
-              console.log(getData1.size);
-             
-              getData1.forEach((record)=>{
-                 
-            let row = [record.data().u_email,record.data().u_password ,record.id]
-                 no.push(row)
-      
-                  
-              });
-      
-  
-  
-       for(i in no){
-          if((no[i][0])==identify_email.value ){
-   console.log(no);
-
-              console.log("user exist");
-              forgot_otp.style.display="block";
-              forgot_otp.append(otpdiv1);
-              otpdiv1.append(label);
-              otpdiv1.append(otpinput);
-              otpdiv1.append(otpbutton);
+      no = []
+    
+            let getData1 = await getDocs(getRef);
+    
+            console.log(getData1.size);email_id
            
-           
-                  otp_random=Math.floor(Math.random()*100000);
-                  console.log(otp_random);
-           
-             
-               let mail_msg =`Hi welcome to our website please verifiy email id and  enter your otp
-                          OTP:<br> ${otp_random} <br>`;
-           
-           
-           
-             Email.send({
-               SecureToken : "273dd9f4-61d3-456a-b3f9-3b4561e69c48",
-               To : identify_email.value,
-               From : "dckapnews@gmail.com",
-               Subject : "Enter the OTP",
-               Body : mail_msg
-             }).then(
-             message => alert(message)
-             
-             ).catch(error => alert(error));
-            
-
-        var userID = no[i][2];
-          i=no.length
-         
-
-
-       
-              
-  
-          } 
-          otpbutton.addEventListener("click",async ()=>{
-            console.log("otp")
-           let otp_value=document.getElementById("otpinputvalue").value;
-           console.log(otp_value==otp_random)
-           if(otp_value==otp_random){
-            console.log(no);
-            localStorage.setItem("usersData",JSON.stringify(userID));
-            console.log(localStorage.getItem("usersData"));
-           
-          //  alert("OTP sucessfull")
-           location.replace("change_pass.html")
-           }
-           else{
-         alert("invalid OTP")
-           }
-           
-          
-            
-          })
-         
-        
-     
-       } 
-  
-
-
-
-
-
-
+            getData1.forEach((record)=>{
+               
+          let row = [record.data().u_email,record.data().u_password ,record.id]
+               no.push(row)
+    
+                
+            });
     
 
-     }
+
+     for(i in no){
+        if((no[i][0])==identify_email.value ){
+      console.log(no);
+
+            console.log("user exist");
+            forgot_otp.style.display="block";
+            forgot_otp.append(otpdiv1);
+            otpdiv1.append(label);
+            otpdiv1.append(otpinput);
+            otpdiv1.append(otpbutton);
+            otpdiv1.append(error_email_id);
+         
+                otp_random=Math.floor(Math.random()*100000);
+                console.log(otp_random);
+         
+           
+             let mail_msg =`Hi welcome to our website please verifiy email id and  enter your otp
+                        OTP:<br> ${otp_random} <br>`;
+         
+           Email.send({
+             SecureToken : "273dd9f4-61d3-456a-b3f9-3b4561e69c48",
+             To : identify_email.value,email_id,
+             From : "dckapnews@gmail.com",
+             Subject : "Enter the OTP",
+             Body : mail_msg
+           }).then(
+          //  message => alert(message)
+           
+           ).catch(error => alert(error));
+          
+
+      var userID = no[i][2];
+        i=no.length
+       
 
 
-  
+     
+            
+
+        } 
+        otpbutton.addEventListener("click",async ()=>{
+          console.log("otp")
+         let otp_value=document.getElementById("otpinputvalue").value;
+         console.log(otp_value==otp_random)
+         if(otp_value==otp_random){
+          console.log(no);
+          localStorage.setItem("usersData",JSON.stringify(userID));
+          console.log(localStorage.getItem("usersData"));
+         
+         
+        //  alert("OTP sucessfull")
+         location.replace("change_pass.html")
+         }
+         else{
+      //  alert("invalid OTP")
+              error_email_id.innerText = "invalid OPT";
+              setTimeout(()=>{
+                document.querySelector('.error_em').innerHTML = " "},3000);            
+             
+         }
+               
+        })
+       
+      
+   
+     } 
+
+   }
+
+     
+     else{
+console.log("false");
+      document.querySelector('#forgotpass_error').innerHTML = "Enter correct email";
+      setTimeout(()=>{
+      document.querySelector('#forgotpass_error').innerHTML = " "},3000)
+      
    
 
-   })
+   }
+
+  
+  })
+
  
   
+
+
+
+
+
+
 
 
 
@@ -398,3 +402,8 @@ function error(element,msg){
 //   });
 //     console.log("hiii");
 // })
+
+
+
+
+
