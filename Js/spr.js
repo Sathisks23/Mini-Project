@@ -277,9 +277,9 @@ dark_theme.addEventListener('click',dark_mode);
 
 function dark_mode() {
   console.log("log");
- var theme = document.querySelector('body').classList.toggle('black');
+  document.querySelector('header').classList.toggle('blacktheme');
+  var theme = document.querySelector('body').classList.toggle('black');
 
-   document.querySelector('header').classList.toggle('blacktheme');
   let img =document.getElementById('logo');
   let real_src=img.src.slice(22);
 
@@ -355,7 +355,7 @@ if (get_theme == "true") {
  let edit_pro=document.getElementById("edit_pro");
  edit_pro.addEventListener("click",()=>{
   profilepage.style.opacity='0.5'
-  
+  body.style.overflow='hidden'
      edtipage.style.display="block";
    
 

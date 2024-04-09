@@ -25,7 +25,7 @@
 .darkinput{
     background-color: white;
     color: black;
-    transition:all 0.5s;
+    /* transition:all 0.5s; */
 
 
 }
@@ -40,7 +40,7 @@
 .blacktheme{
     background-color: black;
     color: white;
-    /* transition:all 0.5s; */
+    transition:all 0.5s;
 }
 /* drk theme added......................................... */
 .sty{
@@ -346,6 +346,13 @@ background-color: rgba(233, 233, 233, 0.337);
     display: flex;
     justify-content: center;
     gap: 5px;
+    position: sticky;
+    top: 70px;
+    width: 100%;
+    padding: 40px 0 40px 0;
+    z-index: 0;
+    background-color: white;
+    font-size: 18px;
     
 }
 
@@ -436,15 +443,7 @@ background-color: rgba(233, 233, 233, 0.337);
     display: block;
 }
 
-.logo_div{
-    position: sticky;
-    top: 70px;
-    width: 120%;
- padding:  40px 0 40px 0;
-    z-index: 0;
-    /* background-color:white; */
-    font-size: 18px;
-}
+
 .black{
     background-color: black;
 }
@@ -495,6 +494,13 @@ background-color: rgba(233, 233, 233, 0.337);
     /* filter: blur(5px);
     -webkit-filter: blur(5px); */
 
+}
+
+/* drktheme */
+
+.back{
+    background-color: rgb(3, 3, 3);
+    color: rgb(255, 252, 252);
 }
 
 
@@ -844,4 +850,5 @@ body {
 
 .blk{
     background-color: black;
+    color: white;
 }

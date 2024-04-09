@@ -133,20 +133,24 @@ var dark_theme = document.getElementById('theme');
 
 dark_theme.addEventListener('click',dark_mode);
 
+
+
+
 function dark_mode() {
 
   
   let img =document.getElementById('logo')
   let real_src=img.src.slice(22)
   
-   
+
 
 
   var theme = body.classList.toggle('blacktheme');
   document.querySelector('header').classList.toggle('blacktheme');
   document.querySelector('.search').classList.toggle('sty');
-  document.querySelector('.logo_div').classList.toggle('trend');
+  document.querySelector('.logo_div').classList.toggle('back');
   document.querySelector('#searchinput').classList.toggle('place_for_search');
+
  
 
   // create page..... 
@@ -155,7 +159,8 @@ function dark_mode() {
 
   document.querySelector('.container').classList.toggle('cont');
   document.querySelector('.lines').classList.toggle('categ');
-  document.querySelector('.drop-category').classList.toggle('categ');
+  document.querySelector('.drop-category').classList.toggle('blacktheme');
+  document.querySelector('.drop-category').style.backgroundColor="black";
   document.querySelector('.select').classList.toggle('categ');
 
 
@@ -187,6 +192,7 @@ function dark_mode() {
 
                 img.src='Assests/logo.png'
                 let category=document.querySelectorAll(".category1")
+                document.querySelector('.drop-category').style.backgroundColor="white";
                 let img_nav=document.querySelector("#img_nav")
                 category.forEach((x)=>{
                   x.backgroundColor ='white';
