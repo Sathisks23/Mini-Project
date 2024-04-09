@@ -321,33 +321,22 @@ if (get_theme == "true") {
 
 //for see more ...
 
-// function lets_get(){
-//   let see_more = document.querySelectorAll('#see_more')
-// see_more.forEach((x)=>{
+function showmore(mm){
 
-  
-//     x.addEventListener('click', function(){showmore(this)}) })
-
-// }
-
-
-
-// function showmore(mm){
-
-//     if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
-//         mm.parentElement.firstElementChild.style.display = 'block';
+    if(  mm.parentElement.firstElementChild.id!='see_more' &&  mm.parentElement.lastElementChild.innerText=='See More..' ){
+        mm.parentElement.firstElementChild.style.display = 'contents';
       
-//         mm.innerText = 'See Less..'
+        mm.innerText = 'See Less..'
        
     
    
-//     }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
-//         mm.parentElement.firstElementChild.style.display = 'none';
-//         mm.innerText = 'See More..'
+    }else if( mm.parentElement.lastElementChild.innerText=='See Less..'){ 
+        mm.parentElement.firstElementChild.style.display = 'none';
+        mm.innerText = 'See More..'
      
-//     }
+    }
   
-// }
+}
  let profilepage=document.getElementById("profilepage");
  let edtipage=document.getElementById("edtipage");
 
