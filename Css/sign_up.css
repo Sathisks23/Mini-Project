@@ -397,3 +397,14 @@ span#span {
 .flex{
     display: block;
 }
+#email_exit_error{
+  color: red;
+ 
+  position: relative;
+  right: 83px;
+}
+
+.error input[type="email"]{
+  border-color: red;
+
+}  
